@@ -3,12 +3,15 @@ import { useTheme } from './ThemeContext';
 import { Check, Sparkles, Code2, Cpu, Database, Cloud, Zap, Terminal, ChevronRight, Activity, Boxes } from 'lucide-react';
 import { useState } from 'react';
 
+const BRAND_COLOR = '#4e91ff';
+const BRAND_RGB = '78, 145, 255';
+
 const techCategories = [
   {
     title: 'Frontend Development',
     icon: Code2,
-    color: '#ec4899',
-    bgGradient: 'from-pink-500/20 to-rose-500/20',
+    color: BRAND_COLOR,
+    bgGradient: 'from-blue-500/20 to-blue-500/20',
     technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Motion', 'Three.js'],
     description: 'Building beautiful, responsive interfaces',
     stats: { performance: 98, scalability: 95, reliability: 97 },
@@ -16,8 +19,8 @@ const techCategories = [
   {
     title: 'Backend & APIs',
     icon: Database,
-    color: '#8b5cf6',
-    bgGradient: 'from-purple-500/20 to-violet-500/20',
+    color: BRAND_COLOR,
+    bgGradient: 'from-blue-500/20 to-blue-500/20',
     technologies: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'GraphQL', 'REST APIs'],
     description: 'Robust server-side architecture',
     stats: { performance: 96, scalability: 98, reliability: 99 },
@@ -25,8 +28,8 @@ const techCategories = [
   {
     title: 'AI & Machine Learning',
     icon: Cpu,
-    color: '#06b6d4',
-    bgGradient: 'from-cyan-500/20 to-blue-500/20',
+    color: BRAND_COLOR,
+    bgGradient: 'from-blue-500/20 to-blue-500/20',
     technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Anthropic', 'Hugging Face', 'LangChain'],
     description: 'Intelligent automation and insights',
     stats: { performance: 94, scalability: 92, reliability: 96 },
@@ -34,8 +37,8 @@ const techCategories = [
   {
     title: 'Cloud & Infrastructure',
     icon: Cloud,
-    color: '#10b981',
-    bgGradient: 'from-emerald-500/20 to-teal-500/20',
+    color: BRAND_COLOR,
+    bgGradient: 'from-blue-500/20 to-blue-500/20',
     technologies: ['AWS', 'Google Cloud', 'Vercel', 'Docker', 'Kubernetes', 'Terraform'],
     description: 'Scalable cloud-native solutions',
     stats: { performance: 97, scalability: 99, reliability: 99 },
@@ -68,7 +71,7 @@ export function TechStack() {
         style={{
           backgroundImage: `repeating-linear-gradient(
             0deg,
-            ${theme === 'dark' ? '#a78bfa' : '#6366f1'} 0px,
+            rgba(${BRAND_RGB}, ${theme === 'dark' ? 0.25 : 0.2}) 0px,
             transparent 2px,
             transparent 4px
           )`,
@@ -95,12 +98,12 @@ export function TechStack() {
               border: `2px solid ${theme === 'dark' ? '#334155' : '#cbd5e1'}`,
             }}
           >
-            <Boxes className="w-5 h-5 text-purple-400" />
-            <span className="text-purple-400 text-sm tracking-[0.3em] uppercase" style={{ fontWeight: 700 }}>
+            <Boxes className="w-5 h-5 brand-text" />
+            <span className="brand-text text-sm tracking-[0.3em] uppercase" style={{ fontWeight: 700 }}>
               Technology Stack
             </span>
             <motion.div
-              className="w-2 h-2 rounded-full bg-green-400"
+              className="w-2 h-2 rounded-full brand-bg"
               animate={{
                 scale: [1, 1.3, 1],
                 opacity: [1, 0.6, 1],
@@ -523,7 +526,7 @@ export function TechStack() {
           <div className="grid md:grid-cols-3 gap-6">
             {features.map((feature, index) => {
               const isLarge = index === 0 || index === 3;
-              const colors = ['#ec4899', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444'];
+              const colors = [BRAND_COLOR];
               const featureColor = colors[index];
 
               return (
@@ -722,9 +725,9 @@ export function TechStack() {
                   : 'bg-purple-600 hover:bg-purple-700'
               }`}
               style={{
-                boxShadow: '0 10px 40px #a78bfa40',
+                boxShadow: '0 10px 40px rgba(78, 145, 255, 0.25)',
               }}
-              whileHover={{ scale: 1.05, boxShadow: '0 20px 60px #a78bfa60' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 20px 60px rgba(78, 145, 255, 0.35)' }}
               whileTap={{ scale: 0.95 }}
             >
               {/* Shimmer Effect */}

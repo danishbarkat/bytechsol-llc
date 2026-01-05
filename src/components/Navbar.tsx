@@ -1,21 +1,30 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useTheme } from './ThemeContext';
 import { useRouter } from './Router';
-import { getServiceTitles } from './servicesData';
 
-const servicesMenu = getServiceTitles().map(service => ({
-  title: service.title,
-  route: `/services/${service.id}`
-}));
+const servicesMenu = [
+  { title: 'Odoo Services', route: '/services/odoo-services' },
+  { title: 'Custom Web Solution', route: '/services/custom-web-solution' },
+  { title: 'Mobile App Development', route: '/services/web-app-software-development' },
+  { title: 'Ecommerce Solutions', route: '/services/ecommerce-solutions' },
+  { title: 'Brand Building', route: '/services/brand-building' },
+  { title: 'SEO Services', route: '/services/seo-services' },
+  { title: 'AI/ML Services', route: '/services/ai-ml-services' },
+  { title: 'ERP Services', route: '/services/erp-services' },
+  { title: 'Website Design & Development', route: '/services/website-design-development' },
+];
+const servicesSplitIndex = Math.ceil(servicesMenu.length / 2);
+const servicesColumns = [
+  servicesMenu.slice(0, servicesSplitIndex),
+  servicesMenu.slice(servicesSplitIndex)
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
-  const { navigate, currentRoute } = useRouter();
+  const { navigate } = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,87 +52,58 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`hidden lg:block fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
-          isScrolled ? 'top-4' : 'top-6'
-        }`}
+        className={`hidden lg:block fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${isScrolled ? 'top-4' : 'top-6'
+          }`}
         style={{ width: 'auto', maxWidth: '90vw' }}
       >
         <div
-          className={`flex items-center gap-2 px-3 py-2.5 transition-all duration-300 ${
-            theme === 'dark'
-              ? 'bg-slate-900/90 backdrop-blur-xl border border-slate-800/50'
-              : 'bg-white/90 backdrop-blur-xl border border-slate-200/50'
-          }`}
+          className="flex items-center gap-2 px-3 py-2.5 transition-all duration-300 secondary-bg border border-white/10 backdrop-blur-xl"
           style={{
             borderRadius: '3rem',
-            boxShadow: theme === 'dark'
-              ? '0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-              : '0 10px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
           }}
         >
           {/* Logo */}
-          <a href="#/" onClick={() => navigate('/')}>
-            <div
-              className={`w-11 h-11 flex items-center justify-center transition-colors cursor-pointer ${
-                theme === 'dark'
-                  ? 'bg-white text-slate-900'
-                  : 'bg-slate-900 text-white'
-              }`}
-              style={{ borderRadius: '50%' }}
-            >
-              <span className="font-bold">BS</span>
-            </div>
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+            <img
+              src="/assets/logo/logo.png"
+              alt="BytechSol logo"
+              className="h-11 w-11 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           </a>
 
           {/* Divider */}
           <div
-            className={`w-px h-7 mx-3 ${
-              theme === 'dark' ? 'bg-slate-700/50' : 'bg-slate-300/50'
-            }`}
+            className="w-px h-7 mx-3 bg-white/30"
           />
 
           {/* Navigation Links */}
           <div className="flex items-center gap-2 px-3">
             {/* Home Link */}
             <a
-              href="#/"
-              onClick={() => navigate('/')}
-              className={`px-6 py-2.5 transition-all duration-200 ${
-                theme === 'dark'
-                  ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-              }`}
+              href="/"
+              onClick={(e) => { e.preventDefault(); navigate('/'); }}
+              className="px-6 py-2.5 transition-all duration-200 text-white hover:text-white hover:bg-white/15"
               style={{ borderRadius: '1.5rem' }}
             >
               Home
             </a>
-
-            {/* About Link */}
-            <a
-              href="#/about"
-              onClick={() => navigate('/about')}
-              className={`px-6 py-2.5 transition-all duration-200 ${
-                theme === 'dark'
-                  ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-              }`}
-              style={{ borderRadius: '1.5rem' }}
-            >
-              About
-            </a>
-
             {/* Services Dropdown Wrapper */}
-            <div className="relative">
+            <div
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsServicesOpen(!isServicesOpen);
                 }}
-                className={`inline-flex items-center gap-1 px-6 py-2.5 transition-all duration-200 ${
-                  theme === 'dark'
-                    ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-                }`}
+                aria-haspopup="menu"
+                aria-expanded={isServicesOpen}
+                aria-controls="services-menu"
+                className="inline-flex items-center gap-1 px-6 py-2.5 transition-all duration-200 text-white hover:text-white hover:bg-white/15"
                 style={{ borderRadius: '1.5rem' }}
               >
                 Services
@@ -143,58 +123,66 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className={`absolute left-0 top-full mt-2 w-72 rounded-2xl border-2 overflow-hidden z-50 ${
-                      theme === 'dark'
-                        ? 'bg-slate-900 border-slate-800'
-                        : 'bg-white border-slate-200'
-                    }`}
+                    id="services-menu"
+                    role="menu"
+                    className="absolute left-0 top-full mt-2 rounded-2xl border-2 overflow-hidden z-50 secondary-bg border-white/10"
                     style={{
-                      boxShadow: theme === 'dark'
-                        ? '0 20px 60px rgba(0, 0, 0, 0.6)'
-                        : '0 20px 60px rgba(0, 0, 0, 0.2)',
+                      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
+                      width: 'min(52rem, 95vw)'
                     }}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <div className="p-2">
                       <a
-                        href="#/services"
-                        onClick={() => {
+                        href="/services"
+                        onClick={(e) => {
+                          e.preventDefault();
                           navigate('/services');
                           setIsServicesOpen(false);
                         }}
-                        className={`block px-4 py-3 rounded-xl transition-all duration-200 ${
-                          theme === 'dark'
-                            ? 'text-purple-400 hover:text-white hover:bg-slate-800/70'
-                            : 'text-purple-600 hover:text-slate-900 hover:bg-slate-100'
-                        }`}
+                        role="menuitem"
+                        className="block px-4 py-3 rounded-xl transition-all duration-200 text-white hover:text-white hover:bg-white/15"
                         style={{ fontWeight: 600 }}
                       >
                         All Services
                       </a>
-                      
-                      <div className={`h-px my-2 ${theme === 'dark' ? 'bg-slate-800' : 'bg-slate-200'}`} />
 
-                      {servicesMenu.map((service, index) => (
-                        <motion.a
-                          key={service.route}
-                          href={`#${service.route}`}
-                          onClick={() => {
-                            navigate(service.route as any);
-                            setIsServicesOpen(false);
-                          }}
-                          className={`block px-4 py-3 rounded-xl transition-all duration-200 ${
-                            theme === 'dark'
-                              ? 'text-slate-300 hover:text-white hover:bg-slate-800/70'
-                              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                          }`}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
-                          whileHover={{ x: 5 }}
-                        >
-                          {service.title}
-                        </motion.a>
-                      ))}
+                      <div className="h-px my-2 bg-white/30" />
+
+                      <div className="grid w-full grid-cols-2 gap-6">
+                        {servicesColumns.map((column, columnIndex) => (
+                          <div
+                            key={`services-col-${columnIndex}`}
+                            className="flex flex-col gap-2"
+                          >
+                            {column.map((service, index) => {
+                              const itemIndex = columnIndex === 0
+                                ? index
+                                : index + servicesSplitIndex;
+
+                              return (
+                                <motion.a
+                                  key={service.route}
+                                  href={service.route}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    navigate(service.route as any);
+                                    setIsServicesOpen(false);
+                                  }}
+                                  role="menuitem"
+                                  className="block px-4 py-3 rounded-xl transition-all duration-200 text-white hover:text-white hover:bg-white/15 whitespace-normal leading-snug"
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: itemIndex * 0.03 }}
+                                  whileHover={{ x: 4 }}
+                                >
+                                  {service.title}
+                                </motion.a>
+                              );
+                            })}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -202,81 +190,43 @@ export function Navbar() {
             </div>
 
             <a
-              href="#/portfolio"
-              onClick={() => navigate('/portfolio')}
-              className={`px-6 py-2.5 transition-all duration-200 ${
-                theme === 'dark'
-                  ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-              }`}
+              href="/portfolio"
+              onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }}
+              className="px-6 py-2.5 transition-all duration-200 text-white hover:text-white hover:bg-white/15"
               style={{ borderRadius: '1.5rem' }}
             >
               Portfolio
             </a>
 
+            {/* About Link */}
             <a
-              href="#/blog"
-              onClick={() => navigate('/blog')}
-              className={`px-6 py-2.5 transition-all duration-200 ${
-                theme === 'dark'
-                  ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-              }`}
+              href="/about"
+              onClick={(e) => { e.preventDefault(); navigate('/about'); }}
+              className="px-6 py-2.5 transition-all duration-200 text-white hover:text-white hover:bg-white/15"
               style={{ borderRadius: '1.5rem' }}
             >
-              Blog
+              About
             </a>
 
             <a
-              href="#/resources"
-              onClick={() => navigate('/resources')}
-              className={`px-6 py-2.5 transition-all duration-200 ${
-                theme === 'dark'
-                  ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-              }`}
+              href="/blog"
+              onClick={(e) => { e.preventDefault(); navigate('/blog'); }}
+              className="px-6 py-2.5 transition-all duration-200 text-white hover:text-white hover:bg-white/15"
               style={{ borderRadius: '1.5rem' }}
             >
-              Resources
+              Blog
             </a>
           </div>
 
           {/* Divider */}
           <div
-            className={`w-px h-7 mx-3 ${
-              theme === 'dark' ? 'bg-slate-700/50' : 'bg-slate-300/50'
-            }`}
-          />
-
-          {/* Theme Toggle Icon */}
-          <button
-            onClick={toggleTheme}
-            className={`p-2.5 transition-all duration-200 ${
-              theme === 'dark'
-                ? 'text-slate-300 hover:text-white hover:bg-slate-800/50'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/50'
-            }`}
-            style={{ borderRadius: '50%' }}
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-
-          {/* Divider */}
-          <div
-            className={`w-px h-7 mx-3 ${
-              theme === 'dark' ? 'bg-slate-700/50' : 'bg-slate-300/50'
-            }`}
+            className="w-px h-7 mx-3 bg-white/30"
           />
 
           {/* Contact Email Pill */}
           <a
             href="mailto:contact@bytechsol.com"
-            className={`px-7 py-2.5 transition-all duration-200 ${
-              theme === 'dark'
-                ? 'bg-slate-800 text-white hover:bg-slate-700'
-                : 'bg-slate-900 text-white hover:bg-slate-800'
-            }`}
+            className="px-7 py-2.5 transition-all duration-200 brand-bg text-white shadow-lg hover:opacity-90"
             style={{ borderRadius: '1.5rem' }}
           >
             contact@bytechsol.com
@@ -286,57 +236,26 @@ export function Navbar() {
 
       {/* Mobile Navbar - Top Bar */}
       <nav
-        className={`lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? theme === 'dark'
-              ? 'bg-slate-950/90 backdrop-blur-xl border-b border-slate-800'
-              : 'bg-white/90 backdrop-blur-xl border-b border-slate-200'
-            : 'bg-transparent'
-        }`}
+        className={`lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 secondary-bg ${isScrolled ? 'shadow-lg' : ''
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#/" onClick={() => navigate('/')} className="flex items-center gap-3">
-              <div
-                className={`w-10 h-10 flex items-center justify-center ${
-                  theme === 'dark'
-                    ? 'bg-white text-slate-900'
-                    : 'bg-slate-900 text-white'
-                }`}
-                style={{ borderRadius: '50%' }}
-              >
-                <span className="text-sm font-bold">BS</span>
-              </div>
-              <span
-                className={`${
-                  theme === 'dark' ? 'text-white' : 'text-slate-900'
-                } tracking-tight`}
-              >
-                BytechSol
-              </span>
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex items-center gap-3">
+              <img
+                src="/assets/logo/logo.png"
+                alt="BytechSol logo"
+                className="h-10 w-10 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </a>
 
             <div className="flex items-center gap-3">
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className={`p-2 transition-colors ${
-                  theme === 'dark'
-                    ? 'text-slate-300 hover:text-white'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
-
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-slate-900'
-                }`}
+                className="p-2 text-white"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -350,84 +269,57 @@ export function Navbar() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className={`mt-4 pt-4 border-t ${
-                  theme === 'dark' ? 'border-slate-800' : 'border-slate-200'
-                }`}
+                className="mt-4 pt-4 border-t border-white/10"
               >
                 <div className="flex flex-col gap-3">
                   <a
-                    href="#/"
-                    onClick={() => navigate('/')}
-                    className={`px-4 py-2 transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
+                    href="/"
+                    onClick={(e) => { e.preventDefault(); navigate('/'); }}
+                    className="px-4 py-2 transition-colors text-white hover:text-white"
                   >
                     Home
                   </a>
                   <a
-                    href="#/about"
-                    onClick={() => navigate('/about')}
-                    className={`px-4 py-2 transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    About
-                  </a>
-                  <a
-                    href="#/services"
-                    onClick={() => navigate('/services')}
-                    className={`px-4 py-2 transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
+                    href="/services"
+                    onClick={(e) => { e.preventDefault(); navigate('/services'); }}
+                    className="px-4 py-2 transition-colors text-white hover:text-white"
                   >
                     Services
                   </a>
+                  {servicesMenu.map((service) => (
+                    <a
+                      key={service.route}
+                      href={service.route}
+                      onClick={(e) => { e.preventDefault(); navigate(service.route as any); }}
+                      className="px-6 py-1.5 text-sm transition-colors text-white/80 hover:text-white"
+                    >
+                      {service.title}
+                    </a>
+                  ))}
                   <a
-                    href="#/portfolio"
-                    onClick={() => navigate('/portfolio')}
-                    className={`px-4 py-2 transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
+                    href="/portfolio"
+                    onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }}
+                    className="px-4 py-2 transition-colors text-white hover:text-white"
                   >
                     Portfolio
                   </a>
                   <a
-                    href="#/blog"
-                    onClick={() => navigate('/blog')}
-                    className={`px-4 py-2 transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
+                    href="/about"
+                    onClick={(e) => { e.preventDefault(); navigate('/about'); }}
+                    className="px-4 py-2 transition-colors text-white hover:text-white"
+                  >
+                    About
+                  </a>
+                  <a
+                    href="/blog"
+                    onClick={(e) => { e.preventDefault(); navigate('/blog'); }}
+                    className="px-4 py-2 transition-colors text-white hover:text-white"
                   >
                     Blog
                   </a>
                   <a
-                    href="#/resources"
-                    onClick={() => navigate('/resources')}
-                    className={`px-4 py-2 transition-colors ${
-                      theme === 'dark'
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    Resources
-                  </a>
-                  <a
                     href="mailto:contact@bytechsol.com"
-                    className={`px-4 py-2.5 text-center transition-colors mt-2 ${
-                      theme === 'dark'
-                        ? 'bg-slate-800 text-white hover:bg-slate-700'
-                        : 'bg-slate-900 text-white hover:bg-slate-800'
-                    }`}
+                    className="px-4 py-2.5 text-center transition-colors mt-2 brand-bg text-white shadow-lg hover:opacity-90"
                     style={{ borderRadius: '0.5rem' }}
                   >
                     contact@bytechsol.com

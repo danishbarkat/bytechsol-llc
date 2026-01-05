@@ -3,14 +3,17 @@ import { useTheme } from './ThemeContext';
 import { useRef } from 'react';
 import { Rocket, Lightbulb, Users, TrendingUp, Sparkles, Zap, Globe, Award } from 'lucide-react';
 
+const BRAND_COLOR = '#4e91ff';
+const BRAND_GRADIENT = 'from-blue-500 to-blue-500';
+
 const journeySteps = [
   {
     year: '2010',
     title: 'The Beginning',
     description: 'Started with a vision to revolutionize digital experiences. Two developers in a garage, one big dream.',
     icon: Lightbulb,
-    color: '#fbbf24',
-    gradient: 'from-yellow-400 to-orange-500',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     stat: 'Founded',
     achievement: 'First Client Project',
   },
@@ -19,8 +22,8 @@ const journeySteps = [
     title: 'AI Integration',
     description: 'Pioneered AI-powered workflows before it was mainstream. Built our first intelligent design system.',
     icon: Zap,
-    color: '#a78bfa',
-    gradient: 'from-purple-400 to-pink-500',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     stat: '10+ Clients',
     achievement: 'AI Research Lab Established',
   },
@@ -29,8 +32,8 @@ const journeySteps = [
     title: 'Global Expansion',
     description: 'Expanded to 5 countries. Our team grew to 50+ creative minds working on cutting-edge projects.',
     icon: Globe,
-    color: '#60a5fa',
-    gradient: 'from-blue-400 to-cyan-500',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     stat: '50+ Team Members',
     achievement: 'International Offices',
   },
@@ -39,8 +42,8 @@ const journeySteps = [
     title: 'Industry Recognition',
     description: 'Won multiple awards for innovation. Featured in top tech publications. Built products for Fortune 500.',
     icon: Award,
-    color: '#34d399',
-    gradient: 'from-emerald-400 to-green-500',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     stat: '15 Awards',
     achievement: 'Top 10 Digital Agency',
   },
@@ -49,8 +52,8 @@ const journeySteps = [
     title: 'Innovation at Scale',
     description: 'Launched AI-first design platform. Serving 1000+ clients globally with revolutionary solutions.',
     icon: TrendingUp,
-    color: '#f472b6',
-    gradient: 'from-pink-400 to-rose-500',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     stat: '1000+ Projects',
     achievement: 'AI Platform Launch',
   },
@@ -59,8 +62,8 @@ const journeySteps = [
     title: 'The Future',
     description: 'Building tomorrow\'s digital experiences today. Leading the next wave of AI-powered creativity.',
     icon: Rocket,
-    color: '#818cf8',
-    gradient: 'from-indigo-400 to-purple-500',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     stat: '15M+ Users',
     achievement: 'Shaping the Future',
   },
@@ -110,7 +113,7 @@ export function StorytellingJourney() {
         {/* Floating gradient orbs */}
         <motion.div
           className="absolute top-40 left-20 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ background: 'radial-gradient(circle, #a78bfa, transparent)' }}
+          style={{ background: `radial-gradient(circle, ${BRAND_COLOR}, transparent)` }}
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -170,7 +173,7 @@ export function StorytellingJourney() {
             style={{ fontSize: '3.5rem', lineHeight: '1.2', fontWeight: '700' }}
           >
             A Story of{' '}
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-blue-500 to-blue-500 bg-clip-text text-transparent">
               Innovation & Growth
             </span>
           </h2>
@@ -194,10 +197,10 @@ export function StorytellingJourney() {
               }`}
             />
             <motion.div
-              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500"
+              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-blue-500 via-blue-500 to-blue-500"
               style={{
                 height: useTransform(smoothProgress, [0, 1], ['0%', '100%']),
-                boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)',
+                boxShadow: '0 0 20px rgba(78, 145, 255, 0.5)',
               }}
             />
           </div>

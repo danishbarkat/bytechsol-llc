@@ -13,6 +13,10 @@ export function Background3D() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    const brandRgb = { r: 78, g: 145, b: 255 };
+    const brandRgba = (alpha: number) =>
+      `rgba(${brandRgb.r}, ${brandRgb.g}, ${brandRgb.b}, ${alpha})`;
+
     // Enhanced particle system for neural network
     class Particle {
       x: number;
@@ -22,8 +26,7 @@ export function Background3D() {
       vy: number;
       vz: number;
       size: number;
-      hue: number;
-      brightness: number;
+      glow: number;
 
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -33,8 +36,7 @@ export function Background3D() {
         this.vy = (Math.random() - 0.5) * 1.2;
         this.vz = (Math.random() - 0.5) * 1.5;
         this.size = Math.random() * 3 + 1;
-        this.hue = Math.random() * 60 + 220; // Blue to purple range
-        this.brightness = Math.random() * 50 + 50;
+        this.glow = Math.random() * 0.5 + 0.5;
       }
 
       update() {
@@ -60,9 +62,9 @@ export function Background3D() {
 
         // Glow effect
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, size * 3);
-        gradient.addColorStop(0, `hsla(${this.hue}, 80%, ${this.brightness}%, ${0.6 * scale})`);
-        gradient.addColorStop(0.5, `hsla(${this.hue}, 70%, ${this.brightness}%, ${0.3 * scale})`);
-        gradient.addColorStop(1, `hsla(${this.hue}, 60%, ${this.brightness}%, 0)`);
+        gradient.addColorStop(0, brandRgba(0.6 * scale * this.glow));
+        gradient.addColorStop(0.5, brandRgba(0.3 * scale * this.glow));
+        gradient.addColorStop(1, brandRgba(0));
         
         ctx.fillStyle = gradient;
         ctx.fillRect(x - size * 3, y - size * 3, size * 6, size * 6);
@@ -70,7 +72,7 @@ export function Background3D() {
         // Core particle
         ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${this.hue}, 90%, ${this.brightness + 20}%, ${0.8 + scale * 0.2})`;
+        ctx.fillStyle = brandRgba(Math.min(1, 0.8 + scale * 0.2));
         ctx.fill();
       }
     }
@@ -115,15 +117,15 @@ export function Background3D() {
         
         // Glow
         const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, size * 4);
-        gradient.addColorStop(0, `rgba(139, 92, 246, ${opacity * 0.8})`);
-        gradient.addColorStop(1, `rgba(139, 92, 246, 0)`);
+        gradient.addColorStop(0, brandRgba(opacity * 0.8));
+        gradient.addColorStop(1, brandRgba(0));
         ctx.fillStyle = gradient;
         ctx.fillRect(this.x - size * 4, this.y - size * 4, size * 8, size * 8);
         
         // Dot
         ctx.beginPath();
         ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(168, 85, 247, ${opacity + 0.2})`;
+        ctx.fillStyle = brandRgba(opacity + 0.2);
         ctx.fill();
       }
 
@@ -182,7 +184,7 @@ export function Background3D() {
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(this.rotation);
-        ctx.strokeStyle = `rgba(139, 92, 246, ${0.15 * scale})`;
+        ctx.strokeStyle = brandRgba(0.2 * scale);
         ctx.lineWidth = 2 * scale;
         ctx.beginPath();
 
@@ -235,7 +237,7 @@ export function Background3D() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(139, 92, 246, ${this.opacity * 0.3})`;
+        ctx.strokeStyle = brandRgba(this.opacity * 0.4);
         ctx.lineWidth = 2;
         ctx.stroke();
       }
@@ -317,8 +319,8 @@ export function Background3D() {
               particles[j].x, particles[j].y
             );
             const opacity = (1 - distance / 180) * 0.4;
-            gradient.addColorStop(0, `hsla(${particles[i].hue}, 80%, 60%, ${opacity})`);
-            gradient.addColorStop(1, `hsla(${particles[j].hue}, 80%, 60%, ${opacity})`);
+            gradient.addColorStop(0, brandRgba(opacity));
+            gradient.addColorStop(1, brandRgba(opacity));
             
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -352,8 +354,8 @@ export function Background3D() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.7 }}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
+      style={{ opacity: 0.18, zIndex: -1 }}
     />
   );
 }

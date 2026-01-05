@@ -18,7 +18,7 @@ const awards = [
     icon: Award,
     platform: 'Clutch',
     achievement: 'Top B2B Service Provider and UX Design Agency',
-    color: 'bg-pink-600',
+    color: 'bg-blue-600',
   },
   {
     icon: Target,

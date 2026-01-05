@@ -1,19 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { Linkedin, Twitter, Instagram, Github, Mail, ArrowRight, Sparkles, Heart, Zap, Send, ExternalLink, Cpu } from 'lucide-react';
-import { useTheme } from './ThemeContext';
+import { Linkedin, Twitter, Instagram, Github, Mail, ArrowRight, Sparkles, Heart, Zap, Send } from 'lucide-react';
 import { useRouter } from './Router';
 import { useState, useEffect } from 'react';
 
 const footerLinks = {
-  services: [
-    { label: 'Web Development', route: '/services/web-development' },
-    { label: 'AI/ML Solutions', route: '/services/ai-ml' },
-    { label: 'Mobile Apps', route: '/services/mobile-development' },
-    { label: 'Cloud Solutions', route: '/services/cloud-solutions' },
-    { label: 'ERP Systems', route: '/services/erp-crm' },
-    { label: 'Digital Marketing', route: '/services/digital-marketing' },
-  ],
   company: [
+    { label: 'Services', route: '/services' },
     { label: 'About Us', route: '/about' },
     { label: 'Our Team', route: '/team' },
     { label: 'Careers', route: '/careers' },
@@ -39,20 +31,18 @@ const footerLinks = {
 const socialLinks = [
   { icon: Twitter, href: 'https://twitter.com/bytechsol', label: 'Twitter', gradient: 'from-blue-400 to-blue-600' },
   { icon: Linkedin, href: 'https://linkedin.com/company/bytechsol', label: 'LinkedIn', gradient: 'from-blue-600 to-blue-800' },
-  { icon: Instagram, href: 'https://instagram.com/bytechsol', label: 'Instagram', gradient: 'from-pink-500 to-purple-600' },
+  { icon: Instagram, href: 'https://instagram.com/bytechsol', label: 'Instagram', gradient: 'from-blue-500 to-purple-600' },
   { icon: Github, href: 'https://github.com/bytechsol', label: 'GitHub', gradient: 'from-slate-600 to-slate-800' },
 ];
 
 // Floating particles component
-function FloatingParticles({ theme }: { theme: string }) {
+function FloatingParticles() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          className={`absolute w-1 h-1 rounded-full ${
-            theme === 'dark' ? 'bg-purple-400/30' : 'bg-purple-600/20'
-          }`}
+          className="absolute w-1 h-1 rounded-full brand-bg opacity-30"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -78,7 +68,7 @@ function FloatingParticles({ theme }: { theme: string }) {
 function MagneticButton({ children, href, gradient, label }: { children: React.ReactNode; href: string; gradient: string; label: string }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  
+
   const springX = useSpring(x, { stiffness: 300, damping: 20 });
   const springY = useSpring(y, { stiffness: 300, damping: 20 });
 
@@ -109,15 +99,15 @@ function MagneticButton({ children, href, gradient, label }: { children: React.R
         className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
         initial={false}
       />
-      
+
       {/* Border */}
       <div className="absolute inset-0 rounded-2xl border border-slate-700/50 group-hover:border-transparent transition-colors duration-500" />
-      
+
       {/* Icon */}
       <div className="relative z-10">
         {children}
       </div>
-      
+
       {/* Shine effect */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
@@ -130,7 +120,7 @@ function MagneticButton({ children, href, gradient, label }: { children: React.R
 }
 
 export function Footer() {
-  const { theme } = useTheme();
+  const isFooterDark = true;
   const { navigate } = useRouter();
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -148,11 +138,7 @@ export function Footer() {
   };
 
   return (
-    <footer className={`relative overflow-hidden ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900' 
-        : 'bg-gradient-to-b from-white via-slate-50 to-slate-100'
-    }`}>
+    <footer className="relative overflow-hidden bg-[#4A7DFF]">
       {/* Animated Mesh Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient Orbs */}
@@ -174,7 +160,7 @@ export function Footer() {
           transition={{ duration: 20, repeat: Infinity, delay: 5, ease: "easeInOut" }}
           className="absolute -bottom-1/3 -right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-cyan-600 via-blue-600 to-cyan-600 rounded-full blur-3xl"
         />
-        
+
         {/* Animated Grid */}
         <motion.div
           animate={{ opacity: [0.03, 0.08, 0.03] }}
@@ -182,15 +168,15 @@ export function Footer() {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(${theme === 'dark' ? 'rgba(139, 92, 246, 0.1)' : 'rgba(139, 92, 246, 0.05)'} 1px, transparent 1px),
-              linear-gradient(90deg, ${theme === 'dark' ? 'rgba(139, 92, 246, 0.1)' : 'rgba(139, 92, 246, 0.05)'} 1px, transparent 1px)
+              linear-gradient(rgba(78, 145, 255, 0.12) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(78, 145, 255, 0.12) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
           }}
         />
-        
+
         {/* Floating Particles */}
-        <FloatingParticles theme={theme} />
+        <FloatingParticles />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -214,19 +200,18 @@ export function Footer() {
               transition={{ duration: 0.6 }}
               className="absolute -inset-2 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-[32px] blur-3xl"
             />
-            
-            <div className={`relative p-12 md:p-16 rounded-[28px] border overflow-hidden ${
-              theme === 'dark'
+
+            <div className={`relative p-12 md:p-16 rounded-[28px] border overflow-hidden ${isFooterDark
                 ? 'bg-slate-900/95 backdrop-blur-2xl border-slate-700/50'
                 : 'bg-white/95 backdrop-blur-2xl border-slate-200/50'
-            }`}>
+              }`}>
               {/* Animated Dots Pattern */}
               <motion.div
                 animate={{ opacity: [0.03, 0.08, 0.03] }}
                 transition={{ duration: 4, repeat: Infinity }}
                 className="absolute inset-0"
                 style={{
-                  backgroundImage: `radial-gradient(circle at 2px 2px, ${theme === 'dark' ? 'white' : 'black'} 1px, transparent 0)`,
+                  backgroundImage: `radial-gradient(circle at 2px 2px, ${isFooterDark ? 'white' : 'black'} 1px, transparent 0)`,
                   backgroundSize: '48px 48px'
                 }}
               />
@@ -269,16 +254,14 @@ export function Footer() {
                     >
                       <Sparkles className="w-4 h-4 text-purple-400" />
                     </motion.div>
-                    <span className={`text-sm tracking-wider uppercase font-medium ${
-                      theme === 'dark' ? 'text-purple-300' : 'text-purple-700'
-                    }`}>
+                    <span className={`text-sm tracking-wider uppercase font-medium ${isFooterDark ? 'text-purple-300' : 'text-purple-700'
+                      }`}>
                       Join 10,000+ Subscribers
                     </span>
                   </motion.div>
-                  
-                  <h3 className={`text-4xl md:text-5xl mb-6 leading-tight ${
-                    theme === 'dark' ? 'text-white' : 'text-slate-900'
-                  }`}>
+
+                  <h3 className={`text-4xl md:text-5xl mb-6 leading-tight ${isFooterDark ? 'text-white' : 'text-white'
+                    }`}>
                     Never Miss a{' '}
                     <motion.span
                       animate={{
@@ -290,10 +273,9 @@ export function Footer() {
                       Beat
                     </motion.span>
                   </h3>
-                  
-                  <p className={`text-lg leading-relaxed ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                  }`}>
+
+                  <p className={`text-lg leading-relaxed ${isFooterDark ? 'text-blue-100/80' : 'text-blue-100/80'
+                    }`}>
                     Get exclusive insights, cutting-edge tech updates, and industry trends delivered to your inbox every week. Join the community of innovators.
                   </p>
 
@@ -307,23 +289,20 @@ export function Footer() {
                         {[1, 2, 3, 4].map((i) => (
                           <div
                             key={i}
-                            className={`w-8 h-8 rounded-full border-2 ${
-                              theme === 'dark' ? 'border-slate-900 bg-slate-700' : 'border-white bg-slate-300'
-                            }`}
+                            className={`w-8 h-8 rounded-full border-2 ${isFooterDark ? 'border-slate-900 bg-slate-700' : 'border-white bg-slate-300'
+                              }`}
                           />
                         ))}
                       </div>
-                      <span className={`text-sm ${
-                        theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                      }`}>
+                      <span className={`text-sm ${isFooterDark ? 'text-blue-100/80' : 'text-blue-100/80'
+                        }`}>
                         10K+ readers
                       </span>
                     </motion.div>
-                    
-                    <div className={`h-4 w-px ${
-                      theme === 'dark' ? 'bg-slate-700' : 'bg-slate-300'
-                    }`} />
-                    
+
+                    <div className={`h-4 w-px ${isFooterDark ? 'bg-slate-700' : 'bg-slate-300'
+                      }`} />
+
                     <div className="flex items-center gap-1">
                       {[1, 2, 3, 4, 5].map((i) => (
                         <motion.div
@@ -338,9 +317,8 @@ export function Footer() {
                           </svg>
                         </motion.div>
                       ))}
-                      <span className={`ml-2 text-sm ${
-                        theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                      }`}>
+                      <span className={`ml-2 text-sm ${isFooterDark ? 'text-blue-100/80' : 'text-blue-100/80'
+                        }`}>
                         4.9/5 rating
                       </span>
                     </div>
@@ -360,29 +338,26 @@ export function Footer() {
                         <motion.div
                           className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-2xl opacity-0 group-hover:opacity-50 blur transition-opacity duration-500"
                         />
-                        <div className={`relative rounded-2xl border transition-all duration-300 ${
-                          theme === 'dark'
+                        <div className={`relative rounded-2xl border transition-all duration-300 ${isFooterDark
                             ? 'bg-slate-800 border-slate-700 focus-within:border-purple-500'
                             : 'bg-white border-slate-300 focus-within:border-purple-500'
-                        }`}>
-                          <Mail className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none ${
-                            theme === 'dark' ? 'text-slate-500' : 'text-slate-400'
-                          }`} />
+                          }`}>
+                          <Mail className={`absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none ${isFooterDark ? 'text-blue-100/70' : 'text-blue-100/80'
+                            }`} />
                           <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email address"
                             required
-                            className={`w-full pl-14 pr-5 py-5 rounded-2xl bg-transparent transition-all focus:outline-none ${
-                              theme === 'dark'
-                                ? 'text-white placeholder-slate-500'
-                                : 'text-slate-900 placeholder-slate-400'
-                            }`}
+                            className={`w-full pl-14 pr-5 py-5 rounded-2xl bg-transparent transition-all focus:outline-none ${isFooterDark
+                                ? 'text-white placeholder-white/60'
+                                : 'text-white placeholder-white/60'
+                              }`}
                           />
                         </div>
                       </div>
-                      
+
                       <motion.button
                         type="submit"
                         whileHover={{ scale: 1.02 }}
@@ -401,7 +376,7 @@ export function Footer() {
                             repeatDelay: 1,
                           }}
                         />
-                        
+
                         <span className="relative flex items-center justify-center gap-3 text-lg">
                           <Send className="w-5 h-5" />
                           Subscribe Now
@@ -414,9 +389,8 @@ export function Footer() {
                         </span>
                       </motion.button>
 
-                      <p className={`text-center text-sm ${
-                        theme === 'dark' ? 'text-slate-500' : 'text-slate-500'
-                      }`}>
+                      <p className={`text-center text-sm ${isFooterDark ? 'text-blue-100/70' : 'text-blue-100/70'
+                        }`}>
                         🔒 Unsubscribe anytime. No spam, we promise!
                       </p>
                     </form>
@@ -459,12 +433,12 @@ export function Footer() {
                           </motion.svg>
                         </div>
                       </motion.div>
-                      
+
                       <motion.h4
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className={`text-2xl mb-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
+                        className={`text-2xl mb-3 ${isFooterDark ? 'text-white' : 'text-white'}`}
                       >
                         Welcome Aboard! 🎉
                       </motion.h4>
@@ -472,7 +446,7 @@ export function Footer() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}
+                        className={isFooterDark ? 'text-blue-100/80' : 'text-blue-100/80'}
                       >
                         Check your inbox for a confirmation email
                       </motion.p>
@@ -485,9 +459,8 @@ export function Footer() {
         </div>
 
         {/* Main Footer Content */}
-        <div className={`py-20 border-t ${
-          theme === 'dark' ? 'border-slate-800/50' : 'border-slate-200/50'
-        }`}>
+        <div className={`py-20 border-t ${isFooterDark ? 'border-slate-800/50' : 'border-slate-200/50'
+          }`}>
           <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-20">
             {/* Brand Column */}
             <div className="lg:col-span-2">
@@ -511,17 +484,17 @@ export function Footer() {
                       transition={{ duration: 2, repeat: Infinity }}
                       className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg"
                     />
-                    <div className={`relative w-14 h-14 flex items-center justify-center ${
-                      theme === 'dark' ? 'bg-white text-slate-900' : 'bg-slate-900 text-white'
-                    }`} style={{ borderRadius: '50%' }}>
-                      <span className="font-bold text-lg">BS</span>
-                    </div>
+                    <img
+                      src="/assets/logo/logo.png"
+                      alt="BytechSol logo"
+                      className="relative h-12 w-12 object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+                      style={{ filter: 'brightness(0) invert(1)' }}
+                    />
                   </motion.div>
-                  
+
                   <div>
-                    <span className={`block text-2xl tracking-tight ${
-                      theme === 'dark' ? 'text-white' : 'text-slate-900'
-                    }`}>BytechSol</span>
+                    <span className={`block text-2xl tracking-tight ${isFooterDark ? 'text-white' : 'text-white'
+                      }`}>BytechSol</span>
                     <motion.span
                       animate={{
                         backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
@@ -533,10 +506,9 @@ export function Footer() {
                     </motion.span>
                   </div>
                 </div>
-                
-                <p className={`mb-8 leading-relaxed ${
-                  theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                }`}>
+
+                <p className={`mb-8 leading-relaxed ${isFooterDark ? 'text-blue-100/80' : 'text-blue-100/80'
+                  }`}>
                   Building the future of digital experiences through cutting-edge technology, AI innovation, and human creativity. Transform your vision into reality.
                 </p>
 
@@ -559,45 +531,6 @@ export function Footer() {
               </motion.div>
             </div>
 
-            {/* Services */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h3 className={`mb-8 uppercase tracking-wider flex items-center gap-2 ${
-                theme === 'dark' ? 'text-white' : 'text-slate-900'
-              }`}>
-                <Cpu className="w-4 h-4 text-purple-500" />
-                Services
-              </h3>
-              <ul className="space-y-4">
-                {footerLinks.services.map((service, idx) => (
-                  <motion.li
-                    key={service.label}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05 }}
-                  >
-                    <a 
-                      href={`#${service.route}`}
-                      onClick={() => navigate(service.route as any)}
-                      className={`group inline-flex items-center gap-3 transition-all ${
-                        theme === 'dark' 
-                          ? 'text-slate-400 hover:text-purple-400' 
-                          : 'text-slate-600 hover:text-purple-600'
-                      }`}
-                    >
-                      <span className="group-hover:translate-x-1 transition-transform">{service.label}</span>
-                      <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-
             {/* Company */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -605,9 +538,8 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3 className={`mb-8 uppercase tracking-wider ${
-                theme === 'dark' ? 'text-white' : 'text-slate-900'
-              }`}>Company</h3>
+              <h3 className={`mb-8 uppercase tracking-wider ${isFooterDark ? 'text-white' : 'text-white'
+                }`}>Company</h3>
               <ul className="space-y-4">
                 {footerLinks.company.map((link, idx) => (
                   <motion.li
@@ -617,14 +549,13 @@ export function Footer() {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.05 }}
                   >
-                    <a 
-                      href={`#${link.route}`}
-                      onClick={() => navigate(link.route as any)}
-                      className={`group inline-flex items-center gap-3 transition-all ${
-                        theme === 'dark' 
-                          ? 'text-slate-400 hover:text-purple-400' 
-                          : 'text-slate-600 hover:text-purple-600'
-                      }`}
+                    <a
+                      href={link.route}
+                      onClick={(e) => { e.preventDefault(); navigate(link.route as any); }}
+                      className={`group inline-flex items-center gap-3 transition-all ${isFooterDark
+                          ? 'text-blue-100/80 hover:text-purple-400'
+                          : 'text-blue-100/80 hover:text-purple-600'
+                        }`}
                     >
                       <span className="group-hover:translate-x-1 transition-transform">{link.label}</span>
                     </a>
@@ -640,9 +571,8 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h3 className={`mb-8 uppercase tracking-wider ${
-                theme === 'dark' ? 'text-white' : 'text-slate-900'
-              }`}>Resources</h3>
+              <h3 className={`mb-8 uppercase tracking-wider ${isFooterDark ? 'text-white' : 'text-white'
+                }`}>Resources</h3>
               <ul className="space-y-4">
                 {footerLinks.resources.map((link, idx) => (
                   <motion.li
@@ -652,14 +582,13 @@ export function Footer() {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.05 }}
                   >
-                    <a 
-                      href={`#${link.route}`}
-                      onClick={() => navigate(link.route as any)}
-                      className={`group inline-flex items-center gap-3 transition-all ${
-                        theme === 'dark' 
-                          ? 'text-slate-400 hover:text-purple-400' 
-                          : 'text-slate-600 hover:text-purple-600'
-                      }`}
+                    <a
+                      href={link.route}
+                      onClick={(e) => { e.preventDefault(); navigate(link.route as any); }}
+                      className={`group inline-flex items-center gap-3 transition-all ${isFooterDark
+                          ? 'text-blue-100/80 hover:text-purple-400'
+                          : 'text-blue-100/80 hover:text-purple-600'
+                        }`}
                     >
                       <span className="group-hover:translate-x-1 transition-transform">{link.label}</span>
                     </a>
@@ -675,9 +604,8 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h3 className={`mb-8 uppercase tracking-wider ${
-                theme === 'dark' ? 'text-white' : 'text-slate-900'
-              }`}>Legal</h3>
+              <h3 className={`mb-8 uppercase tracking-wider ${isFooterDark ? 'text-white' : 'text-white'
+                }`}>Legal</h3>
               <ul className="space-y-4">
                 {footerLinks.legal.map((link, idx) => (
                   <motion.li
@@ -687,14 +615,13 @@ export function Footer() {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.05 }}
                   >
-                    <a 
-                      href={`#${link.route}`}
-                      onClick={() => navigate(link.route as any)}
-                      className={`group inline-flex items-center gap-3 transition-all ${
-                        theme === 'dark' 
-                          ? 'text-slate-400 hover:text-purple-400' 
-                          : 'text-slate-600 hover:text-purple-600'
-                      }`}
+                    <a
+                      href={link.route}
+                      onClick={(e) => { e.preventDefault(); navigate(link.route as any); }}
+                      className={`group inline-flex items-center gap-3 transition-all ${isFooterDark
+                          ? 'text-blue-100/80 hover:text-purple-400'
+                          : 'text-blue-100/80 hover:text-purple-600'
+                        }`}
                     >
                       <span className="group-hover:translate-x-1 transition-transform">{link.label}</span>
                     </a>
@@ -711,29 +638,26 @@ export function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className={`py-10 border-t ${
-            theme === 'dark' ? 'border-slate-800/50' : 'border-slate-200/50'
-          }`}
+          className={`py-10 border-t ${isFooterDark ? 'border-slate-800/50' : 'border-slate-200/50'
+            }`}
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className={`flex items-center gap-2 ${
-                theme === 'dark' ? 'text-slate-500' : 'text-slate-600'
-              }`}
+              className={`flex items-center gap-2 ${isFooterDark ? 'text-blue-100/70' : 'text-blue-100/80'
+                }`}
             >
               <span>© 2024 BytechSol. All rights reserved.</span>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className={`flex items-center gap-2 ${
-                theme === 'dark' ? 'text-slate-500' : 'text-slate-600'
-              }`}
+              className={`flex items-center gap-2 ${isFooterDark ? 'text-blue-100/70' : 'text-blue-100/80'
+                }`}
             >
               <span>Crafted with</span>
               <motion.div

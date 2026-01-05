@@ -26,7 +26,7 @@ export function AdminDashboard({ onLogout }: AdminDashboardProps) {
       value: '45,892', 
       change: '+12.5%', 
       trend: 'up',
-      gradient: 'from-purple-600 to-pink-600'
+      gradient: 'from-purple-600 to-blue-600'
     },
     { 
       icon: Users, 
@@ -246,7 +246,7 @@ export function AdminDashboard({ onLogout }: AdminDashboardProps) {
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600">
+                    <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600">
                       <Search className="w-6 h-6 text-white" />
                     </div>
                     <h2 className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>

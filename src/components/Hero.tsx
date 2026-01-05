@@ -114,8 +114,8 @@ export function Hero() {
           className="absolute bottom-0 left-0 right-0 h-full"
           style={{
             background: theme === 'dark' 
-              ? 'radial-gradient(ellipse 120% 100% at 50% 100%, rgba(147, 51, 234, 0.3) 0%, rgba(147, 51, 234, 0.1) 40%, transparent 70%)'
-              : 'radial-gradient(ellipse 120% 100% at 50% 100%, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.08) 40%, transparent 70%)',
+              ? 'radial-gradient(ellipse 120% 100% at 50% 100%, rgba(78, 145, 255, 0.3) 0%, rgba(78, 145, 255, 0.12) 40%, transparent 70%)'
+              : 'radial-gradient(ellipse 120% 100% at 50% 100%, rgba(78, 145, 255, 0.25) 0%, rgba(78, 145, 255, 0.1) 40%, transparent 70%)',
           }}
         />
         
@@ -127,8 +127,8 @@ export function Hero() {
           className="absolute bottom-0 left-0 right-0 h-full"
           style={{
             background: theme === 'dark'
-              ? 'radial-gradient(ellipse 100% 80% at 30% 100%, rgba(59, 130, 246, 0.25) 0%, rgba(59, 130, 246, 0.08) 45%, transparent 75%)'
-              : 'radial-gradient(ellipse 100% 80% at 30% 100%, rgba(59, 130, 246, 0.18) 0%, rgba(59, 130, 246, 0.06) 45%, transparent 75%)',
+              ? 'radial-gradient(ellipse 100% 80% at 30% 100%, rgba(78, 145, 255, 0.25) 0%, rgba(78, 145, 255, 0.1) 45%, transparent 75%)'
+              : 'radial-gradient(ellipse 100% 80% at 30% 100%, rgba(78, 145, 255, 0.2) 0%, rgba(78, 145, 255, 0.08) 45%, transparent 75%)',
           }}
         />
 
@@ -140,8 +140,8 @@ export function Hero() {
           className="absolute bottom-0 right-0 w-[80%] h-full"
           style={{
             background: theme === 'dark'
-              ? 'radial-gradient(ellipse 90% 70% at 70% 100%, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0.06) 50%, transparent 80%)'
-              : 'radial-gradient(ellipse 90% 70% at 70% 100%, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 80%)',
+              ? 'radial-gradient(ellipse 90% 70% at 70% 100%, rgba(78, 145, 255, 0.2) 0%, rgba(78, 145, 255, 0.08) 50%, transparent 80%)'
+              : 'radial-gradient(ellipse 90% 70% at 70% 100%, rgba(78, 145, 255, 0.16) 0%, rgba(78, 145, 255, 0.06) 50%, transparent 80%)',
           }}
         />
       </div>
@@ -183,9 +183,19 @@ export function Hero() {
                 <span className={`block transition-colors ${
                   theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
                 }`}>
-                  AI/ML Solutions.
+                  Bold Innovators.
                 </span>
               </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.65 }}
+                className={`text-lg md:text-xl mb-8 ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'}`}
+              >
+                We craft scalable, user-focused digital solutions for startups and enterprises. From concept to code,
+                we deliver results that fuel growth.
+              </motion.p>
 
               {/* CTAs */}
               <motion.div
@@ -207,7 +217,7 @@ export function Hero() {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="#projects"
+                  href="#services"
                   className={`inline-flex items-center justify-center px-8 py-4 backdrop-blur-xl transition-all ${
                     theme === 'dark'
                       ? 'bg-white/10 border-2 border-white/30 text-white hover:bg-white/20'

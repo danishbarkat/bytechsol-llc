@@ -1,7 +1,6 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AgencyMission } from './components/AgencyMission';
-import { StorytellingJourney } from './components/StorytellingJourney';
 import { FeaturedProjects } from './components/FeaturedProjects';
 import { ServicesPage } from './components/ServicesPage';
 import { ServiceDetailPage } from './components/ServiceDetailPage';
@@ -24,10 +23,77 @@ import { NewsletterPopup } from './components/NewsletterPopup';
 import { SupportBot } from './components/SupportBot';
 import { ThemeProvider, useTheme } from './components/ThemeContext';
 import { RouterProvider, useRouter } from './components/Router';
+import { Seo } from './components/Seo';
+import type { ReactNode } from 'react';
+
+const baseUrl = 'https://bytechsol.com';
+const defaultMeta = {
+  title: 'BytechSol | IT Services, AI, ERP, and Digital Transformation',
+  description: 'BytechSol delivers AI, ERP, web development, ecommerce, and SEO services to help businesses modernize and grow.',
+  keywords: [
+    'IT services company',
+    'digital transformation',
+    'AI development services',
+    'ERP implementation',
+    'web development',
+    'ecommerce solutions',
+    'SEO services',
+    'custom software development'
+  ],
+  ogImage: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80'
+};
+
+const blankMeta = {
+  title: 'BytechSol',
+  description: 'BytechSol',
+  keywords: ['BytechSol'],
+  ogImage: defaultMeta.ogImage
+};
+const routeMeta: Record<string, typeof defaultMeta> = {
+  '/': defaultMeta
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'BytechSol',
+  url: baseUrl,
+  email: 'contact@bytechsol.com',
+  description: defaultMeta.description,
+  sameAs: []
+};
 
 function AppContent() {
   const { theme } = useTheme();
   const { currentRoute } = useRouter();
+  const pageClassName = `relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'secondary-bg' : 'soft-bg'
+    }`;
+  const serviceId = currentRoute.startsWith('/services/') ? currentRoute.replace('/services/', '') : null;
+  const seoData = currentRoute === '/' ? defaultMeta : routeMeta[currentRoute] ?? blankMeta;
+  const canonicalUrl = `${baseUrl}${currentRoute === '/' ? '' : currentRoute}`;
+  const jsonLd = currentRoute === '/' ? organizationJsonLd : undefined;
+
+  const renderPage = (
+    content: ReactNode,
+    options?: { includeNewsletter?: boolean; includeNavbar?: boolean; includeFooter?: boolean; includeSupportBot?: boolean }
+  ) => (
+    <div className={pageClassName}>
+      <Background3D />
+      {options?.includeNavbar !== false && <Navbar />}
+      <Seo
+        title={seoData.title}
+        description={seoData.description}
+        keywords={seoData.keywords}
+        ogImage={seoData.ogImage}
+        canonical={canonicalUrl}
+        jsonLd={jsonLd}
+      />
+      {options?.includeNewsletter && <NewsletterPopup />}
+      {content}
+      {options?.includeFooter !== false && <Footer />}
+      {options?.includeSupportBot !== false && <SupportBot />}
+    </div>
+  );
 
   // Admin page (hidden, no navbar/footer)
   if (currentRoute === '/admin') {
@@ -36,193 +102,76 @@ function AppContent() {
 
   // Blog page
   if (currentRoute === '/blog') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <BlogPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<BlogPage />);
   }
 
   // Show portfolio page
   if (currentRoute === '/portfolio') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <PortfolioPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<PortfolioPage />);
   }
 
   // Show about page
   if (currentRoute === '/about') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <AboutPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<AboutPage />);
   }
 
   // Show resources page
   if (currentRoute === '/resources') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <ResourcesPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<ResourcesPage />);
   }
 
   // Show team page
   if (currentRoute === '/team') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <TeamPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<TeamPage />);
   }
 
   // Show careers page
   if (currentRoute === '/careers') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <CareersPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<CareersPage />);
   }
 
   // Show press kit page
   if (currentRoute === '/press-kit') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <PressKitPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<PressKitPage />);
   }
 
   // Show contact page
   if (currentRoute === '/contact') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <ContactPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<ContactPage />);
   }
 
   // Show privacy policy page
   if (currentRoute === '/privacy-policy') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <PrivacyPolicyPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<PrivacyPolicyPage />);
   }
 
   // Show terms of service page (reusing privacy policy component for now)
   if (currentRoute === '/terms-of-service') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <PrivacyPolicyPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<PrivacyPolicyPage />);
   }
 
   // Show cookie policy page (reusing privacy policy component for now)
   if (currentRoute === '/cookie-policy') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <PrivacyPolicyPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<PrivacyPolicyPage />);
   }
 
   // Show GDPR compliance page (reusing privacy policy component for now)
   if (currentRoute === '/gdpr-compliance') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <PrivacyPolicyPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<PrivacyPolicyPage />);
   }
 
   // Show service detail pages for specific services
   if (currentRoute.startsWith('/services/')) {
-    const serviceId = currentRoute.replace('/services/', '');
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <ServiceDetailPage serviceId={serviceId} />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<ServiceDetailPage serviceId={serviceId ?? ''} />);
   }
 
   // Show services overview page
   if (currentRoute === '/services') {
-    return (
-      <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-        <Background3D />
-        <Navbar />
-        <ServicesPage />
-        <Footer />
-        <SupportBot />
-      </div>
-    );
+    return renderPage(<ServicesPage />);
   }
-  
-  return (
-    <div className={`relative overflow-x-hidden transition-colors duration-300 ${theme === 'dark' ? 'bg-slate-950' : 'bg-white'}`}>
-      <Background3D />
-      <Navbar />
-      <NewsletterPopup />
-      
+
+  return renderPage(
+    <>
       {/* Normal scroll - all sections in regular flow */}
       <Hero />
       <AgencyMission />
@@ -230,9 +179,8 @@ function AppContent() {
       <TechStack />
       <Testimonials />
       <CTASection />
-      <Footer />
-      <SupportBot />
-    </div>
+    </>,
+    { includeNewsletter: true }
   );
 }
 

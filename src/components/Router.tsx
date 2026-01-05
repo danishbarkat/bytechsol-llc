@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-type Route = 
-  | '/' 
-  | '/services' 
+type Route =
+  | '/'
+  | '/services'
   | '/portfolio'
   | '/about'
   | '/blog'
@@ -37,25 +37,24 @@ export function RouterProvider({ children }: { children: ReactNode }) {
   const [currentRoute, setCurrentRoute] = useState<Route>('/');
 
   useEffect(() => {
-    // Handle initial route from hash
-    const hash = window.location.hash.slice(1) as Route;
-    if (hash) {
-      setCurrentRoute(hash);
+    // Handle initial route from path
+    const path = window.location.pathname as Route;
+    if (path && path !== '/') {
+      setCurrentRoute(path);
     }
 
-    // Listen for hash changes
-    const handleHashChange = () => {
-      const newHash = window.location.hash.slice(1) as Route;
-      setCurrentRoute(newHash || '/');
+    // Listen for back/forward buttons
+    const handlePopState = () => {
+      setCurrentRoute(window.location.pathname as Route || '/');
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const navigate = (route: Route) => {
     setCurrentRoute(route);
-    window.location.hash = route;
+    window.history.pushState(null, '', route);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

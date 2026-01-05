@@ -16,12 +16,14 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
+const BRAND_COLOR = '#4e91ff';
+
 const benefits = [
   {
     icon: Rocket,
     title: 'Accelerate Your Growth',
     description: 'We build digital solutions that scale with your business, helping you reach your goals faster.',
-    color: '#a78bfa',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Scale Your Business Rapidly',
       points: [
@@ -38,7 +40,7 @@ const benefits = [
     icon: Lightbulb,
     title: 'Innovative Solutions',
     description: 'Cutting-edge AI and technology tailored to solve your unique business challenges.',
-    color: '#fbbf24',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'AI-Powered Innovation',
       points: [
@@ -55,7 +57,7 @@ const benefits = [
     icon: Shield,
     title: 'Reliable & Secure',
     description: 'Enterprise-grade security and reliability you can count on, 24/7.',
-    color: '#34d399',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Bank-Level Security & Uptime',
       points: [
@@ -72,7 +74,7 @@ const benefits = [
     icon: Users,
     title: 'Dedicated Support',
     description: 'Expert team always ready to help you succeed with personalized assistance.',
-    color: '#60a5fa',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Always Here For You',
       points: [
@@ -93,7 +95,7 @@ const approaches = [
     title: 'Understanding Your Vision',
     description: 'We start by deeply understanding your goals, challenges, and target audience.',
     icon: Heart,
-    color: '#ec4899',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Deep Discovery & Research',
       points: [
@@ -111,7 +113,7 @@ const approaches = [
     title: 'Strategic Planning',
     description: 'Crafting a custom roadmap with AI-powered insights and industry best practices.',
     icon: Target,
-    color: '#8b5cf6',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Data-Driven Strategy',
       points: [
@@ -129,7 +131,7 @@ const approaches = [
     title: 'Agile Development',
     description: 'Building your solution iteratively with continuous feedback and improvements.',
     icon: Zap,
-    color: '#3b82f6',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Iterative Build & Refinement',
       points: [
@@ -147,7 +149,7 @@ const approaches = [
     title: 'Launch & Optimize',
     description: 'Deploying with confidence and continuously optimizing for better results.',
     icon: TrendingUp,
-    color: '#10b981',
+    color: BRAND_COLOR,
     details: {
       subtitle: 'Deploy & Continuous Improvement',
       points: [

@@ -19,46 +19,50 @@ import {
 } from 'lucide-react';
 import { OurApproach } from './OurApproach';
 
+const BRAND_COLOR = '#4e91ff';
+const BRAND_GRADIENT = 'from-blue-500 to-blue-600';
+const BRAND_RGB = '78, 145, 255';
+
 const benefits = [
   {
     icon: Rocket,
     title: 'Accelerate Your Growth',
     description: 'We build digital solutions that scale with your business, helping you reach your goals faster.',
-    color: '#a78bfa',
-    gradient: 'from-purple-500 to-violet-600',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     particles: 8,
   },
   {
     icon: Lightbulb,
     title: 'Innovative Solutions',
     description: 'Cutting-edge AI and technology tailored to solve your unique business challenges.',
-    color: '#fbbf24',
-    gradient: 'from-yellow-500 to-orange-600',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     particles: 6,
   },
   {
     icon: Shield,
     title: 'Reliable & Secure',
     description: 'Enterprise-grade security and reliability you can count on, 24/7.',
-    color: '#34d399',
-    gradient: 'from-emerald-500 to-green-600',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     particles: 10,
   },
   {
     icon: Users,
     title: 'Dedicated Support',
     description: 'Expert team always ready to help you succeed with personalized assistance.',
-    color: '#60a5fa',
-    gradient: 'from-blue-500 to-cyan-600',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
     particles: 7,
   },
 ];
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Projects Delivered', icon: Award, color: '#a78bfa' },
-  { value: 98, suffix: '%', label: 'Client Satisfaction', icon: Heart, color: '#ec4899' },
-  { value: 24, suffix: '/7', label: 'Support Available', icon: Clock, color: '#3b82f6' },
-  { value: 15, suffix: 'M+', label: 'Users Served', icon: Users, color: '#10b981' },
+  { value: 500, suffix: '+', label: 'Projects Delivered', icon: Award, color: BRAND_COLOR },
+  { value: 98, suffix: '%', label: 'Client Satisfaction', icon: Heart, color: BRAND_COLOR },
+  { value: 24, suffix: '/7', label: 'Support Available', icon: Clock, color: BRAND_COLOR },
+  { value: 15, suffix: 'M+', label: 'Users Served', icon: Users, color: BRAND_COLOR },
 ];
 
 // Animated Counter
@@ -146,7 +150,7 @@ function MagneticBenefitCard({ benefit, index }: { benefit: typeof benefits[0]; 
           minHeight: '380px',
         }}
         animate={{
-          borderColor: isHovered ? benefit.color : (theme === 'dark' ? '#1e293b' : '#e2e8f0'),
+          borderColor: isHovered ? benefit.color : (theme === 'dark' ? '#1f2937' : '#e5e7eb'),
         }}
         whileHover={{ scale: 1.02 }}
       >
@@ -382,7 +386,7 @@ function CircularProgressStat({ stat, index }: { stat: typeof stats[0]; index: n
               cy="64"
               r="45"
               fill="none"
-              stroke={theme === 'dark' ? '#1e293b' : '#e2e8f0'}
+              stroke={theme === 'dark' ? '#1f2937' : '#e5e7eb'}
               strokeWidth="8"
             />
             
@@ -510,7 +514,7 @@ export function AgencyMission() {
             ease: 'linear',
           }}
           style={{
-            backgroundImage: `radial-gradient(circle, ${theme === 'dark' ? '#64748b' : '#cbd5e1'} 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, rgba(${BRAND_RGB}, ${theme === 'dark' ? 0.2 : 0.15}) 1px, transparent 1px)`,
             backgroundSize: '50px 50px',
           }}
         />
@@ -518,7 +522,7 @@ export function AgencyMission() {
         {/* Multiple floating gradients */}
         <motion.div
           className="absolute top-20 right-10 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ background: 'radial-gradient(circle, #a78bfa, transparent)' }}
+          style={{ background: `radial-gradient(circle, rgba(${BRAND_RGB}, 0.5), transparent)` }}
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -532,7 +536,7 @@ export function AgencyMission() {
         />
         <motion.div
           className="absolute bottom-20 left-10 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ background: 'radial-gradient(circle, #3b82f6, transparent)' }}
+          style={{ background: `radial-gradient(circle, rgba(${BRAND_RGB}, 0.5), transparent)` }}
           animate={{
             x: [0, -80, 0],
             y: [0, -40, 0],
@@ -599,7 +603,7 @@ export function AgencyMission() {
             Empowering Your{' '}
             <br />
             <motion.span 
-              className="bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-purple-500 via-blue-500 to-blue-500 bg-clip-text text-transparent"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
@@ -683,7 +687,7 @@ export function AgencyMission() {
           <motion.div 
             className="absolute inset-0 opacity-20"
             style={{
-              backgroundImage: `radial-gradient(circle, ${theme === 'dark' ? '#a78bfa' : '#8b5cf6'} 2px, transparent 2px)`,
+              backgroundImage: `radial-gradient(circle, rgba(${BRAND_RGB}, ${theme === 'dark' ? 0.35 : 0.25}) 2px, transparent 2px)`,
               backgroundSize: '40px 40px',
             }}
             animate={{
@@ -715,7 +719,7 @@ export function AgencyMission() {
                   <motion.div
                     key={i}
                     className="absolute inset-0 rounded-full border-2"
-                    style={{ borderColor: '#a78bfa' }}
+                    style={{ borderColor: BRAND_COLOR }}
                     animate={{
                       scale: [1, 2, 2],
                       opacity: [0.5, 0, 0],
@@ -728,11 +732,7 @@ export function AgencyMission() {
                   />
                 ))}
                 
-                <CheckCircle2
-                  className={`w-20 h-20 relative z-10 ${
-                    theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
-                  }`}
-                />
+                <CheckCircle2 className="w-20 h-20 relative z-10 brand-text" />
               </div>
             </motion.div>
 

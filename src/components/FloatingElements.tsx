@@ -13,13 +13,7 @@ export function FloatingElements() {
             height: Math.random() * 500 + 250,
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            background: `radial-gradient(circle, ${
-              i % 3 === 0
-                ? 'rgba(168, 85, 247, 0.08)'
-                : i % 3 === 1
-                ? 'rgba(59, 130, 246, 0.08)'
-                : 'rgba(147, 51, 234, 0.08)'
-            }, transparent)`,
+            background: 'radial-gradient(circle, rgba(78, 145, 255, 0.12), transparent)',
           }}
           animate={{
             x: [
@@ -91,12 +85,13 @@ export function FloatingElements() {
           }}
         >
           <div
-            className="border-2 border-purple-300/15"
+            className="border-2"
             style={{
               width: Math.random() * 80 + 40,
               height: Math.random() * 80 + 40,
               borderRadius: i % 3 === 0 ? '50%' : i % 3 === 1 ? '15px' : '0',
               transform: i % 2 === 0 ? 'rotate(45deg)' : 'rotate(0deg)',
+              borderColor: 'rgba(78, 145, 255, 0.25)',
             }}
           />
         </motion.div>
@@ -106,7 +101,7 @@ export function FloatingElements() {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={`particle-${i}`}
-          className="absolute w-2 h-2 rounded-full bg-purple-400/30"
+          className="absolute w-2 h-2 rounded-full brand-bg"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,

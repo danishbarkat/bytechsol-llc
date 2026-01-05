@@ -4051,65 +4051,65 @@
 
 :root {
   --font-size: 16px;
-  --background: #fff;
-  --foreground: oklch(.145 0 0);
-  --card: #fff;
-  --card-foreground: oklch(.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(.145 0 0);
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(.95 .0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
+  --background: #f3f4f6;
+  --foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --popover: #ffffff;
+  --popover-foreground: #1f2937;
+  --primary: #4e91ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1f2937;
+  --secondary-foreground: #ffffff;
+  --muted: #e5e7eb;
+  --muted-foreground: #6b7280;
+  --accent: #ffffff;
+  --accent-foreground: #1f2937;
   --destructive: #d4183d;
-  --destructive-foreground: #fff;
-  --border: #0000001a;
+  --destructive-foreground: #ffffff;
+  --border: rgba(31, 41, 55, 0.2);
   --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
+  --input-background: #ffffff;
+  --switch-background: #d1d5db;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: oklch(.708 0 0);
+  --ring: #4e91ff;
   --chart-1: oklch(.646 .222 41.116);
   --chart-2: oklch(.6 .118 184.704);
   --chart-3: oklch(.398 .07 227.392);
   --chart-4: oklch(.828 .189 84.429);
   --chart-5: oklch(.769 .188 70.08);
   --radius: .625rem;
-  --sidebar: oklch(.985 0 0);
-  --sidebar-foreground: oklch(.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(.985 0 0);
-  --sidebar-accent: oklch(.97 0 0);
-  --sidebar-accent-foreground: oklch(.205 0 0);
-  --sidebar-border: oklch(.922 0 0);
-  --sidebar-ring: oklch(.708 0 0);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1f2937;
+  --sidebar-primary: #4e91ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #1f2937;
+  --sidebar-border: rgba(31, 41, 55, 0.2);
+  --sidebar-ring: #4e91ff;
 }
 
 .dark {
-  --background: oklch(.145 0 0);
-  --foreground: oklch(.985 0 0);
-  --card: oklch(.145 0 0);
-  --card-foreground: oklch(.985 0 0);
-  --popover: oklch(.145 0 0);
-  --popover-foreground: oklch(.985 0 0);
-  --primary: oklch(.985 0 0);
-  --primary-foreground: oklch(.205 0 0);
-  --secondary: oklch(.269 0 0);
-  --secondary-foreground: oklch(.985 0 0);
-  --muted: oklch(.269 0 0);
-  --muted-foreground: oklch(.708 0 0);
-  --accent: oklch(.269 0 0);
-  --accent-foreground: oklch(.985 0 0);
-  --destructive: oklch(.396 .141 25.723);
-  --destructive-foreground: oklch(.637 .237 25.331);
-  --border: oklch(.269 0 0);
-  --input: oklch(.269 0 0);
-  --ring: oklch(.439 0 0);
+  --background: #1f2937;
+  --foreground: #ffffff;
+  --card: #1f2937;
+  --card-foreground: #ffffff;
+  --popover: #1f2937;
+  --popover-foreground: #ffffff;
+  --primary: #4e91ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1f2937;
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.1);
+  --muted-foreground: #e5e7eb;
+  --accent: #ffffff;
+  --accent-foreground: #1f2937;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #4e91ff;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --chart-1: oklch(.488 .243 264.376);
@@ -4117,14 +4117,14 @@
   --chart-3: oklch(.769 .188 70.08);
   --chart-4: oklch(.627 .265 303.9);
   --chart-5: oklch(.645 .246 16.439);
-  --sidebar: oklch(.205 0 0);
-  --sidebar-foreground: oklch(.985 0 0);
-  --sidebar-primary: oklch(.488 .243 264.376);
-  --sidebar-primary-foreground: oklch(.985 0 0);
-  --sidebar-accent: oklch(.269 0 0);
-  --sidebar-accent-foreground: oklch(.985 0 0);
-  --sidebar-border: oklch(.269 0 0);
-  --sidebar-ring: oklch(.439 0 0);
+  --sidebar: #1f2937;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #4e91ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.2);
+  --sidebar-ring: #4e91ff;
 }
 
 html {
@@ -4132,29 +4132,29 @@ html {
 }
 
 [data-theme="light"] {
-  --bg-primary: #fff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f1f3f5;
-  --text-primary: #1a1a1a;
-  --text-secondary: #4a5568;
-  --text-tertiary: #718096;
-  --border-color: #e2e8f0;
-  --accent-purple: #7c3aed;
-  --accent-blue: #2563eb;
-  --accent-cyan: #06b6d4;
+  --bg-primary: #f3f4f6;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e5e7eb;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --border-color: rgba(31, 41, 55, 0.2);
+  --accent-purple: rgb(var(--brand-color));
+  --accent-blue: rgb(var(--brand-color));
+  --accent-cyan: rgb(var(--brand-color));
 }
 
 [data-theme="dark"] {
-  --bg-primary: #020617;
-  --bg-secondary: #0f172a;
-  --bg-tertiary: #1e293b;
-  --text-primary: #fff;
-  --text-secondary: #cbd5e1;
-  --text-tertiary: #94a3b8;
-  --border-color: #334155;
-  --accent-purple: #9333ea;
-  --accent-blue: #3b82f6;
-  --accent-cyan: #06b6d4;
+  --bg-primary: #1f2937;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #1f2937;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e7eb;
+  --text-tertiary: #cbd5e1;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --accent-purple: rgb(var(--brand-color));
+  --accent-blue: rgb(var(--brand-color));
+  --accent-cyan: rgb(var(--brand-color));
 }
 
 @property --tw-translate-x {
@@ -4531,4 +4531,87 @@ html {
   50% {
     opacity: .5;
   }
+}
+
+/* Keep text fully opaque for readability. */
+:where(h1, h2, h3, h4, h5, h6, p, a, li, span, label, small, strong, em, blockquote, figcaption) {
+  opacity: 1 !important;
+}
+
+:root {
+  --brand-color: 78 145 255;
+  --secondary-color: 31 41 55;
+  --accent-color: 255 255 255;
+  --soft-bg: 243 244 246;
+  --brand-50: color-mix(in oklab, rgb(var(--brand-color)) 10%, white);
+  --brand-100: color-mix(in oklab, rgb(var(--brand-color)) 20%, white);
+  --brand-300: color-mix(in oklab, rgb(var(--brand-color)) 45%, white);
+  --brand-400: color-mix(in oklab, rgb(var(--brand-color)) 65%, white);
+  --brand-500: rgb(var(--brand-color));
+  --brand-600: color-mix(in oklab, rgb(var(--brand-color)) 85%, black);
+  --brand-700: color-mix(in oklab, rgb(var(--brand-color)) 70%, black);
+  --brand-800: color-mix(in oklab, rgb(var(--brand-color)) 55%, black);
+  --brand-900: color-mix(in oklab, rgb(var(--brand-color)) 40%, black);
+  --color-purple-50: var(--brand-50);
+  --color-purple-100: var(--brand-100);
+  --color-purple-300: var(--brand-300);
+  --color-purple-400: var(--brand-400);
+  --color-purple-500: var(--brand-500);
+  --color-purple-600: var(--brand-600);
+  --color-purple-700: var(--brand-700);
+  --color-purple-900: var(--brand-900);
+  --color-violet-500: var(--brand-500);
+  --color-violet-600: var(--brand-600);
+  --color-indigo-600: var(--brand-600);
+  --color-blue-50: var(--brand-50);
+  --color-blue-100: var(--brand-100);
+  --color-blue-300: var(--brand-300);
+  --color-blue-400: var(--brand-400);
+  --color-blue-500: var(--brand-500);
+  --color-blue-600: var(--brand-600);
+  --color-blue-800: var(--brand-800);
+  --color-blue-900: var(--brand-900);
+  --color-cyan-100: var(--brand-100);
+  --color-cyan-300: var(--brand-300);
+  --color-cyan-400: var(--brand-400);
+  --color-cyan-500: var(--brand-500);
+  --color-cyan-600: var(--brand-600);
+  --color-cyan-900: var(--brand-900);
+}
+
+/* Brand helpers */
+.brand-bg {
+  background-color: rgb(var(--brand-color)) !important;
+}
+
+.brand-text {
+  color: rgb(var(--brand-color)) !important;
+}
+
+.brand-border {
+  border-color: rgb(var(--brand-color)) !important;
+}
+
+/* Secondary + soft backgrounds */
+.secondary-bg {
+  background-color: rgb(var(--secondary-color)) !important;
+}
+
+.soft-bg {
+  background-color: rgb(var(--soft-bg)) !important;
+}
+
+.accent-text {
+  color: rgb(var(--accent-color)) !important;
+}
+
+/* Keep dark text panels on the secondary charcoal background. */
+:where(.dark, :root[data-theme='dark']) :where(
+  [class*="bg-slate-950"],
+  [class*="bg-slate-900"],
+  [class*="bg-slate-800"],
+  [class*="bg-slate-700"],
+  [class*="bg-slate-600"]
+) {
+  background-color: #1f2937 !important;
 }
