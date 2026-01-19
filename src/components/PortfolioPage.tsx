@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { useTheme } from './ThemeContext';
@@ -11,7 +11,8 @@ const projects = [
     id: 1,
     title: 'The Pet\'s Report App',
     description: 'AI-powered pet health monitoring and diagnostics system.',
-    category: 'App Development',
+    primaryService: 'Mobile App Development',
+    services: ['Mobile App Development', 'AI/ML Services'],
     image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXNpZ24lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY1MDEzMTk5fDA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['AI', 'Mobile', 'Healthcare']
   },
@@ -19,7 +20,8 @@ const projects = [
     id: 2,
     title: 'Wallai Zen',
     description: 'A comprehensive digital product for meditation and mindfulness.',
-    category: 'Web Design',
+    primaryService: 'Website Design & Development',
+    services: ['Website Design & Development', 'Brand Building'],
     image: 'https://images.unsplash.com/photo-1545389336-cf090694435e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpdGF0aW9uJTIwYXBwfGVufDB8fHx8MTczNTE1MDA1MHww&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Wellness', 'React', 'UX/UI']
   },
@@ -27,7 +29,8 @@ const projects = [
     id: 3,
     title: 'Dualizer',
     description: 'Next-generation banking planner app with predictive AI insights.',
-    category: 'Fintech',
+    primaryService: 'AI/ML Services',
+    services: ['AI/ML Services', 'Custom Web Solution'],
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBiYW5raW5nJTIwYXBwfGVufDB8fHx8MTczNTE1MDA1MHww&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Finance', 'Mobile', 'Security']
   },
@@ -35,7 +38,8 @@ const projects = [
     id: 4,
     title: 'Mugera',
     description: 'The admirable nest for building independent spaces in the Metaverse.',
-    category: 'Web3',
+    primaryService: 'Custom Web Solution',
+    services: ['Custom Web Solution', 'SEO Services'],
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzM1MTUwMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Metaverse', '3D', 'Community']
   },
@@ -43,7 +47,8 @@ const projects = [
     id: 5,
     title: 'Neyabit',
     description: 'Official website of Neyabit, leading the Grand Analysis Center.',
-    category: 'Enterprise',
+    primaryService: 'ERP Services',
+    services: ['ERP Services', 'Odoo Services'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTczNTE1MDA1MHww&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Analytics', 'Corporate', 'Web']
   },
@@ -51,13 +56,25 @@ const projects = [
     id: 6,
     title: 'Mnemonic',
     description: 'High-conversion e-commerce platform with AI recommendations.',
-    category: 'E-Commerce',
+    primaryService: 'Ecommerce Solutions',
+    services: ['Ecommerce Solutions', 'SEO Services'],
     image: 'https://images.unsplash.com/photo-1557821552-17105176677c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBhcHB8ZW58MHx8fHwxNzM1MTUwMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Retail', 'AI', 'Platform']
   },
 ];
 
-const categories = ['All', 'App Development', 'Web Design', 'Fintech', 'Web3', 'Enterprise', 'E-Commerce'];
+const categories = [
+  'All',
+  'Odoo Services',
+  'Custom Web Solution',
+  'Mobile App Development',
+  'Ecommerce Solutions',
+  'Brand Building',
+  'SEO Services',
+  'AI/ML Services',
+  'ERP Services',
+  'Website Design & Development'
+];
 const allCategory = categories[0];
 
 export function PortfolioPage() {
@@ -66,7 +83,7 @@ export function PortfolioPage() {
 
   const filteredProjects = activeCategory === allCategory
     ? projects
-    : projects.filter(p => p.category === activeCategory);
+    : projects.filter(p => p.services.includes(activeCategory));
 
   return (
     <main className={`min-h-screen ${theme === 'dark' ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
@@ -170,7 +187,7 @@ export function PortfolioPage() {
                     {/* Category Overlay Badge */}
                     <div className="absolute top-3 left-3">
                       <span className="bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-white/10">
-                        {project.category}
+                        {activeCategory === allCategory ? project.primaryService : activeCategory}
                       </span>
                     </div>
                   </div>
