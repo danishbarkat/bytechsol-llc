@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { useTheme } from './ThemeContext';
@@ -58,20 +58,13 @@ const projects = [
 ];
 
 const categories = ['All', 'App Development', 'Web Design', 'Fintech', 'Web3', 'Enterprise', 'E-Commerce'];
+const allCategory = categories[0];
 
 export function PortfolioPage() {
   const { theme } = useTheme();
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(allCategory);
 
-  useEffect(() => {
-    const savedCategory = sessionStorage.getItem('portfolioCategory');
-    if (savedCategory && categories.includes(savedCategory)) {
-      setActiveCategory(savedCategory);
-      sessionStorage.removeItem('portfolioCategory');
-    }
-  }, []);
-
-  const filteredProjects = activeCategory === 'All'
+  const filteredProjects = activeCategory === allCategory
     ? projects
     : projects.filter(p => p.category === activeCategory);
 
