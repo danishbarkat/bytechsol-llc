@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { useTheme } from './ThemeContext';
@@ -62,6 +62,14 @@ const categories = ['All', 'App Development', 'Web Design', 'Fintech', 'Web3', '
 export function PortfolioPage() {
   const { theme } = useTheme();
   const [activeCategory, setActiveCategory] = useState('All');
+
+  useEffect(() => {
+    const savedCategory = sessionStorage.getItem('portfolioCategory');
+    if (savedCategory && categories.includes(savedCategory)) {
+      setActiveCategory(savedCategory);
+      sessionStorage.removeItem('portfolioCategory');
+    }
+  }, []);
 
   const filteredProjects = activeCategory === 'All'
     ? projects
@@ -156,8 +164,7 @@ export function PortfolioPage() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                   key={project.id}
-                  className="group flex flex-col h-full cursor-pointer rounded-2xl overflow-hidden p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                  style={{ backgroundColor: '#2563eb' }}
+                  className="group flex flex-col h-full cursor-pointer rounded-2xl overflow-hidden p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 brand-bg"
                 >
                   {/* Card Image */}
                   <div className="relative h-64 rounded-xl overflow-hidden mb-4 bg-slate-800">

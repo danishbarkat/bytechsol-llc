@@ -4,15 +4,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useRouter } from './Router';
 
 const servicesMenu = [
-  { title: 'Odoo Services', route: '/services/odoo-services' },
-  { title: 'Custom Web Solution', route: '/services/custom-web-solution' },
-  { title: 'Mobile App Development', route: '/services/web-app-software-development' },
-  { title: 'Ecommerce Solutions', route: '/services/ecommerce-solutions' },
-  { title: 'Brand Building', route: '/services/brand-building' },
-  { title: 'SEO Services', route: '/services/seo-services' },
-  { title: 'AI/ML Services', route: '/services/ai-ml-services' },
-  { title: 'ERP Services', route: '/services/erp-services' },
-  { title: 'Website Design & Development', route: '/services/website-design-development' },
+  { title: 'App Development' },
+  { title: 'Web Design' },
+  { title: 'Fintech' },
+  { title: 'Web3' },
+  { title: 'Enterprise' },
+  { title: 'E-Commerce' },
 ];
 const servicesSplitIndex = Math.ceil(servicesMenu.length / 2);
 const servicesColumns = [
@@ -44,6 +41,13 @@ export function Navbar() {
     }
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isServicesOpen]);
+
+  const handlePortfolioCategorySelect = (category: string) => {
+    sessionStorage.setItem('portfolioCategory', category);
+    navigate('/portfolio');
+    setIsServicesOpen(false);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -134,17 +138,16 @@ export function Navbar() {
                   >
                     <div className="p-2">
                       <a
-                        href="/services"
+                        href="/portfolio"
                         onClick={(e) => {
                           e.preventDefault();
-                          navigate('/services');
-                          setIsServicesOpen(false);
+                          handlePortfolioCategorySelect('All');
                         }}
                         role="menuitem"
                         className="block px-4 py-3 rounded-xl transition-all duration-200 text-white hover:text-white hover:bg-white/15"
                         style={{ fontWeight: 600 }}
                       >
-                        All Services
+                        All
                       </a>
 
                       <div className="h-px my-2 bg-white/30" />
@@ -162,12 +165,11 @@ export function Navbar() {
 
                               return (
                                 <motion.a
-                                  key={service.route}
-                                  href={service.route}
+                                  key={service.title}
+                                  href="/portfolio"
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    navigate(service.route as any);
-                                    setIsServicesOpen(false);
+                                    handlePortfolioCategorySelect(service.title);
                                   }}
                                   role="menuitem"
                                   className="block px-4 py-3 rounded-xl transition-all duration-200 text-white hover:text-white hover:bg-white/15 whitespace-normal leading-snug"
@@ -288,9 +290,12 @@ export function Navbar() {
                   </a>
                   {servicesMenu.map((service) => (
                     <a
-                      key={service.route}
-                      href={service.route}
-                      onClick={(e) => { e.preventDefault(); navigate(service.route as any); }}
+                      key={service.title}
+                      href="/portfolio"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handlePortfolioCategorySelect(service.title);
+                      }}
                       className="px-6 py-1.5 text-sm transition-colors text-white/80 hover:text-white"
                     >
                       {service.title}
