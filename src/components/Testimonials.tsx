@@ -100,14 +100,14 @@ export function Testimonials() {
           >
             <Sparkles className="w-4 h-4 text-purple-400" />
             <span className={`text-sm tracking-wider uppercase ${theme === 'dark' ? 'text-purple-300' : 'text-purple-700'}`}>
-              Client Success Stories
+              Client Results
             </span>
           </motion.div>
 
           <h2 className={`mb-6 leading-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
-            Trusted by{' '}
+            Trusted for{' '}
             <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              Industry Leaders
+              ERP, AI &amp; Digital Growth
             </span>
           </h2>
         </motion.div>

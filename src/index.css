@@ -77,6 +77,7 @@
 @layer theme {
   :root, :host {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-50: oklch(.971 .013 17.38);
     --color-red-100: oklch(.936 .032 17.717);
@@ -4605,6 +4606,12 @@ html {
   color: rgb(var(--accent-color)) !important;
 }
 
+/* Footer helper to keep focus state on brand blue. */
+.footer-input:focus-within {
+  border-color: rgb(var(--brand-color)) !important;
+  box-shadow: 0 0 0 1px rgba(78, 145, 255, 0.35);
+}
+
 /* Keep dark text panels on the secondary charcoal background. */
 :where(.dark, :root[data-theme='dark']) :where(
   [class*="bg-slate-950"],
@@ -4614,4 +4621,54 @@ html {
   [class*="bg-slate-600"]
 ) {
   background-color: #1f2937 !important;
+}
+
+.team-card-wrapper {
+  position: relative;
+  perspective: 1100px;
+  transition: transform 0.35s ease;
+}
+
+.team-card-wrapper:hover {
+  transform: translateY(-0.65rem);
+}
+
+.team-card-inner {
+  position: relative;
+  width: 260px;
+  height: 360px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media (max-width: 1024px) {
+  .team-card-inner {
+    width: 240px;
+    height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .team-card-inner {
+    width: 220px;
+    height: 340px;
+  }
+}
+
+.team-card-wrapper:hover .team-card-inner {
+  transform: rotateY(180deg);
+}
+
+.team-card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.75rem;
+  border: 2px solid var(--primary);
+  overflow: hidden;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.35);
+  backface-visibility: hidden;
+}
+
+.team-card-face.back {
+  transform: rotateY(180deg);
 }

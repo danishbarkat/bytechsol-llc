@@ -64,12 +64,12 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
+          <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="flex items-center">
             <img
               src="/assets/logo/logo.png"
               alt="BytechSol logo"
-              className="h-11 w-11 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"
-              style={{ filter: 'brightness(0) invert(1)' }}
+              className="h-11 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"
+              style={{ filter: 'brightness(0) invert(1)', width: 'auto', maxWidth: '140px' }}
             />
           </a>
 
@@ -246,8 +246,8 @@ export function Navbar() {
               <img
                 src="/assets/logo/logo.png"
                 alt="BytechSol logo"
-                className="h-10 w-10 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="h-10 object-contain drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]"
+                style={{ filter: 'brightness(0) invert(1)', width: 'auto', maxWidth: '120px' }}
               />
             </a>
 

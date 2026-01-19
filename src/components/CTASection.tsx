@@ -4,7 +4,7 @@ import { useTheme } from './ThemeContext';
 
 export function CTASection() {
   const { theme } = useTheme();
-  
+
   return (
     <section id="contact" className="relative py-32 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -18,12 +18,11 @@ export function CTASection() {
         >
           {/* Background with Gradient Border Effect */}
           <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-          
-          <div className={`relative rounded-3xl overflow-hidden ${
-            theme === 'dark' 
-              ? 'bg-slate-900/80 backdrop-blur-xl border border-slate-800/50' 
+
+          <div className={`relative rounded-3xl overflow-hidden ${theme === 'dark'
+              ? 'bg-slate-900/80 backdrop-blur-xl border border-slate-800/50'
               : 'bg-white/80 backdrop-blur-xl border border-slate-200/50'
-          }`}>
+            }`}>
             {/* Animated Background Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
@@ -34,11 +33,11 @@ export function CTASection() {
               {/* Floating Icons */}
               <div className="absolute top-8 right-8 hidden lg:block">
                 <motion.div
-                  animate={{ 
+                  animate={{
                     y: [0, -10, 0],
                     rotate: [0, 5, 0]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut"
@@ -51,11 +50,11 @@ export function CTASection() {
 
               <div className="absolute bottom-12 left-12 hidden lg:block">
                 <motion.div
-                  animate={{ 
+                  animate={{
                     y: [0, 10, 0],
                     rotate: [0, -5, 0]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 3.5,
                     repeat: Infinity,
                     ease: "easeInOut",
@@ -69,11 +68,11 @@ export function CTASection() {
 
               <div className="absolute top-1/2 left-8 hidden lg:block">
                 <motion.div
-                  animate={{ 
+                  animate={{
                     x: [0, -8, 0],
                     scale: [1, 1.1, 1]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut",
@@ -97,7 +96,7 @@ export function CTASection() {
                 >
                   <Sparkles className="w-4 h-4 text-purple-400" />
                   <span className={`text-sm ${theme === 'dark' ? 'text-purple-300' : 'text-purple-700'}`}>
-                    Let's Create Magic Together
+                    Let's Build Your Growth Stack
                   </span>
                 </motion.div>
 
@@ -109,10 +108,10 @@ export function CTASection() {
                   viewport={{ once: true }}
                   className={`text-4xl md:text-6xl mb-6 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
                 >
-                  Ready to Build Something
+                  Ready to build your
                   <br />
                   <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                    Extraordinary?
+                    Enterprise-Grade Growth Stack?
                   </span>
                 </motion.h2>
 
@@ -122,12 +121,11 @@ export function CTASection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                   viewport={{ once: true }}
-                  className={`text-lg md:text-xl mb-10 max-w-3xl mx-auto ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                  }`}
+                  className={`text-lg md:text-xl mb-10 max-w-3xl mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                    }`}
                 >
-                  Transform your vision into reality with our cutting-edge AI solutions, 
-                  expert development, and innovative design strategies.
+                  Partner with a team that ships production-ready AI agents, Odoo ERP implementations,
+                  custom software, and 'Search-Everywhere' SEO systems designed for 2026.
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -148,7 +146,7 @@ export function CTASection() {
                       Start Your Project
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
-                    
+
                     {/* Animated Background */}
                     <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </a>
@@ -156,11 +154,10 @@ export function CTASection() {
                   {/* Secondary Button */}
                   <a
                     href="#projects"
-                    className={`inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 transition-all duration-300 ${
-                      theme === 'dark'
+                    className={`inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 transition-all duration-300 ${theme === 'dark'
                         ? 'border-slate-700 text-white hover:bg-slate-800'
                         : 'border-slate-300 text-slate-900 hover:bg-slate-100'
-                    }`}
+                      }`}
                   >
                     <span>View Our Work</span>
                     <ArrowRight className="w-5 h-5" />

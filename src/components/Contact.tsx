@@ -17,10 +17,10 @@ export function Contact() {
               Let&apos;s Build Your Digital Future
             </h2>
             <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-              Ready to accelerate your business with intelligent digital solutions that drive results? 
+              Ready to accelerate your business with intelligent digital solutions that drive results?
               At Bytechsol, we turn complex ideas into user-focused platforms built to scale and succeed.
             </p>
-            
+
             <div className="flex flex-wrap gap-4 mb-8">
               <button className="px-8 py-4 rounded-xl bg-purple-600 text-white shadow-2xl shadow-purple-600/30 hover:bg-purple-500 transition-all duration-300 hover:scale-105 flex items-center gap-2">
                 Start Your Transformation
@@ -37,14 +37,21 @@ export function Contact() {
 
             {/* Awards badges */}
             <div className="flex flex-wrap gap-4">
-              {['Clutch Top Rated', '5.0 Rating', 'Award Winning'].map((award, i) => (
-                <div
+              {[
+                { label: 'Clutch Top Rated', color: '#ff4b2b' },
+                { label: 'Upwork Expert', color: '#37a000' },
+                { label: '5.0 Google Rating', color: '#fbbc05' }
+              ].map((award, i) => (
+                <motion.div
                   key={i}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-700 shadow-lg text-slate-300"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-800/80 border border-slate-700 shadow-xl backdrop-blur-md"
                 >
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <span>{award}</span>
-                </div>
+                  <Star className="w-5 h-5 fill-current" style={{ color: award.color }} />
+                  <span className="text-white font-bold">{award.label}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>

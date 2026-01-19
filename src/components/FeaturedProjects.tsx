@@ -58,7 +58,7 @@ export function FeaturedProjects() {
         >
           <div className="flex items-center gap-8">
             <h2 className={`text-5xl ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
-              Featured projects
+              Featured projects &amp; results
             </h2>
             
             {/* Decorative Lines */}
@@ -73,6 +73,9 @@ export function FeaturedProjects() {
               </svg>
             </div>
           </div>
+          <p className={`mt-6 max-w-2xl ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+            Recent work across web, mobile, ecommerce, and AI-driven products built for speed and measurable impact.
+          </p>
         </motion.div>
 
         {/* Projects Grid */}

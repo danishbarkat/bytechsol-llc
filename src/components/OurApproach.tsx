@@ -1,7 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useTheme } from './ThemeContext';
 import { useRef, useState, useEffect } from 'react';
-import { 
+import {
   Heart,
   Target,
   Zap,
@@ -216,9 +216,8 @@ export function OurApproach() {
   return (
     <section
       ref={containerRef}
-      className={`relative transition-colors py-20 ${
-        theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'
-      }`}
+      className={`relative transition-colors py-20 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'
+        }`}
     >
       {/* Section Header */}
       <div className="max-w-7xl mx-auto px-6 mb-20">
@@ -230,19 +229,17 @@ export function OurApproach() {
           className="text-center"
         >
           <h2
-            className={`mb-6 transition-colors ${
-              theme === 'dark' ? 'text-white' : 'text-slate-900'
-            }`}
+            className={`mb-6 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+              }`}
             style={{ fontSize: '3.5rem', fontWeight: '800', lineHeight: '1.1' }}
           >
-            Our Approach
+            Our Approach to Delivery
           </h2>
           <p
-            className={`text-xl transition-colors max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-            }`}
+            className={`text-xl transition-colors max-w-2xl mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+              }`}
           >
-            A proven 4-step process to transform your vision into reality
+            A proven 4-step process for ERP, AI, and digital product delivery.
           </p>
         </motion.div>
       </div>
@@ -268,7 +265,7 @@ export function OurApproach() {
           {benefits.map((benefit, index) => (
             <div
               key={benefit.title}
-              ref={(el) => (itemRefs.current[index] = el)}
+              ref={(el) => { itemRefs.current[index] = el; }}
               className="flex items-center min-h-screen"
               style={{ scrollSnapAlign: 'center' }}
             >
@@ -291,27 +288,24 @@ export function OurApproach() {
                   </div>
 
                   <h4
-                    className={`mb-4 transition-colors ${
-                      theme === 'dark' ? 'text-white' : 'text-slate-900'
-                    }`}
+                    className={`mb-4 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+                      }`}
                     style={{ fontSize: '2rem', fontWeight: '700', lineHeight: '1.3' }}
                   >
                     {benefit.title}
                   </h4>
 
                   <p
-                    className={`text-lg leading-relaxed mb-6 ${
-                      theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                    }`}
+                    className={`text-lg leading-relaxed mb-6 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                      }`}
                   >
                     {benefit.description}
                   </p>
 
                   <div className="flex items-center gap-3 group cursor-pointer">
                     <span
-                      className={`text-sm uppercase tracking-wider ${
-                        theme === 'dark' ? 'text-slate-500' : 'text-slate-600'
-                      }`}
+                      className={`text-sm uppercase tracking-wider ${theme === 'dark' ? 'text-slate-500' : 'text-slate-600'
+                        }`}
                       style={{ fontWeight: '600' }}
                     >
                       Explore
@@ -349,7 +343,7 @@ export function OurApproach() {
           {approaches.map((approach, approachIndex) => (
             <div
               key={approach.step}
-              ref={(el) => (itemRefs.current[benefits.length + approachIndex] = el)}
+              ref={(el) => { itemRefs.current[benefits.length + approachIndex] = el; }}
               className="flex items-center min-h-screen"
               style={{ scrollSnapAlign: 'center' }}
             >
@@ -389,9 +383,8 @@ export function OurApproach() {
                   </h3>
 
                   <p
-                    className={`text-lg leading-relaxed ${
-                      theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                    }`}
+                    className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                      }`}
                     style={{ fontSize: '1.125rem' }}
                   >
                     {approach.description}
@@ -517,7 +510,7 @@ export function OurApproach() {
               </div>
 
               {/* Circuit Pattern Background */}
-              <div 
+              <div
                 className="absolute inset-0 opacity-5 rounded-3xl pointer-events-none"
                 style={{
                   backgroundImage: `
@@ -549,12 +542,11 @@ export function OurApproach() {
 
               {/* Main Glass Card */}
               <div
-                className={`relative backdrop-blur-xl border overflow-hidden shadow-2xl ${ 
-                  theme === 'dark'
+                className={`relative backdrop-blur-xl border overflow-hidden shadow-2xl ${theme === 'dark'
                     ? 'bg-slate-900/80 border-slate-700/50'
                     : 'bg-white/80 border-slate-300/50'
-                }`}
-                style={{ 
+                  }`}
+                style={{
                   borderRadius: '2.5rem',
                   boxShadow: `
                     0 0 60px ${displayItem.color}30,
@@ -660,9 +652,8 @@ export function OurApproach() {
 
                       {/* Main Icon Box */}
                       <motion.div
-                        className={`relative overflow-hidden ${
-                          theme === 'dark' ? 'bg-slate-800' : 'bg-slate-100'
-                        }`}
+                        className={`relative overflow-hidden ${theme === 'dark' ? 'bg-slate-800' : 'bg-slate-100'
+                          }`}
                         style={{
                           width: '120px',
                           height: '120px',
@@ -697,12 +688,12 @@ export function OurApproach() {
                         />
 
                         <div className="w-full h-full flex items-center justify-center relative z-10">
-                          <displayItem.icon 
-                            className="w-14 h-14" 
-                            style={{ 
+                          <displayItem.icon
+                            className="w-14 h-14"
+                            style={{
                               color: displayItem.color,
                               filter: `drop-shadow(0 0 12px ${displayItem.color})`,
-                            }} 
+                            }}
                           />
                         </div>
 
@@ -737,9 +728,9 @@ export function OurApproach() {
 
                     {/* Title Section */}
                     <div className="flex-1 pt-4">
-                      <motion.div 
-                        initial={{ x: -30, opacity: 0 }} 
-                        animate={{ x: 0, opacity: 1 }} 
+                      <motion.div
+                        initial={{ x: -30, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.3 }}
                       >
                         {!isBenefit && (
@@ -751,7 +742,7 @@ export function OurApproach() {
                               boxShadow: `0 0 20px ${displayItem.color}30`,
                             }}
                           >
-                            <div 
+                            <div
                               className="w-2 h-2 rounded-full animate-pulse"
                               style={{ background: displayItem.color }}
                             />
@@ -771,9 +762,9 @@ export function OurApproach() {
 
                       <motion.h3
                         className={`mb-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
-                        style={{ 
-                          fontSize: '2rem', 
-                          fontWeight: '800', 
+                        style={{
+                          fontSize: '2rem',
+                          fontWeight: '800',
                           lineHeight: '1.2',
                           textShadow: `0 0 30px ${displayItem.color}30`,
                         }}
@@ -798,9 +789,8 @@ export function OurApproach() {
 
                   {/* Holographic Details Panel */}
                   <motion.div
-                    className={`relative p-8 rounded-2xl border mb-6 overflow-hidden ${
-                      theme === 'dark' ? 'bg-slate-800/30 border-slate-700/30' : 'bg-slate-50/50 border-slate-200'
-                    }`}
+                    className={`relative p-8 rounded-2xl border mb-6 overflow-hidden ${theme === 'dark' ? 'bg-slate-800/30 border-slate-700/30' : 'bg-slate-50/50 border-slate-200'
+                      }`}
                     style={{
                       backdropFilter: 'blur(20px)',
                       boxShadow: `inset 0 0 40px ${displayItem.color}10`,
@@ -833,9 +823,9 @@ export function OurApproach() {
                       className={`mb-6 flex items-center gap-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
                       style={{ fontSize: '1.25rem', fontWeight: '700' }}
                     >
-                      <motion.div 
-                        className="w-10 h-10 rounded-lg flex items-center justify-center" 
-                        style={{ 
+                      <motion.div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center"
+                        style={{
                           background: displayItem.color,
                           boxShadow: `0 0 20px ${displayItem.color}60`,
                         }}
@@ -883,10 +873,10 @@ export function OurApproach() {
                                   delay: index * 0.2,
                                 }}
                               />
-                              <circle 
-                                cx="12" 
-                                cy="12" 
-                                r="3" 
+                              <circle
+                                cx="12"
+                                cy="12"
+                                r="3"
                                 fill={displayItem.color}
                                 style={{ filter: `drop-shadow(0 0 6px ${displayItem.color})` }}
                               />
@@ -933,7 +923,7 @@ export function OurApproach() {
                     <div className="flex items-start gap-4 relative z-10">
                       <motion.div
                         className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ 
+                        style={{
                           background: displayItem.color,
                           boxShadow: `0 0 20px ${displayItem.color}80`,
                         }}
@@ -954,8 +944,8 @@ export function OurApproach() {
                       </motion.div>
 
                       <div className="flex-1">
-                        <h4 
-                          className={`mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`} 
+                        <h4
+                          className={`mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
                           style={{ fontSize: '1.125rem', fontWeight: '700' }}
                         >
                           {isBenefit ? 'Key Benefit' : 'Expected Outcome'}
@@ -974,7 +964,7 @@ export function OurApproach() {
                   {!isBenefit && (
                     <div className="flex items-center justify-center gap-2 mt-8">
                       {approaches.map((item, index) => (
-                        <motion.div 
+                        <motion.div
                           key={item.step}
                           className="cursor-pointer relative"
                           whileHover={{ scale: 1.2 }}

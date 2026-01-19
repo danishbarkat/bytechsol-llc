@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'motion/react';
 import { useTheme } from './ThemeContext';
 import { useRef, useState, useEffect } from 'react';
-import { 
-  Rocket, 
-  Sparkles, 
-  Zap, 
-  Users, 
-  Target, 
+import {
+  Rocket,
+  Sparkles,
+  Zap,
+  Users,
+  Target,
   TrendingUp,
   Shield,
   Clock,
@@ -26,34 +26,46 @@ const BRAND_RGB = '78, 145, 255';
 const benefits = [
   {
     icon: Rocket,
-    title: 'Accelerate Your Growth',
-    description: 'We build digital solutions that scale with your business, helping you reach your goals faster.',
+    title: 'Scale Without Friction',
+    description: 'We build enterprise-grade digital solutions that scale with your business, removing technical bottlenecks at every stage.',
     color: BRAND_COLOR,
     gradient: BRAND_GRADIENT,
-    particles: 8,
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovative Solutions',
-    description: 'Cutting-edge AI and technology tailored to solve your unique business challenges.',
-    color: BRAND_COLOR,
-    gradient: BRAND_GRADIENT,
-    particles: 6,
-  },
-  {
-    icon: Shield,
-    title: 'Reliable & Secure',
-    description: 'Enterprise-grade security and reliability you can count on, 24/7.',
-    color: BRAND_COLOR,
-    gradient: BRAND_GRADIENT,
+    kicker: 'Enterprise Systems',
+    impact: 'Accelerated ROI',
+    progress: 0.88,
     particles: 10,
   },
   {
-    icon: Users,
-    title: 'Dedicated Support',
-    description: 'Expert team always ready to help you succeed with personalized assistance.',
+    icon: Lightbulb,
+    title: 'AI-Native Intelligence',
+    description: 'Go beyond chatbots with production-ready AI agents and workflows designed to solve complex business challenges.',
     color: BRAND_COLOR,
     gradient: BRAND_GRADIENT,
+    kicker: 'AI Agents',
+    impact: 'Production-ready automation',
+    progress: 0.82,
+    particles: 12,
+  },
+  {
+    icon: Shield,
+    title: 'Enterprise-Grade Stability',
+    description: 'Modernize your operations with Odoo ERP and custom software built for 24/7 reliability and security.',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
+    kicker: 'Modern Operations',
+    impact: 'Compliance-ready scaling',
+    progress: 0.92,
+    particles: 8,
+  },
+  {
+    icon: Users,
+    title: 'Strategic Partnership',
+    description: 'Think of us as your technical co-founders, providing expert-led strategy and delivery from discovery to go-live.',
+    color: BRAND_COLOR,
+    gradient: BRAND_GRADIENT,
+    kicker: 'Partner Led',
+    impact: 'Expert-led delivery',
+    progress: 0.75,
     particles: 7,
   },
 ];
@@ -71,24 +83,24 @@ function AnimatedCounter({ value, suffix, inView }: { value: number; suffix: str
 
   useEffect(() => {
     if (!inView) return;
-    
+
     let startTime: number;
     const duration = 2000;
-    
+
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      
+
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(easeOutQuart * value));
-      
+
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         setCount(value);
       }
     };
-    
+
     requestAnimationFrame(animate);
   }, [value, inView]);
 
@@ -100,10 +112,10 @@ function MagneticBenefitCard({ benefit, index }: { benefit: typeof benefits[0]; 
   const { theme } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  
+
   const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
 
@@ -140,212 +152,120 @@ function MagneticBenefitCard({ benefit, index }: { benefit: typeof benefits[0]; 
     >
       {/* Main card */}
       <motion.div
-        className={`relative overflow-hidden backdrop-blur-2xl border-2 p-8 transition-all duration-500 ${
-          theme === 'dark'
-            ? 'bg-slate-900/60 border-slate-800'
-            : 'bg-white/80 border-slate-200 shadow-lg'
-        }`}
-        style={{ 
-          borderRadius: '2rem',
-          minHeight: '380px',
+        className={`relative overflow-hidden border-2 p-8 transition-all duration-500 ${theme === 'dark'
+            ? 'bg-slate-900/80 border-slate-800'
+            : 'bg-white border-slate-200 shadow-lg'
+          }`}
+        style={{
+          borderRadius: '1.75rem',
+          minHeight: '360px',
         }}
         animate={{
           borderColor: isHovered ? benefit.color : (theme === 'dark' ? '#1f2937' : '#e5e7eb'),
         }}
         whileHover={{ scale: 1.02 }}
       >
-        {/* Animated gradient background */}
-        <motion.div
-          className={`absolute inset-0 bg-gradient-to-br ${benefit.gradient}`}
-          animate={{
-            opacity: isHovered ? 0.08 : 0,
-          }}
-          transition={{ duration: 0.3 }}
+        <div
+          className="absolute top-0 left-0 right-0"
+          style={{ height: '3px', background: `linear-gradient(90deg, ${benefit.color}, transparent)` }}
         />
 
-        {/* Mesh gradient orb */}
         <motion.div
-          className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-3xl"
+          className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl"
           style={{
-            background: `radial-gradient(circle, ${benefit.color}40, transparent 70%)`,
+            background: `radial-gradient(circle, ${benefit.color}35, transparent 70%)`,
           }}
           animate={{
-            scale: isHovered ? [1, 1.3, 1] : 1,
-            rotate: isHovered ? 360 : 0,
+            scale: isHovered ? [1, 1.2, 1] : 1,
           }}
           transition={{
-            scale: { duration: 3, repeat: Infinity },
-            rotate: { duration: 8, repeat: Infinity, ease: 'linear' },
+            duration: 3,
+            repeat: isHovered ? Infinity : 0,
           }}
         />
 
-        {/* Floating particles */}
-        {isHovered && [...Array(benefit.particles)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full"
-            style={{
-              background: benefit.color,
-              boxShadow: `0 0 10px ${benefit.color}`,
-            }}
-            initial={{
-              x: '50%',
-              y: '50%',
-              scale: 0,
-            }}
-            animate={{
-              x: `${Math.random() * 100}%`,
-              y: `${Math.random() * 100}%`,
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 2 + Math.random(),
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
-          />
-        ))}
-
         <div className="relative z-10">
-          {/* Morphing icon container */}
-          <motion.div
-            className="mb-8"
-            animate={{
-              y: isHovered ? [0, -15, 0] : 0,
-            }}
-            transition={{
-              duration: 2,
-              repeat: isHovered ? Infinity : 0,
-              ease: 'easeInOut',
-            }}
-          >
-            <motion.div
-              className={`relative w-24 h-24 flex items-center justify-center backdrop-blur-xl border-2 ${
-                theme === 'dark'
-                  ? 'bg-slate-800/50 border-slate-700'
-                  : 'bg-white border-slate-200'
-              }`}
-              style={{ borderRadius: '1.5rem' }}
-              animate={{
-                borderRadius: isHovered ? ['1.5rem', '50%', '1.5rem'] : '1.5rem',
-                rotate: isHovered ? [0, 180, 360] : 0,
-              }}
-              transition={{
-                borderRadius: { duration: 2, repeat: isHovered ? Infinity : 0 },
-                rotate: { duration: 3, repeat: isHovered ? Infinity : 0, ease: 'linear' },
-              }}
+          <div className="flex items-start justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <div className="relative">
+                <div
+                  className="absolute -inset-1 rounded-2xl"
+                  style={{ background: `linear-gradient(135deg, ${benefit.color}35, transparent)` }}
+                />
+                <div
+                  className={`relative w-16 h-16 flex items-center justify-center border ${theme === 'dark'
+                      ? 'bg-slate-900 border-slate-700'
+                      : 'bg-white border-slate-200'
+                    }`}
+                  style={{ borderRadius: '1.25rem' }}
+                >
+                  <benefit.icon className="w-8 h-8" style={{ color: benefit.color }} />
+                </div>
+              </div>
+              <div>
+                <div
+                  className={`${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'} text-xs uppercase`}
+                  style={{ letterSpacing: '0.3em', fontWeight: 700 }}
+                >
+                  Benefit 0{index + 1}
+                </div>
+                <div
+                  className={`${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'} text-sm`}
+                  style={{ fontWeight: 600 }}
+                >
+                  {benefit.kicker}
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${theme === 'dark' ? 'text-slate-600' : 'text-slate-400'} text-xs`}
+              style={{ fontWeight: 700 }}
             >
-              {/* Glowing ring */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2"
-                style={{ borderColor: benefit.color }}
-                animate={{
-                  scale: isHovered ? [1, 1.5, 1] : 1,
-                  opacity: isHovered ? [0.5, 0, 0.5] : 0,
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: isHovered ? Infinity : 0,
-                }}
-              />
-              
-              <benefit.icon className="w-10 h-10 relative z-10" style={{ color: benefit.color }} />
-            </motion.div>
-          </motion.div>
+              0{index + 1}
+            </div>
+          </div>
 
-          {/* Content */}
           <h3
-            className={`mb-4 transition-colors ${
-              theme === 'dark' ? 'text-white' : 'text-slate-900'
-            }`}
+            className={`mb-4 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+              }`}
             style={{ fontSize: '1.5rem', fontWeight: '700', lineHeight: '1.3' }}
           >
             {benefit.title}
           </h3>
 
           <p
-            className={`mb-8 leading-relaxed transition-colors ${
-              theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-            }`}
+            className={`leading-relaxed transition-colors ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+              }`}
             style={{ fontSize: '1rem' }}
           >
             {benefit.description}
           </p>
 
-          {/* Interactive CTA */}
-          <motion.div
-            className="flex items-center gap-3"
-            animate={{
-              x: isHovered ? 10 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <span
-              className={`text-sm uppercase tracking-wider ${
-                theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-              }`}
-              style={{ fontWeight: '600' }}
-            >
-              Explore
-            </span>
-            
-            <motion.div
-              className="relative w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ 
-                background: benefit.color,
-                boxShadow: `0 0 20px ${benefit.color}60`,
-              }}
-              animate={{
-                x: isHovered ? [0, 5, 0] : 0,
-              }}
-              transition={{
-                duration: 1,
-                repeat: isHovered ? Infinity : 0,
-              }}
-            >
-              <ArrowRight className="w-5 h-5 text-white" />
-            </motion.div>
-          </motion.div>
+          <div className="mt-8">
+            <div className="flex items-center justify-between">
+              <span
+                className={`${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'} text-xs uppercase`}
+                style={{ letterSpacing: '0.25em', fontWeight: 600 }}
+              >
+                Impact
+              </span>
+              <span className="text-sm" style={{ fontWeight: 700, color: benefit.color }}>
+                {benefit.impact}
+              </span>
+            </div>
+            <div className={`mt-3 h-1 rounded-full ${theme === 'dark' ? 'bg-slate-800' : 'bg-slate-200'}`}>
+              <motion.div
+                className="h-1 rounded-full"
+                style={{ background: benefit.color }}
+                animate={{
+                  width: isHovered ? `${Math.min(100, benefit.progress * 100 + 8)}%` : `${benefit.progress * 100}%`,
+                }}
+                transition={{ duration: 0.4 }}
+              />
+            </div>
+          </div>
         </div>
-
-        {/* Animated border effect */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ borderRadius: '2rem' }}>
-          <rect
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            fill="none"
-            stroke={benefit.color}
-            strokeWidth="2"
-            strokeDasharray="10 10"
-            rx="32"
-            style={{ opacity: isHovered ? 0.3 : 0 }}
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="0"
-              to="20"
-              dur="1s"
-              repeatCount="indefinite"
-            />
-          </rect>
-        </svg>
       </motion.div>
-
-      {/* Floating shadow */}
-      <motion.div
-        className="absolute inset-0 -z-10 blur-2xl opacity-0"
-        style={{
-          background: `radial-gradient(circle, ${benefit.color}30, transparent 70%)`,
-        }}
-        animate={{
-          opacity: isHovered ? 0.6 : 0,
-          y: isHovered ? 10 : 0,
-        }}
-        transition={{ duration: 0.3 }}
-      />
     </motion.div>
   );
 }
@@ -389,7 +309,7 @@ function CircularProgressStat({ stat, index }: { stat: typeof stats[0]; index: n
               stroke={theme === 'dark' ? '#1f2937' : '#e5e7eb'}
               strokeWidth="8"
             />
-            
+
             {/* Progress circle */}
             <motion.circle
               cx="64"
@@ -421,11 +341,10 @@ function CircularProgressStat({ stat, index }: { stat: typeof stats[0]; index: n
             transition={{ duration: 0.6 }}
           >
             <div
-              className={`w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-xl border-2 ${
-                theme === 'dark'
+              className={`w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-xl border-2 ${theme === 'dark'
                   ? 'bg-slate-900/90 border-slate-800'
                   : 'bg-white border-slate-200'
-              }`}
+                }`}
               style={{
                 boxShadow: isHovered ? `0 0 30px ${stat.color}60` : 'none',
               }}
@@ -437,11 +356,10 @@ function CircularProgressStat({ stat, index }: { stat: typeof stats[0]; index: n
 
         {/* Number */}
         <div
-          className={`mb-2 transition-colors ${
-            theme === 'dark' ? 'text-white' : 'text-slate-900'
-          }`}
-          style={{ 
-            fontSize: '2rem', 
+          className={`mb-2 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+            }`}
+          style={{
+            fontSize: '2rem',
             fontWeight: '700',
             fontVariantNumeric: 'tabular-nums',
           }}
@@ -451,9 +369,8 @@ function CircularProgressStat({ stat, index }: { stat: typeof stats[0]; index: n
 
         {/* Label */}
         <div
-          className={`text-sm uppercase tracking-wider transition-colors ${
-            theme === 'dark' ? 'text-slate-500' : 'text-slate-500'
-          }`}
+          className={`text-sm uppercase tracking-wider transition-colors ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'
+            }`}
         >
           {stat.label}
         </div>
@@ -496,14 +413,13 @@ export function AgencyMission() {
   return (
     <section
       ref={sectionRef}
-      className={`relative py-32 px-6 overflow-hidden transition-colors ${
-        theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'
-      }`}
+      className={`relative py-32 px-6 overflow-hidden transition-colors ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'
+        }`}
     >
       {/* Advanced background effects */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Animated grid */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 opacity-10"
           animate={{
             backgroundPosition: ['0% 0%', '100% 100%'],
@@ -560,11 +476,10 @@ export function AgencyMission() {
           className="text-center mb-24"
         >
           <motion.div
-            className={`inline-flex items-center gap-3 px-8 py-4 mb-10 backdrop-blur-xl border-2 ${
-              theme === 'dark'
+            className={`inline-flex items-center gap-3 px-8 py-4 mb-10 backdrop-blur-xl border-2 ${theme === 'dark'
                 ? 'bg-purple-500/10 border-purple-500/30'
                 : 'bg-purple-100/50 border-purple-300'
-            }`}
+              }`}
             style={{ borderRadius: '3rem' }}
             whileHover={{ scale: 1.05, y: -5 }}
           >
@@ -581,28 +496,26 @@ export function AgencyMission() {
               <Sparkles className={`w-5 h-5 ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`} />
             </motion.div>
             <span
-              className={`tracking-widest uppercase ${
-                theme === 'dark' ? 'text-purple-300' : 'text-purple-700'
-              }`}
+              className={`tracking-widest uppercase ${theme === 'dark' ? 'text-purple-300' : 'text-purple-700'
+                }`}
               style={{ fontSize: '0.875rem', fontWeight: '600' }}
             >
-              What We Do For You
+              What We Deliver
             </span>
           </motion.div>
 
           <motion.h2
-            className={`mb-8 transition-colors ${
-              theme === 'dark' ? 'text-white' : 'text-slate-900'
-            }`}
+            className={`mb-8 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+              }`}
             style={{ fontSize: '4rem', lineHeight: '1.1', fontWeight: '800' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Empowering Your{' '}
+            Modernize, Automate & Scale with{' '}
             <br />
-            <motion.span 
+            <motion.span
               className="bg-gradient-to-r from-purple-500 via-blue-500 to-blue-500 bg-clip-text text-transparent"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
@@ -616,21 +529,20 @@ export function AgencyMission() {
                 backgroundSize: '200% auto',
               }}
             >
-              Digital Success
+              Enterprise-Grade Digital Systems
             </motion.span>
           </motion.h2>
 
           <motion.p
-            className={`text-xl transition-colors max-w-3xl mx-auto ${
-              theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-            }`}
+            className={`text-xl transition-colors max-w-3xl mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+              }`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             viewport={{ once: true }}
           >
-            We transform your ideas into powerful digital experiences that drive growth, 
-            engage users, and deliver measurable results.
+            From strategic Odoo ERP rollouts and AI-native automation to production-ready software platforms
+            and 'Search-Everywhere' SEO, we build the growth engines that modern businesses require to scale.
           </motion.p>
         </motion.div>
 
@@ -647,11 +559,10 @@ export function AgencyMission() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className={`mb-32 p-16 backdrop-blur-2xl border-2 relative overflow-hidden ${
-            theme === 'dark'
+          className={`mb-32 p-16 backdrop-blur-2xl border-2 relative overflow-hidden ${theme === 'dark'
               ? 'bg-slate-900/60 border-slate-800'
               : 'bg-white/80 border-slate-200 shadow-2xl'
-          }`}
+            }`}
           style={{ borderRadius: '3rem' }}
         >
           {/* Decorative elements */}
@@ -676,15 +587,14 @@ export function AgencyMission() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className={`relative overflow-hidden p-16 backdrop-blur-2xl border-2 ${
-            theme === 'dark'
+          className={`relative overflow-hidden p-16 backdrop-blur-2xl border-2 ${theme === 'dark'
               ? 'bg-gradient-to-br from-purple-900/40 via-blue-900/40 to-purple-900/40 border-purple-500/30'
               : 'bg-gradient-to-br from-purple-50 via-blue-50 to-purple-50 border-purple-300'
-          }`}
+            }`}
           style={{ borderRadius: '3rem' }}
         >
           {/* Animated dots pattern */}
-          <motion.div 
+          <motion.div
             className="absolute inset-0 opacity-20"
             style={{
               backgroundImage: `radial-gradient(circle, rgba(${BRAND_RGB}, ${theme === 'dark' ? 0.35 : 0.25}) 2px, transparent 2px)`,
@@ -731,35 +641,32 @@ export function AgencyMission() {
                     }}
                   />
                 ))}
-                
+
                 <CheckCircle2 className="w-20 h-20 relative z-10 brand-text" />
               </div>
             </motion.div>
 
             <h3
-              className={`mb-6 transition-colors ${
-                theme === 'dark' ? 'text-white' : 'text-slate-900'
-              }`}
+              className={`mb-6 transition-colors ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+                }`}
               style={{ fontSize: '2.5rem', fontWeight: '800', lineHeight: '1.2' }}
             >
               Ready to Transform Your Digital Presence?
             </h3>
 
             <p
-              className={`mb-10 text-lg leading-relaxed transition-colors ${
-                theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
-              }`}
+              className={`mb-10 text-lg leading-relaxed transition-colors ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+                }`}
             >
-              Let's collaborate to build something extraordinary. Our team is ready to bring 
+              Let's collaborate to build something extraordinary. Our team is ready to bring
               your vision to life with cutting-edge technology and creative excellence.
             </p>
 
             <motion.button
-              className={`group relative px-10 py-5 overflow-hidden backdrop-blur-xl border-2 transition-all ${
-                theme === 'dark'
+              className={`group relative px-10 py-5 overflow-hidden backdrop-blur-xl border-2 transition-all ${theme === 'dark'
                   ? 'bg-purple-600 border-purple-500 text-white'
                   : 'bg-purple-600 border-purple-600 text-white'
-              }`}
+                }`}
               style={{ borderRadius: '1.5rem', fontSize: '1.125rem', fontWeight: '700' }}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
@@ -776,7 +683,7 @@ export function AgencyMission() {
                   repeatDelay: 1,
                 }}
               />
-              
+
               <span className="relative z-10 flex items-center gap-3">
                 Start Your Project
                 <motion.div
