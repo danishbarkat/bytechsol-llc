@@ -542,9 +542,9 @@ export function OurApproach() {
 
               {/* Main Glass Card */}
               <div
-                className={`relative backdrop-blur-xl border overflow-hidden shadow-2xl ${theme === 'dark'
-                    ? 'bg-slate-900/80 border-slate-700/50'
-                    : 'bg-white/80 border-slate-300/50'
+                className={`relative backdrop-blur-xl border shadow-2xl ${theme === 'dark'
+                  ? 'bg-slate-900/80 border-slate-700/50'
+                  : 'bg-white/80 border-slate-300/50'
                   }`}
                 style={{
                   borderRadius: '2.5rem',
@@ -553,365 +553,53 @@ export function OurApproach() {
                     inset 0 0 60px ${displayItem.color}10
                   `,
                   zIndex: 3,
+                  minHeight: '650px',
+                  maxHeight: '85vh',
                 }}
               >
-                {/* Animated Corner Accents */}
-                {[
-                  { top: '-10px', left: '-10px', rotate: 0 },
-                  { top: '-10px', right: '-10px', rotate: 90 },
-                  { bottom: '-10px', left: '-10px', rotate: 270 },
-                  { bottom: '-10px', right: '-10px', rotate: 180 },
-                ].map((pos, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-20 h-20 pointer-events-none"
-                    style={{
-                      ...pos,
-                      background: `linear-gradient(135deg, ${displayItem.color}40, transparent)`,
-                      clipPath: 'polygon(0 0, 100% 0, 0 100%)',
-                      transform: `rotate(${pos.rotate}deg)`,
-                    }}
-                    animate={{
-                      opacity: [0.3, 0.8, 0.3],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                    }}
-                  />
-                ))}
+                <div className="absolute inset-0 overflow-y-auto custom-scrollbar rounded-[2.5rem]">
+                  {/* Animated Corner Accents */}
+                  {[
+                    { top: '-10px', left: '-10px', rotate: 0 },
+                    { top: '-10px', right: '-10px', rotate: 90 },
+                    { bottom: '-10px', left: '-10px', rotate: 270 },
+                    { bottom: '-10px', right: '-10px', rotate: 180 },
+                  ].map((pos, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-20 h-20 pointer-events-none"
+                      style={{
+                        ...pos,
+                        background: `linear-gradient(135deg, ${displayItem.color}40, transparent)`,
+                        clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+                        transform: `rotate(${pos.rotate}deg)`,
+                      }}
+                      animate={{
+                        opacity: [0.3, 0.8, 0.3],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.5,
+                      }}
+                    />
+                  ))}
 
-                {/* Holographic Top Bar with Data Stream */}
-                <div className="relative h-2 overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0"
-                    style={{
-                      background: `linear-gradient(90deg, 
+                  {/* Holographic Top Bar with Data Stream */}
+                  <div className="relative h-2 overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(90deg, 
                         transparent 0%, 
                         ${displayItem.color} 20%,
                         ${displayItem.color}80 50%,
                         ${displayItem.color} 80%,
                         transparent 100%
                       )`,
-                    }}
-                    animate={{
-                      x: ['-100%', '100%'],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'linear',
-                    }}
-                  />
-                </div>
-
-                {/* Content Container */}
-                <div className="relative p-10" style={{ zIndex: 4 }}>
-                  {/* Floating 3D Icon Container */}
-                  <div className="flex items-start gap-8 mb-10">
-                    <motion.div
-                      className="relative flex-shrink-0"
-                      style={{
-                        transformStyle: 'preserve-3d',
-                        perspective: '800px',
                       }}
                       animate={{
-                        rotateY: [0, 10, 0, -10, 0],
-                        rotateX: [0, 5, 0, -5, 0],
-                        z: [0, 20, 0],
-                      }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                    >
-                      {/* Holographic Layers Behind Icon */}
-                      {[0, 1, 2].map((layer) => (
-                        <motion.div
-                          key={layer}
-                          className="absolute inset-0 rounded-2xl border-2"
-                          style={{
-                            width: '120px',
-                            height: '120px',
-                            borderColor: `${displayItem.color}40`,
-                            transform: `translateZ(-${layer * 20}px)`,
-                          }}
-                          animate={{
-                            scale: [1, 1.05, 1],
-                            opacity: [0.3, 0.1, 0.3],
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            delay: layer * 0.3,
-                          }}
-                        />
-                      ))}
-
-                      {/* Main Icon Box */}
-                      <motion.div
-                        className={`relative overflow-hidden ${theme === 'dark' ? 'bg-slate-800' : 'bg-slate-100'
-                          }`}
-                        style={{
-                          width: '120px',
-                          height: '120px',
-                          borderRadius: '1.5rem',
-                          border: `3px solid ${displayItem.color}`,
-                          boxShadow: `
-                            0 0 40px ${displayItem.color}50,
-                            inset 0 0 40px ${displayItem.color}20
-                          `,
-                          transform: 'translateZ(0)',
-                        }}
-                        key={`icon-${activeIndex}`}
-                        initial={{ rotateY: -180, scale: 0.5 }}
-                        animate={{ rotateY: 0, scale: 1 }}
-                        transition={{ type: 'spring', bounce: 0.5, delay: 0.2 }}
-                      >
-                        {/* Scanning Line Effect */}
-                        <motion.div
-                          className="absolute inset-x-0 h-8 pointer-events-none"
-                          style={{
-                            background: `linear-gradient(180deg, transparent, ${displayItem.color}60, transparent)`,
-                            filter: 'blur(8px)',
-                          }}
-                          animate={{
-                            y: [-40, 160],
-                          }}
-                          transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                            ease: 'linear',
-                          }}
-                        />
-
-                        <div className="w-full h-full flex items-center justify-center relative z-10">
-                          <displayItem.icon
-                            className="w-14 h-14"
-                            style={{
-                              color: displayItem.color,
-                              filter: `drop-shadow(0 0 12px ${displayItem.color})`,
-                            }}
-                          />
-                        </div>
-
-                        {/* Corner Glow Dots */}
-                        {[
-                          { top: 8, left: 8 },
-                          { top: 8, right: 8 },
-                          { bottom: 8, left: 8 },
-                          { bottom: 8, right: 8 },
-                        ].map((pos, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute w-3 h-3 rounded-full"
-                            style={{
-                              ...pos,
-                              background: displayItem.color,
-                              boxShadow: `0 0 10px ${displayItem.color}`,
-                            }}
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [1, 0.5, 1],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              delay: i * 0.4,
-                            }}
-                          />
-                        ))}
-                      </motion.div>
-                    </motion.div>
-
-                    {/* Title Section */}
-                    <div className="flex-1 pt-4">
-                      <motion.div
-                        initial={{ x: -30, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        {!isBenefit && (
-                          <div
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
-                            style={{
-                              background: `${displayItem.color}20`,
-                              border: `2px solid ${displayItem.color}60`,
-                              boxShadow: `0 0 20px ${displayItem.color}30`,
-                            }}
-                          >
-                            <div
-                              className="w-2 h-2 rounded-full animate-pulse"
-                              style={{ background: displayItem.color }}
-                            />
-                            <span
-                              style={{
-                                fontSize: '0.75rem',
-                                fontWeight: '800',
-                                color: displayItem.color,
-                                letterSpacing: '0.15em',
-                              }}
-                            >
-                              STEP {(displayItem as any).step}
-                            </span>
-                          </div>
-                        )}
-                      </motion.div>
-
-                      <motion.h3
-                        className={`mb-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
-                        style={{
-                          fontSize: '2rem',
-                          fontWeight: '800',
-                          lineHeight: '1.2',
-                          textShadow: `0 0 30px ${displayItem.color}30`,
-                        }}
-                        initial={{ x: -30, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        {displayItem.title}
-                      </motion.h3>
-
-                      <motion.p
-                        className={`leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
-                        style={{ fontSize: '1rem' }}
-                        initial={{ x: -30, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        {displayItem.description}
-                      </motion.p>
-                    </div>
-                  </div>
-
-                  {/* Holographic Details Panel */}
-                  <motion.div
-                    className={`relative p-8 rounded-2xl border mb-6 overflow-hidden ${theme === 'dark' ? 'bg-slate-800/30 border-slate-700/30' : 'bg-slate-50/50 border-slate-200'
-                      }`}
-                    style={{
-                      backdropFilter: 'blur(20px)',
-                      boxShadow: `inset 0 0 40px ${displayItem.color}10`,
-                    }}
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                  >
-                    {/* Animated Grid Background */}
-                    <motion.div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage: `
-                          linear-gradient(${displayItem.color} 1px, transparent 1px),
-                          linear-gradient(90deg, ${displayItem.color} 1px, transparent 1px)
-                        `,
-                        backgroundSize: '30px 30px',
-                      }}
-                      animate={{
-                        backgroundPosition: ['0px 0px', '30px 30px'],
-                      }}
-                      transition={{
-                        duration: 10,
-                        repeat: Infinity,
-                        ease: 'linear',
-                      }}
-                    />
-
-                    <h4
-                      className={`mb-6 flex items-center gap-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
-                      style={{ fontSize: '1.25rem', fontWeight: '700' }}
-                    >
-                      <motion.div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center"
-                        style={{
-                          background: displayItem.color,
-                          boxShadow: `0 0 20px ${displayItem.color}60`,
-                        }}
-                        animate={{
-                          boxShadow: [
-                            `0 0 20px ${displayItem.color}60`,
-                            `0 0 30px ${displayItem.color}80`,
-                            `0 0 20px ${displayItem.color}60`,
-                          ],
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <Check className="w-5 h-5 text-white" />
-                      </motion.div>
-                      {displayItem.details.subtitle}
-                    </h4>
-
-                    <div className="space-y-4 relative z-10">
-                      {displayItem.details.points.map((point, index) => (
-                        <motion.div
-                          key={index}
-                          className="flex items-start gap-4 group"
-                          initial={{ x: -30, opacity: 0 }}
-                          animate={{ x: 0, opacity: 1 }}
-                          transition={{ delay: 0.7 + index * 0.08 }}
-                        >
-                          <motion.div
-                            className="relative w-6 h-6 flex-shrink-0 mt-1"
-                            whileHover={{ scale: 1.2, rotate: 180 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                          >
-                            {/* Hexagon Shape */}
-                            <svg viewBox="0 0 24 24" className="w-full h-full">
-                              <motion.polygon
-                                points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"
-                                fill={`${displayItem.color}30`}
-                                stroke={displayItem.color}
-                                strokeWidth="2"
-                                animate={{
-                                  scale: [1, 1.1, 1],
-                                }}
-                                transition={{
-                                  duration: 2,
-                                  repeat: Infinity,
-                                  delay: index * 0.2,
-                                }}
-                              />
-                              <circle
-                                cx="12"
-                                cy="12"
-                                r="3"
-                                fill={displayItem.color}
-                                style={{ filter: `drop-shadow(0 0 6px ${displayItem.color})` }}
-                              />
-                            </svg>
-                          </motion.div>
-                          <p className={`leading-relaxed flex-1 ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                            {point}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  {/* Outcome Holographic Badge */}
-                  <motion.div
-                    className="relative p-6 rounded-xl overflow-hidden"
-                    style={{
-                      background: theme === 'dark'
-                        ? `linear-gradient(135deg, ${displayItem.color}20, ${displayItem.color}10)`
-                        : `linear-gradient(135deg, ${displayItem.color}15, ${displayItem.color}05)`,
-                      border: `2px solid ${displayItem.color}40`,
-                      boxShadow: `0 0 30px ${displayItem.color}20`,
-                    }}
-                    initial={{ scale: 0.95, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 1.1 }}
-                  >
-                    {/* Animated Light Ray */}
-                    <motion.div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, ${displayItem.color}30, transparent)`,
-                      }}
-                      animate={{
-                        x: ['-100%', '200%'],
+                        x: ['-100%', '100%'],
                       }}
                       transition={{
                         duration: 3,
@@ -919,93 +607,409 @@ export function OurApproach() {
                         ease: 'linear',
                       }}
                     />
+                  </div>
 
-                    <div className="flex items-start gap-4 relative z-10">
+                  {/* Content Container */}
+                  <div className="relative p-10" style={{ zIndex: 4 }}>
+                    {/* Floating 3D Icon Container */}
+                    <div className="flex items-start gap-8 mb-10">
                       <motion.div
-                        className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                        className="relative flex-shrink-0"
                         style={{
-                          background: displayItem.color,
-                          boxShadow: `0 0 20px ${displayItem.color}80`,
+                          transformStyle: 'preserve-3d',
+                          perspective: '800px',
                         }}
                         animate={{
-                          rotate: [0, 360],
+                          rotateY: [0, 10, 0, -10, 0],
+                          rotateX: [0, 5, 0, -5, 0],
+                          z: [0, 20, 0],
+                        }}
+                        transition={{
+                          duration: 8,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
+                      >
+                        {/* Holographic Layers Behind Icon */}
+                        {[0, 1, 2].map((layer) => (
+                          <motion.div
+                            key={layer}
+                            className="absolute inset-0 rounded-2xl border-2"
+                            style={{
+                              width: '120px',
+                              height: '120px',
+                              borderColor: `${displayItem.color}40`,
+                              transform: `translateZ(-${layer * 20}px)`,
+                            }}
+                            animate={{
+                              scale: [1, 1.05, 1],
+                              opacity: [0.3, 0.1, 0.3],
+                            }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              delay: layer * 0.3,
+                            }}
+                          />
+                        ))}
+
+                        {/* Main Icon Box */}
+                        <motion.div
+                          className={`relative overflow-hidden ${theme === 'dark' ? 'bg-slate-800' : 'bg-slate-100'
+                            }`}
+                          style={{
+                            width: '120px',
+                            height: '120px',
+                            borderRadius: '1.5rem',
+                            border: `3px solid ${displayItem.color}`,
+                            boxShadow: `
+                            0 0 40px ${displayItem.color}50,
+                            inset 0 0 40px ${displayItem.color}20
+                          `,
+                            transform: 'translateZ(0)',
+                          }}
+                          key={`icon-${activeIndex}`}
+                          initial={{ rotateY: -180, scale: 0.5 }}
+                          animate={{ rotateY: 0, scale: 1 }}
+                          transition={{ type: 'spring', bounce: 0.5, delay: 0.2 }}
+                        >
+                          {/* Scanning Line Effect */}
+                          <motion.div
+                            className="absolute inset-x-0 h-8 pointer-events-none"
+                            style={{
+                              background: `linear-gradient(180deg, transparent, ${displayItem.color}60, transparent)`,
+                              filter: 'blur(8px)',
+                            }}
+                            animate={{
+                              y: [-40, 160],
+                            }}
+                            transition={{
+                              duration: 2.5,
+                              repeat: Infinity,
+                              ease: 'linear',
+                            }}
+                          />
+
+                          <div className="w-full h-full flex items-center justify-center relative z-10">
+                            <displayItem.icon
+                              className="w-14 h-14"
+                              style={{
+                                color: displayItem.color,
+                                filter: `drop-shadow(0 0 12px ${displayItem.color})`,
+                              }}
+                            />
+                          </div>
+
+                          {/* Corner Glow Dots */}
+                          {[
+                            { top: 8, left: 8 },
+                            { top: 8, right: 8 },
+                            { bottom: 8, left: 8 },
+                            { bottom: 8, right: 8 },
+                          ].map((pos, i) => (
+                            <motion.div
+                              key={i}
+                              className="absolute w-3 h-3 rounded-full"
+                              style={{
+                                ...pos,
+                                background: displayItem.color,
+                                boxShadow: `0 0 10px ${displayItem.color}`,
+                              }}
+                              animate={{
+                                scale: [1, 1.5, 1],
+                                opacity: [1, 0.5, 1],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                delay: i * 0.4,
+                              }}
+                            />
+                          ))}
+                        </motion.div>
+                      </motion.div>
+
+                      {/* Title Section */}
+                      <div className="flex-1 pt-4">
+                        <motion.div
+                          initial={{ x: -30, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {!isBenefit && (
+                            <div
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
+                              style={{
+                                background: `${displayItem.color}20`,
+                                border: `2px solid ${displayItem.color}60`,
+                                boxShadow: `0 0 20px ${displayItem.color}30`,
+                              }}
+                            >
+                              <div
+                                className="w-2 h-2 rounded-full animate-pulse"
+                                style={{ background: displayItem.color }}
+                              />
+                              <span
+                                style={{
+                                  fontSize: '0.75rem',
+                                  fontWeight: '800',
+                                  color: displayItem.color,
+                                  letterSpacing: '0.15em',
+                                }}
+                              >
+                                STEP {(displayItem as any).step}
+                              </span>
+                            </div>
+                          )}
+                        </motion.div>
+
+                        <motion.h3
+                          className={`mb-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
+                          style={{
+                            fontSize: '2rem',
+                            fontWeight: '800',
+                            lineHeight: '1.2',
+                            textShadow: `0 0 30px ${displayItem.color}30`,
+                          }}
+                          initial={{ x: -30, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.4 }}
+                        >
+                          {displayItem.title}
+                        </motion.h3>
+
+                        <motion.p
+                          className={`leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
+                          style={{ fontSize: '1rem' }}
+                          initial={{ x: -30, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.5 }}
+                        >
+                          {displayItem.description}
+                        </motion.p>
+                      </div>
+                    </div>
+
+                    {/* Holographic Details Panel */}
+                    <motion.div
+                      className={`relative p-8 rounded-2xl border mb-6 overflow-hidden ${theme === 'dark' ? 'bg-slate-800/30 border-slate-700/30' : 'bg-slate-50/50 border-slate-200'
+                        }`}
+                      style={{
+                        backdropFilter: 'blur(20px)',
+                        boxShadow: `inset 0 0 40px ${displayItem.color}10`,
+                      }}
+                      initial={{ y: 30, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      {/* Animated Grid Background */}
+                      <motion.div
+                        className="absolute inset-0 opacity-10"
+                        style={{
+                          backgroundImage: `
+                          linear-gradient(${displayItem.color} 1px, transparent 1px),
+                          linear-gradient(90deg, ${displayItem.color} 1px, transparent 1px)
+                        `,
+                          backgroundSize: '30px 30px',
+                        }}
+                        animate={{
+                          backgroundPosition: ['0px 0px', '30px 30px'],
                         }}
                         transition={{
                           duration: 10,
                           repeat: Infinity,
                           ease: 'linear',
                         }}
+                      />
+
+                      <h4
+                        className={`mb-6 flex items-center gap-3 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
+                        style={{ fontSize: '1.25rem', fontWeight: '700' }}
                       >
-                        {isBenefit ? (
-                          <CheckCircle2 className="w-6 h-6 text-white" />
-                        ) : (
-                          <TrendingUp className="w-6 h-6 text-white" />
-                        )}
-                      </motion.div>
-
-                      <div className="flex-1">
-                        <h4
-                          className={`mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
-                          style={{ fontSize: '1.125rem', fontWeight: '700' }}
-                        >
-                          {isBenefit ? 'Key Benefit' : 'Expected Outcome'}
-                        </h4>
-                        <p
-                          className={`leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
-                          style={{ fontSize: '0.95rem', fontWeight: '500' }}
-                        >
-                          {displayItem.details.outcome}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Progress Indicator - Only for Approaches */}
-                  {!isBenefit && (
-                    <div className="flex items-center justify-center gap-2 mt-8">
-                      {approaches.map((item, index) => (
                         <motion.div
-                          key={item.step}
-                          className="cursor-pointer relative"
-                          whileHover={{ scale: 1.2 }}
+                          className="w-10 h-10 rounded-lg flex items-center justify-center"
+                          style={{
+                            background: displayItem.color,
+                            boxShadow: `0 0 20px ${displayItem.color}60`,
+                          }}
+                          animate={{
+                            boxShadow: [
+                              `0 0 20px ${displayItem.color}60`,
+                              `0 0 30px ${displayItem.color}80`,
+                              `0 0 20px ${displayItem.color}60`,
+                            ],
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
                         >
-                          <motion.div
-                            className="rounded-full relative overflow-hidden"
-                            animate={{
-                              width: activeIndex === benefits.length + index ? '40px' : '10px',
-                              height: '10px',
-                            }}
-                            transition={{ duration: 0.4, type: 'spring' }}
-                            style={{
-                              background: activeIndex === benefits.length + index
-                                ? displayItem.color
-                                : theme === 'dark' ? '#334155' : '#cbd5e1',
-                              boxShadow: activeIndex === benefits.length + index
-                                ? `0 0 15px ${displayItem.color}`
-                                : 'none',
-                            }}
-                          >
-                            {activeIndex === benefits.length + index && (
-                              <motion.div
-                                className="absolute inset-0"
-                                style={{
-                                  background: `linear-gradient(90deg, transparent, white, transparent)`,
-                                }}
-                                animate={{
-                                  x: ['-100%', '200%'],
-                                }}
-                                transition={{
-                                  duration: 1.5,
-                                  repeat: Infinity,
-                                  ease: 'linear',
-                                }}
-                              />
-                            )}
-                          </motion.div>
+                          <Check className="w-5 h-5 text-white" />
                         </motion.div>
-                      ))}
-                    </div>
-                  )}
+                        {displayItem.details.subtitle}
+                      </h4>
+
+                      <div className="space-y-4 relative z-10">
+                        {displayItem.details.points.map((point, index) => (
+                          <motion.div
+                            key={index}
+                            className="flex items-start gap-4 group"
+                            initial={{ x: -30, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 0.7 + index * 0.08 }}
+                          >
+                            <motion.div
+                              className="relative w-6 h-6 flex-shrink-0 mt-1"
+                              whileHover={{ scale: 1.2, rotate: 180 }}
+                              transition={{ type: 'spring', stiffness: 300 }}
+                            >
+                              {/* Hexagon Shape */}
+                              <svg viewBox="0 0 24 24" className="w-full h-full">
+                                <motion.polygon
+                                  points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"
+                                  fill={`${displayItem.color}30`}
+                                  stroke={displayItem.color}
+                                  strokeWidth="2"
+                                  animate={{
+                                    scale: [1, 1.1, 1],
+                                  }}
+                                  transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    delay: index * 0.2,
+                                  }}
+                                />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="3"
+                                  fill={displayItem.color}
+                                  style={{ filter: `drop-shadow(0 0 6px ${displayItem.color})` }}
+                                />
+                              </svg>
+                            </motion.div>
+                            <p className={`leading-relaxed flex-1 ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                              {point}
+                            </p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+
+                    {/* Outcome Holographic Badge */}
+                    <motion.div
+                      className="relative p-6 rounded-xl overflow-hidden"
+                      style={{
+                        background: theme === 'dark'
+                          ? `linear-gradient(135deg, ${displayItem.color}20, ${displayItem.color}10)`
+                          : `linear-gradient(135deg, ${displayItem.color}15, ${displayItem.color}05)`,
+                        border: `2px solid ${displayItem.color}40`,
+                        boxShadow: `0 0 30px ${displayItem.color}20`,
+                      }}
+                      initial={{ scale: 0.95, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 1.1 }}
+                    >
+                      {/* Animated Light Ray */}
+                      <motion.div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background: `linear-gradient(90deg, transparent, ${displayItem.color}30, transparent)`,
+                        }}
+                        animate={{
+                          x: ['-100%', '200%'],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: 'linear',
+                        }}
+                      />
+
+                      <div className="flex items-start gap-4 relative z-10">
+                        <motion.div
+                          className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={{
+                            background: displayItem.color,
+                            boxShadow: `0 0 20px ${displayItem.color}80`,
+                          }}
+                          animate={{
+                            rotate: [0, 360],
+                          }}
+                          transition={{
+                            duration: 10,
+                            repeat: Infinity,
+                            ease: 'linear',
+                          }}
+                        >
+                          {isBenefit ? (
+                            <CheckCircle2 className="w-6 h-6 text-white" />
+                          ) : (
+                            <TrendingUp className="w-6 h-6 text-white" />
+                          )}
+                        </motion.div>
+
+                        <div className="flex-1">
+                          <h4
+                            className={`mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
+                            style={{ fontSize: '1.125rem', fontWeight: '700' }}
+                          >
+                            {isBenefit ? 'Key Benefit' : 'Expected Outcome'}
+                          </h4>
+                          <p
+                            className={`leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}
+                            style={{ fontSize: '0.95rem', fontWeight: '500' }}
+                          >
+                            {displayItem.details.outcome}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Progress Indicator - Only for Approaches */}
+                    {!isBenefit && (
+                      <div className="flex items-center justify-center gap-2 mt-8">
+                        {approaches.map((item, index) => (
+                          <motion.div
+                            key={item.step}
+                            className="cursor-pointer relative"
+                            whileHover={{ scale: 1.2 }}
+                          >
+                            <motion.div
+                              className="rounded-full relative overflow-hidden"
+                              animate={{
+                                width: activeIndex === benefits.length + index ? '40px' : '10px',
+                                height: '10px',
+                              }}
+                              transition={{ duration: 0.4, type: 'spring' }}
+                              style={{
+                                background: activeIndex === benefits.length + index
+                                  ? displayItem.color
+                                  : theme === 'dark' ? '#334155' : '#cbd5e1',
+                                boxShadow: activeIndex === benefits.length + index
+                                  ? `0 0 15px ${displayItem.color}`
+                                  : 'none',
+                              }}
+                            >
+                              {activeIndex === benefits.length + index && (
+                                <motion.div
+                                  className="absolute inset-0"
+                                  style={{
+                                    background: `linear-gradient(90deg, transparent, white, transparent)`,
+                                  }}
+                                  animate={{
+                                    x: ['-100%', '200%'],
+                                  }}
+                                  transition={{
+                                    duration: 1.5,
+                                    repeat: Infinity,
+                                    ease: 'linear',
+                                  }}
+                                />
+                              )}
+                            </motion.div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -1,114 +1,119 @@
 import { motion } from 'motion/react';
-import { Mail, ArrowRight, Star } from 'lucide-react';
+import { Mail, ArrowRight, Star, Send, MapPin, Phone, MessageSquare } from 'lucide-react';
+import { useTheme } from './ThemeContext';
 
 export function Contact() {
+  const { theme } = useTheme();
+
   return (
-    <section id="contact" className="relative py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - CTA */}
+    <section id="contact" className="relative py-24 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-20 items-start">
+          {/* Left Side: Impactful CTA & Stats */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="mb-6 text-white">
-              Let&apos;s Build Your Digital Future
+            <h2 className={`text-4xl md:text-6xl font-black mb-8 leading-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+              Let's Build Your <br />
+              <span className="text-indigo-500">Digital Empire</span>
             </h2>
-            <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-              Ready to accelerate your business with intelligent digital solutions that drive results?
-              At Bytechsol, we turn complex ideas into user-focused platforms built to scale and succeed.
+            <p className={`text-xl mb-12 leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+              Ready to accelerate your business with intelligent digital solutions?
+              At BytechSol, we turn complex ideas into high-performance platforms built for the future.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-8">
-              <button className="px-8 py-4 rounded-xl bg-purple-600 text-white shadow-2xl shadow-purple-600/30 hover:bg-purple-500 transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                Start Your Transformation
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <a
-                href="mailto:info@bytechsol.com"
-                className="px-8 py-4 rounded-xl bg-slate-800 border border-slate-700 text-white shadow-lg hover:shadow-xl hover:bg-slate-700 transition-all duration-300 hover:scale-105 flex items-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                info@bytechsol.com
-              </a>
+            {/* Support Channels */}
+            <div className="space-y-6 mb-12">
+              {[
+                { icon: Mail, label: 'Email Us', value: 'contact@bytechsol.com', color: 'text-blue-500' },
+                { icon: Phone, label: 'Call Support', value: '+92 321 4531234', color: 'text-emerald-500' },
+                { icon: MapPin, label: 'Global Hub', value: 'Dubai | London | Pakistan', color: 'text-purple-500' }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-6 group cursor-pointer">
+                  <div className={`w-14 h-14 rounded-2xl ${theme === 'dark' ? 'bg-white/5 border-white/5' : 'bg-slate-100 border-slate-200'} border flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform shadow-lg`}>
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-black uppercase tracking-widest text-slate-500 mb-1">{item.label}</div>
+                    <div className={`text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{item.value}</div>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Awards badges */}
-            <div className="flex flex-wrap gap-4">
+            {/* trust badges */}
+            <div className="flex flex-wrap gap-4 pt-12 border-t border-white/5">
               {[
-                { label: 'Clutch Top Rated', color: '#ff4b2b' },
-                { label: 'Upwork Expert', color: '#37a000' },
-                { label: '5.0 Google Rating', color: '#fbbc05' }
-              ].map((award, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-800/80 border border-slate-700 shadow-xl backdrop-blur-md"
-                >
-                  <Star className="w-5 h-5 fill-current" style={{ color: award.color }} />
-                  <span className="text-white font-bold">{award.label}</span>
-                </motion.div>
+                { label: 'Top Agency', icon: Star, color: 'text-yellow-500' },
+                { label: 'Enterprise Ready', icon: ShieldCheck, color: 'text-indigo-500' },
+                { label: '24/7 Support', icon: MessageSquare, color: 'text-emerald-500' }
+              ].map((badge, idx) => (
+                <div key={idx} className={`flex items-center gap-2 px-6 py-3 rounded-full border ${theme === 'dark' ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
+                  <badge.icon className={`w-4 h-4 ${badge.color}`} />
+                  <span className={`text-xs font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{badge.label}</span>
+                </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right side - Contact Form */}
+          {/* Right Side: High-End Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="p-8 rounded-3xl bg-slate-800 border border-slate-700 shadow-2xl">
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-white mb-2">Name</label>
-                  <input
-                    type="text"
-                    placeholder="Enter full name"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 shadow-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all"
-                  />
+            <div className={`p-10 md:p-14 rounded-[4rem] border transition-all duration-500 ${theme === 'dark' ? 'bg-slate-900/50 border-white/5 shadow-3xl' : 'bg-white border-slate-200 shadow-2xl'
+              }`}>
+              <form className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className={`text-sm font-black uppercase tracking-widest ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      className={`w-full px-6 py-5 rounded-2xl border transition-all ${theme === 'dark' ? 'bg-slate-950/50 border-white/5 focus:border-indigo-500' : 'bg-slate-50 border-slate-100 focus:border-indigo-500'
+                        } outline-none`}
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <label className={`text-sm font-black uppercase tracking-widest ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>Work Email</label>
+                    <input
+                      type="email"
+                      placeholder="john@company.com"
+                      className={`w-full px-6 py-5 rounded-2xl border transition-all ${theme === 'dark' ? 'bg-slate-950/50 border-white/5 focus:border-indigo-500' : 'bg-slate-50 border-slate-100 focus:border-indigo-500'
+                        } outline-none`}
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-white mb-2">Email</label>
-                  <input
-                    type="email"
-                    placeholder="Enter email"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 shadow-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-white mb-2">Subject</label>
-                  <select className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white shadow-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all">
-                    <option>Select One</option>
-                    <option>Web Development</option>
-                    <option>Mobile App</option>
-                    <option>AI/ML Services</option>
-                    <option>ERP Solutions</option>
-                    <option>Other</option>
+                <div className="space-y-3">
+                  <label className={`text-sm font-black uppercase tracking-widest ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>Subject</label>
+                  <select className={`w-full px-6 py-5 rounded-2xl border transition-all ${theme === 'dark' ? 'bg-slate-950/50 border-white/5 focus:border-indigo-500' : 'bg-slate-50 border-slate-100 focus:border-indigo-500'
+                    } outline-none appearance-none`}>
+                    <option>General Transformation</option>
+                    <option>AI / LLM Integration</option>
+                    <option>Odoo ERP Implementation</option>
+                    <option>Custom Web Product</option>
+                    <option>Industrial Automation</option>
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-white mb-2">Message</label>
+                <div className="space-y-3">
+                  <label className={`text-sm font-black uppercase tracking-widest ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>Message</label>
                   <textarea
-                    rows={4}
-                    placeholder="Tell us about your project..."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 shadow-sm focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 transition-all resize-none"
+                    rows={5}
+                    placeholder="Tell us about your project vision..."
+                    className={`w-full px-6 py-5 rounded-2xl border transition-all resize-none ${theme === 'dark' ? 'bg-slate-950/50 border-white/5 focus:border-indigo-500' : 'bg-slate-50 border-slate-100 focus:border-indigo-500'
+                      } outline-none`}
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full px-8 py-4 rounded-xl bg-purple-600 text-white shadow-xl shadow-purple-600/30 hover:bg-purple-500 transition-all duration-300 hover:scale-105"
-                >
-                  Submit Enquiry
+                <button className="w-full py-6 rounded-3xl bg-indigo-600 text-white font-black text-lg hover:bg-indigo-500 shadow-xl shadow-indigo-500/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                  Send Message <Send className="w-5 h-5" />
                 </button>
               </form>
             </div>

@@ -12,6 +12,12 @@ import { CareersPage } from './components/CareersPage';
 import { PressKitPage } from './components/PressKitPage';
 import { ContactPage } from './components/ContactPage';
 import { PrivacyPolicyPage } from './components/PrivacyPolicyPage';
+import { TermsOfServicePage } from './components/TermsOfServicePage';
+import { CookiePolicyPage } from './components/CookiePolicyPage';
+import { GdprCompliancePage } from './components/GdprCompliancePage';
+import { HelpCenterPage } from './components/HelpCenterPage';
+import { TechStackPage } from './components/TechStackPage';
+import { CaseStudiesPage } from './components/CaseStudiesPage';
 import { AdminPage } from './components/AdminPage';
 import { BlogPage } from './components/BlogPage';
 import { TechStack } from './components/TechStack';
@@ -145,19 +151,34 @@ function AppContent() {
     return renderPage(<PrivacyPolicyPage />);
   }
 
-  // Show terms of service page (reusing privacy policy component for now)
+  // Show terms of service page
   if (currentRoute === '/terms-of-service') {
-    return renderPage(<PrivacyPolicyPage />);
+    return renderPage(<TermsOfServicePage />);
   }
 
-  // Show cookie policy page (reusing privacy policy component for now)
+  // Show cookie policy page
   if (currentRoute === '/cookie-policy') {
-    return renderPage(<PrivacyPolicyPage />);
+    return renderPage(<CookiePolicyPage />);
   }
 
-  // Show GDPR compliance page (reusing privacy policy component for now)
+  // Show GDPR compliance page
   if (currentRoute === '/gdpr-compliance') {
-    return renderPage(<PrivacyPolicyPage />);
+    return renderPage(<GdprCompliancePage />);
+  }
+
+  // Show help center page
+  if (currentRoute === '/help-center') {
+    return renderPage(<HelpCenterPage />);
+  }
+
+  // Show tech stack page
+  if (currentRoute === '/tech-stack') {
+    return renderPage(<TechStackPage />);
+  }
+
+  // Show case studies page
+  if (currentRoute === '/case-studies') {
+    return renderPage(<CaseStudiesPage />);
   }
 
   // Show service detail pages for specific services

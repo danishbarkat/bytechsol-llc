@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowRight,
   Zap,
@@ -438,19 +438,19 @@ export function AboutPage() {
 
       <ContactTeam />
 
-      {/* FAQ Section */}
-      <section className={`py-32 px-4 ${isDark ? 'bg-slate-900' : 'bg-gradient-to-br from-slate-50 to-white'}`}>
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`text-5xl mb-16 text-center font-black tracking-tighter ${isDark ? 'text-white' : 'text-[#111827]'}`}
-          >
-            Frequently asked questions
-          </motion.h2>
+      {/* FAQ Section - Redesigned to match Odoo premium style */}
+      <section className={`py-32 px-6 border-t ${isDark ? 'bg-slate-950 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-blue-500">
+              FAQ
+            </span>
+            <h2 className={`text-4xl md:text-5xl font-medium mb-12 text-[#4A7DFF]`} style={{ fontFamily: '"Fraunces", serif', letterSpacing: '-0.02em' }}>
+              Frequently asked questions
+            </h2>
+          </div>
 
-          <div className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-6 items-start">
             {[
               {
                 q: 'What makes Bytechsol different from other software development companies?',
@@ -494,29 +494,35 @@ export function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className={`rounded-2xl border overflow-hidden hover:border-[#4A7DFF]/50 transition-all ${isDark ? 'bg-slate-950 border-white/5' : 'bg-white border-gray-200 shadow-sm'}`}
+                className={`rounded-3xl transition-all duration-300 p-6 ${isDark
+                  ? 'bg-white/[0.03] border border-white/10 hover:border-white/20'
+                  : 'bg-white border border-slate-200 shadow-[0_30px_60px_rgba(15,23,42,0.12)] hover:shadow-xl'
+                  } ${openFaq === idx ? 'ring-1 ring-blue-500/30' : ''}`}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className={`w-full px-8 py-6 flex items-center justify-between text-left font-bold ${isDark ? 'hover:bg-white/5' : 'hover:bg-slate-50'} transition-colors`}
+                  className="w-full flex items-start justify-between text-left gap-4"
                 >
-                  <span className={`text-lg pr-4 ${isDark ? 'text-white' : 'text-[#111827]'}`}>{faq.q}</span>
+                  <span className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>{faq.q}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#4A7DFF] flex-shrink-0 transition-transform ${openFaq === idx ? 'rotate-180' : ''
+                    className={`w-5 h-5 transition-transform duration-300 flex-shrink-0 mt-1 ${openFaq === idx ? 'rotate-180 text-blue-500' : 'text-slate-400'
                       }`}
                   />
                 </button>
-                {openFaq === idx && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="px-8 pb-6"
-                  >
-                    <p className={`leading-relaxed font-medium ${isDark ? 'text-slate-400' : 'text-[#1F2937]'}`}>{faq.a}</p>
-                  </motion.div>
-                )}
+                <AnimatePresence>
+                  {openFaq === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className={`mt-4 text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>

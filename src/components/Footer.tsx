@@ -15,10 +15,10 @@ const footerLinks = {
   ],
   resources: [
     { label: 'Resources Hub', route: '/resources' },
-    { label: 'Case Studies', route: '/portfolio' },
-    { label: 'Tech Stack', route: '/' },
+    { label: 'Case Studies', route: '/case-studies' },
+    { label: 'Tech Stack', route: '/tech-stack' },
     { label: 'Press Kit', route: '/press-kit' },
-    { label: 'Help Center', route: '/contact' },
+    { label: 'Help Center', route: '/help-center' },
   ],
   legal: [
     { label: 'Privacy Policy', route: '/privacy-policy' },

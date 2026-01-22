@@ -1,5 +1,5 @@
 import React, { Fragment, useState, type ComponentType } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowRight,
   BarChart3,
@@ -178,7 +178,7 @@ const serviceBlocks = [
     title: '2. Full-Scale Odoo ERP Implementation',
     offer:
       "We deliver end-to-end Odoo implementation from configuration and data migration to training and go-live support. Our methodology emphasizes short implementation cycles with continuous validation, reducing the risks that typically derail ERP deployments.",
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Full-Scale Odoo ERP Implementation.jpg',
     deliverables: [
       'Fully configured Odoo instance aligned to your workflows',
       'Clean data migration of master data and open transactions',
@@ -202,7 +202,7 @@ const serviceBlocks = [
     title: '3. Odoo Optimization & Upgrade Services',
     offer:
       "Already on Odoo? We audit your setup, remove technical debt, and upgrade to Odoo 18 to unlock new capabilities. Many clients maintain custom modules that now exist as standard features. We replace those where possible and refactor the rest using Odoo best practices.",
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Odoo Optimization & Upgrade Services.jpg',
     deliverables: [
       'System audit covering customizations and bottlenecks',
       'Technical debt assessment with annual cost projections',
@@ -279,7 +279,7 @@ const industries = [
     title: 'Legal Services & Law Firms',
     description:
       'Matter management with timelines, trust accounting compliance, and secure client portals.',
-    image: 'https://images.unsplash.com/photo-1505666287802-931dc83948e9?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Legal Services & Law Firms.jpg',
     features: [
       'Time tracking with mobile support and WIP billing',
       'Conflict checking and document management',
@@ -290,7 +290,7 @@ const industries = [
     title: 'Marketing Agencies & Creative Services',
     description:
       'Project management, retainer tracking, and profitability insights by client and campaign.',
-    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Marketing Agencies & Creative Services.jpg',
     features: [
       'Resource allocation and time tracking tied to billing',
       'Client portal for briefs and approvals',
@@ -301,7 +301,7 @@ const industries = [
     title: 'Manufacturing & Production',
     description:
       'MRP with procurement automation, quality control, and traceability.',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Manufacturing & Production.jpg',
     features: [
       'Work order management with shop floor tablets',
       'Batch and serial tracking for compliance',
@@ -312,7 +312,7 @@ const industries = [
     title: 'E-Commerce & Retail',
     description:
       'Unified ecommerce, POS, inventory, and accounting across channels.',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/E-Commerce & Retail.jpg',
     features: [
       'Multi-channel selling with real-time inventory sync',
       'Automated dropshipping and fulfillment workflows',
@@ -323,7 +323,7 @@ const industries = [
     title: 'Professional Services & Consulting',
     description:
       'Project-based billing, timesheets, and real-time profitability tracking.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Professional Services & Consulting.jpg',
     features: [
       'Flexible billing: hourly, fixed-fee, value-based',
       'Expense tracking with automatic client invoicing',
@@ -334,7 +334,7 @@ const industries = [
     title: 'Non-Profit Organizations & NGOs',
     description:
       'Donor management, grant tracking, and program accounting.',
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/Non-Profit Organizations & NGOs.jpg',
     features: [
       'Contribution tracking with acknowledgment letters',
       'Volunteer scheduling and hour tracking',
@@ -345,7 +345,7 @@ const industries = [
     title: 'Food & Beverage',
     description:
       'Recipe management, batch traceability, and seasonal production planning.',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Odoo Service/food & beverage.jpg',
     features: [
       'FIFO and FEFO inventory controls',
       'Ingredient costing and nutritional labeling',
@@ -400,7 +400,7 @@ const customWebServiceBlocks = [
     title: '1. Custom Website Design & Development',
     offer:
       'We create bespoke websites that reflect your brand identity while delivering exceptional user experiences and powerful backend functionality. Every element is designed around your business model and customer journey, giving you unlimited flexibility to implement exactly what you need.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Custom Website Design & Development High Res.png',
     deliverables: [
       'Fully responsive custom website designed for all devices and screen sizes',
       'Bespoke UI/UX design aligned with your brand guidelines and target audience preferences',
@@ -427,7 +427,7 @@ const customWebServiceBlocks = [
     title: '2. Custom eCommerce Development',
     offer:
       'We build powerful eCommerce platforms tailored to your catalog, sales model, and customer experience requirements. From B2B portals to subscription commerce and configurators, we deliver conversion-optimized shopping experiences that reduce cart abandonment and increase average order value.',
-    image: 'https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Custom eCommerce Development High Res 2.png',
     deliverables: [
       'Custom eCommerce platform built on WooCommerce, Magento, or bespoke architecture',
       'Advanced product catalog with custom attributes, variations, and filtering systems',
@@ -457,7 +457,7 @@ const customWebServiceBlocks = [
     title: '3. Custom Web Application Development',
     offer:
       'We develop sophisticated web applications that automate workflows, manage data, and empower your team and customers. Custom apps are built around your exact processes for performance, security, and scalability.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Custom Web Application Development High Res.png',
     deliverables: [
       'Fully custom web application built with modern frameworks',
       'Responsive interface for desktop, tablet, and mobile access',
@@ -492,7 +492,7 @@ const webDesignServiceBlocks = [
     title: '1. AI-Powered Personalization & Intelligent UX',
     offer:
       'We build adaptive experiences that adjust messaging, recommendations, and CTAs based on visitor intent signals. Personalization stays privacy-conscious and keeps your brand voice authentic.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Website & Development/AI-Powered Personalization & Intelligent UX.jpg',
     deliverables: [
       'Personalization strategy mapping segments to content variants',
       'Privacy-first behavioral tracking with consent controls',
@@ -515,7 +515,7 @@ const webDesignServiceBlocks = [
     title: '2. Performance Optimization & Technical Excellence',
     offer:
       'We engineer websites to meet Core Web Vitals targets, improve AI visibility, and deliver fast experiences across every device. Performance gains boost conversions and rankings.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Website & Development/Performance Optimization & Technical Excellence.jpg',
     deliverables: [
       'Core Web Vitals optimization for LCP, INP, and CLS',
       'Optimized media assets using modern formats (WebP, AVIF)',
@@ -538,7 +538,7 @@ const webDesignServiceBlocks = [
     title: '3. Accessibility Compliance & Inclusive Design',
     offer:
       'We deliver WCAG 2.2-ready experiences that expand reach, reduce legal risk, and serve every user. Accessibility is embedded into design systems and development workflows.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Website & Development/Accessibility Compliance & Inclusive Design.jpg',
     deliverables: [
       'WCAG 2.2 accessibility audit with remediation roadmap',
       'Accessible design system for colors, typography, and components',
@@ -651,7 +651,7 @@ const customWebIndustries = [
     title: 'Professional Services & Consulting',
     description:
       'Client portals, project management, and workflow automation that streamline delivery.',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Professional Services & Consulting.jpg',
     features: [
       'Client portals with project tracking and approvals',
       'Time tracking tied to billing and proposals',
@@ -662,7 +662,7 @@ const customWebIndustries = [
     title: 'Healthcare & Medical',
     description:
       'Secure patient portals, scheduling, and telemedicine-ready workflows.',
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Healthcare & Medical.jpg',
     features: [
       'HIPAA-ready patient data handling',
       'Appointment scheduling and reminders',
@@ -673,7 +673,7 @@ const customWebIndustries = [
     title: 'Real Estate',
     description:
       'Property listings, lead capture, and transaction management built for scale.',
-    image: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Real estate.jpg',
     features: [
       'IDX and property listing management',
       'Lead capture with CRM sync',
@@ -684,7 +684,7 @@ const customWebIndustries = [
     title: 'Education & E-Learning',
     description:
       'Learning platforms, student portals, and assessment systems for modern delivery.',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Education and e-learning.jpg',
     features: [
       'LMS and course registration flows',
       'Student portals with progress tracking',
@@ -695,7 +695,7 @@ const customWebIndustries = [
     title: 'Manufacturing & Distribution',
     description:
       'Inventory, ordering, and supplier portals that reduce operational friction.',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Manufacturing & Distribution.jpg',
     features: [
       'Inventory and order tracking systems',
       'Supplier and B2B customer portals',
@@ -706,7 +706,76 @@ const customWebIndustries = [
     title: 'Nonprofit & NGO',
     description:
       'Donor management, volunteer coordination, and impact reporting platforms.',
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Custom Web Solution/Nonprofit & NGO.jpg',
+    features: [
+      'Donor management with recurring giving',
+      'Volunteer coordination and scheduling',
+      'Event registration and grant tracking'
+    ]
+  }
+];
+
+const webDesignIndustries = [
+  {
+    title: 'Professional Services & Consulting',
+    description:
+      'Client portals, project management, and workflow automation that streamline delivery.',
+    image: '/assets/services/Website & Development/Professional Services & Consulting.jpg',
+    features: [
+      'Client portals with project tracking and approvals',
+      'Time tracking tied to billing and proposals',
+      'Resource allocation and utilization dashboards'
+    ]
+  },
+  {
+    title: 'Healthcare & Medical',
+    description:
+      'Secure patient portals, scheduling, and telemedicine-ready workflows.',
+    image: '/assets/services/Website & Development/Healthcare & Medical.jpg',
+    features: [
+      'HIPAA-ready patient data handling',
+      'Appointment scheduling and reminders',
+      'Secure document exchange and intake'
+    ]
+  },
+  {
+    title: 'Real Estate',
+    description:
+      'Property listings, lead capture, and transaction management built for scale.',
+    image: '/assets/services/Website & Development/Real Estate.jpg',
+    features: [
+      'IDX and property listing management',
+      'Lead capture with CRM sync',
+      'Document hubs for transaction tracking'
+    ]
+  },
+  {
+    title: 'Education & E-Learning',
+    description:
+      'Learning platforms, student portals, and assessment systems for modern delivery.',
+    image: '/assets/services/Website & Development/Education & E-Learning.jpg',
+    features: [
+      'LMS and course registration flows',
+      'Student portals with progress tracking',
+      'Online assessments and certification'
+    ]
+  },
+  {
+    title: 'Manufacturing & Distribution',
+    description:
+      'Inventory, ordering, and supplier portals that reduce operational friction.',
+    image: '/assets/services/Website & Development/Manufacturing & Distribution.jpg',
+    features: [
+      'Inventory and order tracking systems',
+      'Supplier and B2B customer portals',
+      'Production and fulfillment scheduling'
+    ]
+  },
+  {
+    title: 'Nonprofit & NGO',
+    description:
+      'Donor management, volunteer coordination, and impact reporting platforms.',
+    image: '/assets/services/Website & Development/Nonprofit & NGO.jpg',
     features: [
       'Donor management with recurring giving',
       'Volunteer coordination and scheduling',
@@ -788,7 +857,7 @@ const mobileAppServiceBlocks = [
     title: '1. Native iOS & Android App Development',
     offer:
       "We build high-performance native apps with Swift/SwiftUI and Kotlin, delivering the smoothest UX, full device access, and platform-first experiences users expect from top apps.",
-    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Native iOS & Android App Development High Res.png',
     deliverables: [
       'Native iOS app built with Swift and SwiftUI',
       'Native Android app built with Kotlin and Material Design',
@@ -813,7 +882,7 @@ const mobileAppServiceBlocks = [
     title: '2. Cross-Platform App Development (React Native & Flutter)',
     offer:
       'Launch faster with a single codebase for iOS and Android while preserving near-native performance, consistent UX, and lower total cost of ownership.',
-    image: 'https://images.unsplash.com/photo-1551817958-20204d6ab799?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Cross-Platform%20App%20Development%20(React%20Native%20&%20Flutter).jpg',
     deliverables: [
       'Single codebase running on iOS and Android',
       'Platform-adaptive UI that feels native on each OS',
@@ -838,7 +907,7 @@ const mobileAppServiceBlocks = [
     title: '3. Progressive Web App (PWA) Development',
     offer:
       'Deliver app-like experiences through the browser with instant updates, offline support, and maximum reach without app store gatekeeping.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Progressive%20Web%20App%20(PWA)%20Development.jpg',
     deliverables: [
       'Mobile-first responsive web app with app-like UI',
       'Service workers for offline access and caching',
@@ -909,7 +978,7 @@ const mobileIndustries = [
     title: 'E-Commerce & Retail',
     description:
       'Mobile shopping apps with secure checkout, loyalty, and push-driven promotions.',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Ecommerce%20&%20Retail.jpg',
     features: [
       'Product catalogs with smart filters',
       'Apple Pay / Google Pay checkout',
@@ -920,7 +989,7 @@ const mobileIndustries = [
     title: 'Healthcare & Wellness',
     description:
       'Telemedicine, scheduling, and patient engagement experiences built for trust.',
-    image: 'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Healthcare%20&%20Wellness.jpg',
     features: [
       'Appointment booking and reminders',
       'HIPAA-ready messaging workflows',
@@ -931,7 +1000,7 @@ const mobileIndustries = [
     title: 'Finance & Fintech',
     description:
       'Secure mobile banking, payments, and financial planning experiences.',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Finance%20&%20Fintech.jpg',
     features: [
       'Biometric authentication and encryption',
       'Real-time transactions and alerts',
@@ -942,7 +1011,7 @@ const mobileIndustries = [
     title: 'Food & Delivery',
     description:
       'Ordering, delivery tracking, and loyalty features that drive repeat usage.',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Food%20&%20Delivery.jpg',
     features: [
       'Live order tracking and ETA updates',
       'In-app payments and saved cards',
@@ -953,7 +1022,7 @@ const mobileIndustries = [
     title: 'Real Estate',
     description:
       'Property search, virtual tours, and agent communications on the go.',
-    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Real%20Estate.jpg',
     features: [
       'Map-based listings and alerts',
       'Virtual tours and media galleries',
@@ -964,7 +1033,7 @@ const mobileIndustries = [
     title: 'Education & E-Learning',
     description:
       'Learning apps with course delivery, progress tracking, and engagement.',
-    image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Mobile App Development/Education%20&%20E-Learning.jpg',
     features: [
       'Interactive lessons and quizzes',
       'Offline content downloads',
@@ -1035,7 +1104,7 @@ const ecommerceServiceBlocks = [
     title: '1. Shopify Store Development & Optimization',
     offer:
       'Launch fast with Shopify stores designed for conversion, mobile shopping, and effortless management. We customize themes, streamline checkout, and set up automation so you can focus on growth.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Shopify%20Store%20Development%20&%20Optimization.jpg',
     deliverables: [
       'Shopify setup with custom theme and branding',
       'Mobile-optimized storefront and navigation',
@@ -1060,7 +1129,7 @@ const ecommerceServiceBlocks = [
     title: '2. WooCommerce Store Development (WordPress)',
     offer:
       'Own your store with WooCommerce and get full flexibility for custom workflows, content-driven SEO, and advanced product configurations.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/WooCommerce%20Store%20Development%20(WordPress).jpg',
     deliverables: [
       'WordPress + WooCommerce install on optimized hosting',
       'Custom theme or premium theme customization',
@@ -1085,7 +1154,7 @@ const ecommerceServiceBlocks = [
     title: '3. Custom E-commerce Platform Development',
     offer:
       'Build a bespoke commerce platform when your business model demands unique flows, proprietary features, or enterprise-scale performance.',
-    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Custom%20E-commerce%20Platform%20Development.jpg',
     deliverables: [
       'Custom storefront and checkout experiences',
       'API-first architecture with integrations',
@@ -1155,37 +1224,37 @@ const ecommerceIndustries = [
   {
     title: 'Fashion & DTC',
     description: 'High-converting storefronts with personalized merchandising.',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Fashion%20and%20Dtc.jpg',
     features: ['Variant management', 'Lookbook merchandising', 'Fast mobile checkout']
   },
   {
     title: 'Beauty & Wellness',
     description: 'Subscription-ready commerce with loyalty and reviews.',
-    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Beauty%20&%20Wellness.jpg',
     features: ['Subscriptions', 'Ratings and reviews', 'Bundled offers']
   },
   {
     title: 'Electronics & Gadgets',
     description: 'Complex catalogs with filters and compatibility guidance.',
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Electronics%20&%20Gadgets.jpg',
     features: ['Advanced filters', 'Comparison tools', 'Warranty workflows']
   },
   {
     title: 'Food & Grocery',
     description: 'Inventory-aware checkout with delivery logistics.',
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Food%20&%20Grocery.jpg',
     features: ['Scheduled delivery', 'Substitutions', 'Order batching']
   },
   {
     title: 'B2B & Wholesale',
     description: 'Account-based pricing, approvals, and bulk ordering.',
-    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/B2B%20&%20Wholesale.jpg',
     features: ['Tiered pricing', 'Quote workflows', 'ERP integration']
   },
   {
     title: 'Digital Products',
     description: 'Secure delivery for downloads, licenses, and access.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Ecommerce%20Solution/Digital%20Product.jpg',
     features: ['License management', 'Instant delivery', 'Access control']
   }
 ];
@@ -1230,7 +1299,7 @@ const brandServiceBlocks = [
     title: '1. Brand Strategy & Identity Development',
     offer:
       'Define who you are, what you stand for, and why customers choose you. We build strategic brand foundations and visual identity systems that scale across every touchpoint.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand Building/Brand Strategy & Identity Development.jpg',
     deliverables: [
       'Brand positioning and messaging framework',
       'Audience personas and competitive analysis',
@@ -1253,7 +1322,7 @@ const brandServiceBlocks = [
     title: '2. Digital Marketing Strategy & Execution',
     offer:
       'Integrated SEO, paid media, content, and email campaigns that work together to drive qualified traffic, conversions, and measurable ROI.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand Building/Digital Marketing Strategy & Execution.jpg',
     deliverables: [
       'Multi-channel marketing strategy and roadmap',
       'SEO audits, keyword strategy, and content plan',
@@ -1276,7 +1345,7 @@ const brandServiceBlocks = [
     title: '3. Social Media Management & Influencer Marketing',
     offer:
       'Build engaged communities with consistent content, community management, and influencer partnerships that amplify brand trust.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand Building/Social Media Management & Influencer Marketing.jpg',
     deliverables: [
       'Platform-specific social strategy and calendar',
       'Creative production for posts and short-form video',
@@ -1329,37 +1398,37 @@ const brandIndustries = [
   {
     title: 'Professional Services',
     description: 'Positioning and credibility for consultancies and agencies.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80',
     features: ['Authority content', 'Lead funnels', 'Brand trust']
   },
   {
     title: 'Retail & E-commerce',
     description: 'Brand systems and campaigns that convert on mobile.',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand%20Building/Retail%20&%20E-commerce.jpg',
     features: ['Conversion messaging', 'Paid social', 'Retention flows']
   },
   {
     title: 'Healthcare & Wellness',
     description: 'Trust-driven identity and patient communication.',
-    image: 'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
     features: ['Reputation management', 'Community growth', 'Education content']
   },
   {
     title: 'B2B & SaaS',
     description: 'Demand generation and positioning for complex sales cycles.',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand%20Building/B2B%20&%20SaaS.jpg',
     features: ['ABM campaigns', 'Thought leadership', 'Lead nurturing']
   },
   {
     title: 'Hospitality & Food',
     description: 'Local visibility, reviews, and social storytelling.',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand%20Building/Hospitality%20&%20Food.jpg',
     features: ['Local SEO', 'Social engagement', 'Influencer reach']
   },
   {
     title: 'Education & Nonprofit',
     description: 'Mission-driven branding that builds communities.',
-    image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/Brand%20Building/Education%20&%20Nonprofit.jpg',
     features: ['Storytelling', 'Community growth', 'Campaign strategy']
   }
 ];
@@ -1404,7 +1473,7 @@ const seoServiceBlocks = [
     title: '1. Technical SEO & Website Optimization',
     offer:
       'We fix crawlability, speed, structure, and schema so search engines and AI systems can fully understand and rank your site.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Technical%20SEO%20&%20Website%20Optimization.jpg',
     deliverables: [
       'Full technical SEO audit and prioritized fixes',
       'Core Web Vitals and speed optimization',
@@ -1427,7 +1496,7 @@ const seoServiceBlocks = [
     title: '2. Content Strategy & On-Page SEO',
     offer:
       'We build topical authority with content clusters, buyer-intent keywords, and on-page optimization that converts.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Content%20Strategy%20&%20On-Page%20SEO.jpg',
     deliverables: [
       'Keyword research and topic clustering',
       'Content gap analysis and roadmap',
@@ -1450,7 +1519,7 @@ const seoServiceBlocks = [
     title: '3. Authority Building & Link Acquisition',
     offer:
       'We grow domain authority through digital PR, high-quality links, and brand mentions that AI systems trust.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Authority%20Building%20&%20Link%20Acquisition.jpg',
     deliverables: [
       'Backlink audit and cleanup',
       'Digital PR and editorial placements',
@@ -1503,37 +1572,37 @@ const seoIndustries = [
   {
     title: 'Professional Services',
     description: 'Local and national visibility for service firms.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Professional%20Services.jpg',
     features: ['Local SEO', 'Lead funnels', 'Authority content']
   },
   {
     title: 'E-commerce',
     description: 'Product discoverability and category dominance.',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/E-commerce.jpg',
     features: ['Product schema', 'Category SEO', 'Buying guides']
   },
   {
     title: 'Healthcare',
     description: 'Trust-focused content and compliant visibility.',
-    image: 'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Healthcare.jpg',
     features: ['E-E-A-T signals', 'Local presence', 'Authority building']
   },
   {
     title: 'B2B & SaaS',
     description: 'Topical authority for long sales cycles.',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/B2B%20&%20SaaS.jpg',
     features: ['Cluster strategy', 'Comparison pages', 'Demand capture']
   },
   {
     title: 'Education',
     description: 'Search visibility for programs and courses.',
-    image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Education.jpg',
     features: ['Program pages', 'SEO content', 'Schema']
   },
   {
     title: 'Hospitality & Food',
     description: 'Local search and review-driven growth.',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/SEO%20Services/Hospitality%20&%20Food.jpg',
     features: ['Local pack rankings', 'Reputation SEO', 'Mobile speed']
   }
 ];
@@ -1578,7 +1647,7 @@ const aiServiceBlocks = [
     title: '1. AI Strategy & Feasibility Assessment',
     offer:
       'We identify high-impact AI opportunities, validate feasibility, and build a phased roadmap aligned to business goals and compliance needs.',
-    image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/AI Strategy & Feasibility Assessment.jpg',
     deliverables: [
       'AI opportunity assessment and prioritization',
       'Feasibility analysis and technical requirements',
@@ -1599,7 +1668,7 @@ const aiServiceBlocks = [
     title: '2. Machine Learning Model Development',
     offer:
       'Custom ML models for prediction, NLP, computer vision, and recommendations—built for production, monitored, and optimized.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/Machine Learning Model Development.jpg',
     deliverables: [
       'Custom model development and documentation',
       'Training data pipelines and feature engineering',
@@ -1620,7 +1689,7 @@ const aiServiceBlocks = [
     title: '3. AI Agents & Automation Systems',
     offer:
       'Autonomous AI agents that automate multi-step workflows across finance, operations, HR, and customer service.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/AI Agents & Automation Systems.jpg',
     deliverables: [
       'AI agent design and orchestration',
       'Integration with ERP/CRM/data systems',
@@ -1671,37 +1740,37 @@ const aiIndustries = [
   {
     title: 'Finance & Operations',
     description: 'Process automation and predictive insights.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/Finance & Operations.jpg',
     features: ['Forecasting', 'Document automation', 'Risk scoring']
   },
   {
     title: 'Healthcare',
     description: 'NLP, triage, and workflow automation.',
-    image: 'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/Healthcare.jpg',
     features: ['Clinical NLP', 'Routing automation', 'Compliance']
   },
   {
     title: 'Retail & E-commerce',
     description: 'Personalization and demand prediction.',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/Retail & E-commerce.jpg',
     features: ['Recommendations', 'Churn prediction', 'Pricing AI']
   },
   {
     title: 'Customer Support',
     description: 'Conversational AI and ticket automation.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/Customer Support.jpg',
     features: ['Chatbots', 'Routing', 'Knowledge search']
   },
   {
     title: 'Manufacturing',
     description: 'Quality inspection and predictive maintenance.',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/Manufacturing.jpg',
     features: ['Vision AI', 'Downtime prediction', 'Process optimization']
   },
   {
     title: 'B2B & SaaS',
     description: 'Intelligent workflows and product insights.',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/AIML Services/B2B & SaaS.jpg',
     features: ['Usage insights', 'Automation', 'Revenue analytics']
   }
 ];
@@ -1746,7 +1815,7 @@ const erpServiceBlocks = [
     title: '1. Comprehensive ERP Needs Assessment',
     offer:
       'We map workflows, data readiness, integrations, and organizational change needs to define the right ERP requirements.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Comprehensive ERP Needs Assessment.jpg',
     deliverables: [
       'Requirements and future-state process maps',
       'Integration architecture and system inventory',
@@ -1767,7 +1836,7 @@ const erpServiceBlocks = [
     title: '2. Vendor Comparison & Selection',
     offer:
       'Objective evaluation of ERP platforms aligned to your size, industry, and growth—so you pick the right fit from day one.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Vendor Comparison & Selection.jpg',
     deliverables: [
       'Vendor scoring matrix and shortlist',
       'TCO analysis and risk review',
@@ -1788,7 +1857,7 @@ const erpServiceBlocks = [
     title: '3. Implementation Roadmap & Planning',
     offer:
       'Phased rollout plans that reduce risk, align teams, and deliver on-time go-live with strong adoption.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Implementation Roadmap & Planning.jpg',
     deliverables: [
       'Phased project plan and timeline',
       'Resource and budget allocation plan',
@@ -1839,37 +1908,37 @@ const erpIndustries = [
   {
     title: 'Manufacturing',
     description: 'MRP, procurement, and shop-floor visibility.',
-    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Manufacturing.jpg',
     features: ['Production planning', 'Quality control', 'Inventory accuracy']
   },
   {
     title: 'Logistics & Distribution',
     description: 'WMS/TMS integration and real-time tracking.',
-    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Logistics & Distribution.jpg',
     features: ['Warehouse visibility', 'Route optimization', 'Cost control']
   },
   {
     title: 'Retail & E-commerce',
     description: 'Omnichannel inventory and finance.',
-    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Retail & E-commerce.jpg',
     features: ['POS integration', 'Demand planning', 'Margin insights']
   },
   {
     title: 'Healthcare',
     description: 'Compliance-ready operations and finance.',
-    image: 'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Healthcare.jpg',
     features: ['Audit trails', 'Data security', 'Process control']
   },
   {
     title: 'Professional Services',
     description: 'Project accounting and resource planning.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Professional Services.jpg',
     features: ['Time tracking', 'Budgeting', 'Utilization']
   },
   {
     title: 'Finance Teams',
     description: 'Automation for AP/AR and forecasting.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
+    image: '/assets/services/ERP Services/Finance Teams.jpg',
     features: ['Cash flow forecasts', 'Close automation', 'Controls']
   }
 ];
@@ -1987,7 +2056,7 @@ const odooContent = {
       'Our proven methodology helps businesses eliminate operational chaos, reduce costs, and scale with confidence. Whether you need a full implementation, a GAP analysis, or an upgrade, we deliver measurable ROI within 90 days of go-live.',
     primaryCta: 'Book a discovery call',
     secondaryCta: 'Contact us today',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80'
+    image: '/assets/services/Odoo Service/Make Odoo the backbone of your operations.jpg'
   },
   faqs
 };
@@ -2023,7 +2092,8 @@ const customWebContent = {
       title: 'Control & Flexibility',
       text:
         'Templates lock you into pre-defined structures. Custom development gives unlimited flexibility to build exactly what your business needs.',
-      pills: ['Unlimited flexibility', 'Built to fit workflows']
+      pills: ['Unlimited flexibility', 'Built to fit workflows'],
+      image: '/assets/services/Custom Web Solution/Control & Flexibility.jpg'
     },
     dark: {
       title: 'Performance & Speed',
@@ -2032,23 +2102,27 @@ const customWebContent = {
       statHighlight: '53% bounce over 3s',
       statHighlightColor: '#ff6b7a',
       text:
-        'Custom builds remove bloated code and deliver faster page speeds that improve SEO and conversions.'
+        'Custom builds remove bloated code and deliver faster page speeds that improve SEO and conversions.',
+      image: '/assets/services/Custom Web Solution/Performance & Speed.jpg'
     },
     white: {
       label: 'Integration Capabilities',
       title: 'Integration Capabilities',
       text:
         'Connect your website with CRM, accounting, marketing, and operations systems through tailored data flows.',
-      bullets: ['CRM and lead sync', 'Accounting automation', 'Marketing triggers']
+      bullets: ['CRM and lead sync', 'Accounting automation', 'Marketing triggers'],
+      image: '/assets/services/Custom Web Solution/Integration Capabilities.jpg'
     },
     orange: {
       title: 'Security by Design',
       text:
-        'Custom code reduces automated attacks and allows targeted security hardening for your exact setup.'
+        'Custom code reduces automated attacks and allows targeted security hardening for your exact setup.',
+      image: '/assets/services/Custom Web Solution/Security by Design.jpg'
     },
     green: {
       value: 'Scale',
-      label: 'Ready for growth'
+      label: 'Ready for growth',
+      image: '/assets/services/Custom Web Solution/Scale.jpg'
     }
   },
   comparison: {
@@ -2080,7 +2154,7 @@ const customWebContent = {
       'Stop compromising with templates that do not fit your business. Invest in a custom solution that delivers the exact functionality, performance, and integrations you need to grow.',
     primaryCta: 'Book a consultation',
     secondaryCta: 'Contact us today',
-    image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1200&q=80'
+    image: '/assets/services/Custom Web Solution/CTA Ready To Build.png'
   },
   faqs: customWebFaqs
 };
@@ -2116,7 +2190,8 @@ const webDesignContent = {
       title: 'AI-powered personalization',
       text:
         'Intent-based experiences deliver higher conversions without invasive tracking.',
-      pills: ['15-40% lift', 'Privacy-first']
+      pills: ['15-40% lift', 'Privacy-first'],
+      image: '/assets/services/Website & Development/AI-powered personalization.jpg'
     },
     dark: {
       title: 'Performance discipline',
@@ -2125,23 +2200,27 @@ const webDesignContent = {
       statHighlight: '53% abandon over 3s',
       statHighlightColor: '#ff6b7a',
       text:
-        'Fast websites keep visitors engaged and improve search rankings across devices.'
+        'Fast websites keep visitors engaged and improve search rankings across devices.',
+      image: '/assets/services/Website & Development/Performance discipline.jpg'
     },
     white: {
       label: 'Accessibility compliance',
       title: 'Accessibility compliance',
       text:
         'WCAG 2.2-ready experiences expand reach and reduce legal and usability risk.',
-      bullets: ['Keyboard navigation', 'Screen reader support', 'Clear contrast']
+      bullets: ['Keyboard navigation', 'Screen reader support', 'Clear contrast'],
+      image: '/assets/services/Website & Development/Accessibility compliance.jpg'
     },
     orange: {
       title: 'Answer engine optimization',
       text:
-        'Structured content and schema improve visibility in AI-driven search results.'
+        'Structured content and schema improve visibility in AI-driven search results.',
+      image: '/assets/services/Website & Development/Answer engine optimization.jpg'
     },
     green: {
       value: '24/7',
-      label: 'Sales asset'
+      label: 'Sales asset',
+      image: '/assets/services/Website & Development/7 Sales asset.jpg'
     }
   },
   comparison: {
@@ -2164,7 +2243,7 @@ const webDesignContent = {
     title: 'Web design across industries',
     subtitle:
       'We build modern websites for professional services, healthcare, education, manufacturing, and more.',
-    items: customWebIndustries
+    items: webDesignIndustries
   },
   cta: {
     eyebrow: 'Ready to launch',
@@ -2209,7 +2288,8 @@ const mobileAppContent = {
       title: 'Mobile-first reach',
       text:
         '60-70% of web traffic is mobile and users spend 90% of their time in apps, not browsers.',
-      pills: ['60-70% traffic', '90% time in apps']
+      pills: ['60-70% traffic', '90% time in apps'],
+      image: '/assets/services/Mobile App Development/Mobile-first reach.jpg'
     },
     dark: {
       title: 'Pricing on inquiry',
@@ -2218,23 +2298,27 @@ const mobileAppContent = {
       statHighlight: 'On inquiry',
       statHighlightColor: '#ff6b7a',
       text:
-        'We share pricing after understanding scope, feature complexity, and platform mix. You get a clear, tailored proposal.'
+        'We share pricing after understanding scope, feature complexity, and platform mix. You get a clear, tailored proposal.',
+      image: '/assets/services/Mobile App Development/Pricing on inquiry.jpg'
     },
     white: {
       label: 'Platform fit',
       title: 'Platform fit',
       text:
         'We guide the decision between native, cross-platform, and PWA based on audience, features, and ROI.',
-      bullets: ['Audience platform mix', 'Performance vs budget', 'Maintenance efficiency']
+      bullets: ['Audience platform mix', 'Performance vs budget', 'Maintenance efficiency'],
+      image: '/assets/services/Mobile App Development/Platform fit.jpg'
     },
     orange: {
       title: 'Engagement engine',
       text:
-        'Push notifications, offline flows, and fast UX drive repeat usage and higher conversions.'
+        'Push notifications, offline flows, and fast UX drive repeat usage and higher conversions.',
+      image: '/assets/services/Mobile App Development/Engagement engine.jpg'
     },
     green: {
       value: '3-5x',
-      label: 'Higher engagement'
+      label: 'Higher engagement',
+      image: '/assets/services/Mobile App Development/Higher engagement.jpg'
     }
   },
   comparison: {
@@ -2302,7 +2386,8 @@ const ecommerceContent = {
       title: 'Conversion-first design',
       text:
         'Streamlined checkout, trust signals, and optimized product pages reduce cart abandonment.',
-      pills: ['Frictionless checkout', 'Mobile-first UX']
+      pills: ['Frictionless checkout', 'Mobile-first UX'],
+      image: '/assets/services/Ecommerce%20Solution/Conversion-first%20design.jpg'
     },
     dark: {
       title: 'Pricing on inquiry',
@@ -2311,14 +2396,16 @@ const ecommerceContent = {
       statHighlight: 'On inquiry',
       statHighlightColor: '#ff6b7a',
       text:
-        'We provide tailored ecommerce proposals based on platform, integrations, and scope.'
+        'We provide tailored ecommerce proposals based on platform, integrations, and scope.',
+      image: '/assets/services/Ecommerce%20Solution/Pricing%20on%20inquiry.jpg'
     },
     white: {
       label: 'Payments & logistics',
       title: 'Payments & logistics',
       text:
         'We configure gateways, shipping, taxes, and fulfillment workflows that match your operations.',
-      bullets: ['Multi-gateway checkout', 'Shipping automation', 'Tax-ready flows']
+      bullets: ['Multi-gateway checkout', 'Shipping automation', 'Tax-ready flows'],
+      image: '/assets/services/Ecommerce%20Solution/Payments%20&%20logistics.jpg'
     },
     orange: {
       title: 'Automation & retention',
@@ -2327,7 +2414,8 @@ const ecommerceContent = {
     },
     green: {
       value: 'Growth',
-      label: 'Revenue focused'
+      label: 'Revenue focused',
+      image: '/assets/services/Ecommerce%20Solution/Growth.jpg'
     }
   },
   comparison: {
@@ -2364,6 +2452,9 @@ const ecommerceContent = {
   faqs: ecommerceFaqs
 };
 
+
+
+
 const brandContent = {
   hero: {
     badge: 'Brand Building',
@@ -2392,9 +2483,9 @@ const brandContent = {
     highlight: 'wins',
     subtitle: 'Strong positioning makes every marketing channel perform better.',
     blue: {
-      title: 'Strategic clarity',
-      text:
-        'Clear positioning and messaging reduce confusion and accelerate customer trust.',
+      image: '/assets/services/Brand Building/Strategic clarity.jpg',
+      title: 'Prioritize clarity',
+      text: 'Clear positioning and messaging reduce confusion and accelerate customer trust.',
       pills: ['Clear messaging', 'Focused audience']
     },
     dark: {
@@ -2403,24 +2494,25 @@ const brandContent = {
       statSeparator: '→',
       statHighlight: 'On inquiry',
       statHighlightColor: '#ff6b7a',
-      text:
-        'We share tailored proposals based on scope, channels, and goals.'
+      text: 'We share tailored proposals based on scope, channels, and goals.',
+      image: '/assets/services/Brand Building/Pricing on inquiry.jpg'
     },
     white: {
       label: 'Brand systems',
       title: 'Brand systems',
-      text:
-        'Visual identity, voice, and guidelines create consistency across every touchpoint.',
-      bullets: ['Visual identity', 'Brand voice', 'Usage guidelines']
+      text: 'Visual identity, voice, and guidelines create consistency across every touchpoint.',
+      bullets: ['Visual identity', 'Brand voice', 'Usage guidelines'],
+      image: '/assets/services/Brand Building/Brand systems.jpg'
     },
     orange: {
       title: 'Performance execution',
-      text:
-        'SEO, paid media, content, and email campaigns drive measurable growth.'
+      text: 'SEO, paid media, content, and email campaigns drive measurable growth.',
+      image: '/assets/services/Brand Building/Performance execution.jpg'
     },
     green: {
       value: 'Trust',
-      label: 'Built over time'
+      label: 'Built over time',
+      image: '/assets/services/Brand Building/Trust Built over time.jpg'
     }
   },
   comparison: {
@@ -2488,7 +2580,8 @@ const seoContent = {
       title: 'Technical foundation',
       text:
         'Fast, crawlable, structured sites win rankings and AI visibility.',
-      pills: ['Core Web Vitals', 'Schema-ready']
+      pills: ['Core Web Vitals', 'Schema-ready'],
+      image: '/assets/services/SEO%20Services/Technical%20foundation.jpg'
     },
     dark: {
       title: 'Pricing on inquiry',
@@ -2497,23 +2590,27 @@ const seoContent = {
       statHighlight: 'On inquiry',
       statHighlightColor: '#ff6b7a',
       text:
-        'We scope SEO based on technical needs, content volume, and competitive goals.'
+        'We scope SEO based on technical needs, content volume, and competitive goals.',
+      image: '/assets/services/SEO%20Services/Pricing%20on%20inquiry.jpg'
     },
     white: {
       label: 'Topical authority',
       title: 'Topical authority',
       text:
         'Clustered content and internal linking build trust and rankings.',
-      bullets: ['Content clusters', 'Buyer intent', 'E-E-A-T signals']
+      bullets: ['Content clusters', 'Buyer intent', 'E-E-A-T signals'],
+      image: '/assets/services/SEO%20Services/Topical%20authority.jpg'
     },
     orange: {
       title: 'Authority signals',
       text:
-        'Digital PR and quality backlinks establish brand consensus across the web.'
+        'Digital PR and quality backlinks establish brand consensus across the web.',
+      image: '/assets/services/SEO%20Services/Authority%20signals.jpg'
     },
     green: {
       value: 'Search',
-      label: 'Everywhere'
+      label: 'Everywhere',
+      image: '/assets/services/SEO%20Services/Search%20Everywhere.jpg'
     }
   },
   comparison: {
@@ -2581,7 +2678,8 @@ const aiContent = {
       title: 'Problem-first approach',
       text:
         'We prioritize business impact and feasibility before selecting models or tools.',
-      pills: ['Use-case focus', 'Measurable ROI']
+      pills: ['Use-case focus', 'Measurable ROI'],
+      image: '/assets/services/AIML Services/Problem-first approach.jpg'
     },
     dark: {
       title: 'Pricing on inquiry',
@@ -2590,23 +2688,27 @@ const aiContent = {
       statHighlight: 'On inquiry',
       statHighlightColor: '#ff6b7a',
       text:
-        'We scope AI based on data availability, integrations, and governance needs.'
+        'We scope AI based on data availability, integrations, and governance needs.',
+      image: '/assets/services/AIML Services/Pricing on inquiry.jpg'
     },
     white: {
       label: 'Governance',
       title: 'Governance & compliance',
       text:
         'Privacy-by-design, audit trails, and bias monitoring are built in from day one.',
-      bullets: ['GDPR-ready', 'Audit trails', 'Bias monitoring']
+      bullets: ['GDPR-ready', 'Audit trails', 'Bias monitoring'],
+      image: '/assets/services/AIML Services/Governance & compliance.jpg'
     },
     orange: {
       title: 'MLOps reliability',
       text:
-        'Model monitoring, retraining, and versioning keep systems accurate over time.'
+        'Model monitoring, retraining, and versioning keep systems accurate over time.',
+      image: '/assets/services/AIML Services/MLOps reliability.jpg'
     },
     green: {
       value: 'AI',
-      label: 'Native systems'
+      label: 'Native systems',
+      image: '/assets/services/AIML Services/AI Native systems.jpg'
     }
   },
   comparison: {
@@ -2674,7 +2776,8 @@ const erpContent = {
       title: 'Change readiness',
       text:
         'We align stakeholders early to avoid resistance and drive adoption.',
-      pills: ['Stakeholder buy-in', 'Role-based training']
+      pills: ['Stakeholder buy-in', 'Role-based training'],
+      image: '/assets/services/ERP Services/Change readiness.jpg'
     },
     dark: {
       title: 'Pricing on inquiry',
@@ -2683,23 +2786,27 @@ const erpContent = {
       statHighlight: 'On inquiry',
       statHighlightColor: '#ff6b7a',
       text:
-        'We scope ERP based on modules, integrations, and data migration needs.'
+        'We scope ERP based on modules, integrations, and data migration needs.',
+      image: '/assets/services/ERP Services/Pricing on inquiry.jpg'
     },
     white: {
       label: 'Data quality',
       title: 'Data quality',
       text:
         'Validated, clean data ensures accurate reporting and successful go-live.',
-      bullets: ['Profiling', 'Cleansing', 'Reconciliation']
+      bullets: ['Profiling', 'Cleansing', 'Reconciliation'],
+      image: '/assets/services/ERP Services/Data quality.jpg'
     },
     orange: {
       title: 'Integration-first',
       text:
-        'ERP connects seamlessly with CRM, WMS, ecommerce, and finance tools.'
+        'ERP connects seamlessly with CRM, WMS, ecommerce, and finance tools.',
+      image: '/assets/services/ERP Services/Integration-first.jpg'
     },
     green: {
       value: 'ERP',
-      label: 'Operational backbone'
+      label: 'Operational backbone',
+      image: '/assets/services/ERP Services/ERP Operational backbone.jpg'
     }
   },
   comparison: {
@@ -2798,7 +2905,7 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
   const heroHeadingClass = 'text-[#4A7DFF]';
   const heroBodyClass = isDark ? 'text-slate-300' : 'text-[#1F2937]/80';
   const heroFeatureClass = `inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm shadow-sm ${isDark ? 'border-[#4A7DFF]/35 bg-[#111827] text-slate-100' : 'border-[#4A7DFF]/20 bg-white text-[#1F2937]'}`;
-  const heroSecondaryCtaClass = `inline-flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-semibold shadow-sm transition ${isDark ? 'border-[#4A7DFF]/45 bg-[#111827] text-[#4A7DFF] hover:border-[#4A7DFF]/70' : 'border-[#4A7DFF]/40 bg-white text-[#4A7DFF] hover:border-[#4A7DFF]/70'}`;
+  const heroSecondaryCtaClass = `inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-sm font-bold text-[#1F2937] shadow-lg transition-all duration-300 hover:bg-[#4A7DFF] hover:text-white hover:shadow-xl hover:-translate-y-0.5 border border-slate-200`;
   const heroInfoCardClass = `rounded-xl border p-4 shadow-lg backdrop-blur ${isDark ? 'border-[#1F2937] bg-[#111827]/90' : 'border-white/60 bg-white/95'}`;
   const heroInfoLabelClass = isDark ? 'text-slate-300' : 'text-[#1F2937]/60';
   const heroInfoValueClass = isDark ? 'text-white' : 'text-[#111827]';
@@ -2814,34 +2921,34 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
     ? heroModules.filter(module => module.label !== 'CRM')
     : isMobileApp
       ? heroModules
-          .filter(module => module.label !== 'CRM' && module.label !== 'Manufacturing')
-          .map(module =>
-            module.label === 'Finance'
-              ? {
-                  ...module,
-                  icon: Smartphone,
-                  label: 'App',
-                  colors: 'from-orange-500 to-orange-500',
-                  solidClass: 'bg-orange-500',
-                  glowClass: 'bg-orange-500/60',
-                  solidColor: '#f97316'
-                }
-              : module
-          )
+        .filter(module => module.label !== 'CRM' && module.label !== 'Manufacturing')
+        .map(module =>
+          module.label === 'Finance'
+            ? {
+              ...module,
+              icon: Smartphone,
+              label: 'App',
+              colors: 'from-orange-500 to-orange-500',
+              solidClass: 'bg-orange-500',
+              glowClass: 'bg-orange-500/60',
+              solidColor: '#f97316'
+            }
+            : module
+        )
       : isEcommerce
         ? heroModules.map(module =>
-            module.label === 'CRM'
-              ? {
-                  ...module,
-                  icon: ShoppingCart,
-                  label: 'Commerce',
-                  colors: 'from-yellow-500 to-yellow-500',
-                  solidClass: 'bg-yellow-500',
-                  glowClass: 'bg-yellow-500/70',
-                  solidColor: '#f59e0b'
-                }
-              : module
-          )
+          module.label === 'CRM'
+            ? {
+              ...module,
+              icon: ShoppingCart,
+              label: 'Commerce',
+              colors: 'from-yellow-500 to-yellow-500',
+              solidClass: 'bg-yellow-500',
+              glowClass: 'bg-yellow-500/70',
+              solidColor: '#f59e0b'
+            }
+            : module
+        )
         : heroModules;
   const heroGlassClass = `w-full rounded-[32px] border p-6 backdrop-blur-xl md:p-10 min-h-[700px] ${isDark ? 'border-white/10 bg-white/5 shadow-[0_45px_90px_rgba(0,0,0,0.5),0_12px_24px_rgba(0,0,0,0.35)]' : 'border-white/70 bg-white/70 shadow-[0_35px_70px_rgba(15,23,42,0.18),0_12px_24px_rgba(15,23,42,0.12)]'}`;
   const serviceHeadingClass = 'text-[#4A7DFF]';
@@ -2862,12 +2969,12 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
   const odooBadgeClass = isDark ? 'border-[#4A7DFF]/40 bg-[#4A7DFF]/20 text-[#cfe1ff]' : 'border-[#4A7DFF]/30 bg-[#4A7DFF]/15 text-[#2f5ae8]';
   const legacyValueClass = isDark ? 'text-slate-200' : 'text-slate-600';
   const odooValueClass = isDark ? 'text-[#cfe1ff]' : 'text-[#2f5ae8]';
-  const ctaGhostButtonClass = `inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold transition ${isDark ? 'border-1 border-[var(--odoo-sky)] text-[var(--odoo-sky)] hover:bg-[var(--odoo-sky)] hover:text-white' : 'border-1 border-[var(--odoo-sky)] text-[var(--odoo-sky)] hover:bg-[var(--odoo-sky)] hover:text-white'}`;
+  const ctaPrimaryButtonClass = `inline-flex items-center gap-2 rounded-full !bg-[#4A7DFF] px-8 py-4 text-sm font-bold !text-white transition-all duration-300 hover:!bg-[#3b66d9] hover:shadow-xl hover:-translate-y-0.5 shadow-lg shadow-blue-500/25 mb-4`;
+  const ctaGhostButtonClass = `inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-bold text-[#1F2937] transition-all duration-300 hover:bg-[#4A7DFF] hover:text-white hover:shadow-xl hover:-translate-y-0.5 shadow-lg border border-slate-200 mb-4`;
   const eyebrowClass = isDark ? 'text-blue-300' : 'text-blue-600';
   const flipSurfaceClass = 'secondary-bg border border-white/10';
   const flipTitleClass = 'text-slate-100';
   const flipMutedClass = 'text-slate-300';
-  const faqBorderClass = isDark ? 'border-slate-800/70' : 'border-slate-200/70';
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -2996,274 +3103,287 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
           <div className={heroGlassClass}>
             <div className="mx-auto max-w-7xl">
               <div className="grid items-center gap-12 lg:grid-cols-2">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#4A7DFF] px-4 py-2 text-sm font-semibold text-white shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-white/90 animate-pulse" />
-                {pageContent.hero.badge}
-              </div>
-
-              <h1 className={`text-4xl font-semibold leading-tight md:text-5xl ${heroHeadingClass}`}>
-                {pageContent.hero.title}{' '}
-                <span className="text-[#4A7DFF]">{pageContent.hero.highlight}</span>
-              </h1>
-
-              <p className={`mt-5 text-lg leading-relaxed ${heroBodyClass}`}>
-                {pageContent.hero.description}
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {pageContent.hero.features.map(feature => (
-                  <div
-                    key={feature.label}
-                    className={heroFeatureClass}
-                  >
-                    <feature.icon className="h-4 w-4 text-[#4A7DFF]" />
-                    {feature.label}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <motion.button
-                  type="button"
-                  onClick={() => navigate('/contact')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{ backgroundColor: '#4A7DFF', color: '#ffffff' }}
-                  className="group inline-flex items-center gap-2 rounded-lg px-8 py-4 text-sm font-semibold shadow-lg transition hover:shadow-xl"
-                >
-                  {pageContent.hero.primaryCta}
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </motion.button>
-                <motion.a
-                  href="mailto:contact@bytechsol.com"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={heroSecondaryCtaClass}
-                >
-                  {pageContent.hero.secondaryCta}
-                </motion.a>
-              </div>
-            </motion.div>
-
-            {/* Right Content - Animated ERP Visualization */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative h-[520px]"
-            >
-              {/* Connection lines from the hub to modules */}
-              {heroModulesActive.map(module => (
+                {/* Left Content */}
                 <motion.div
-                  key={`line-${module.label}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0.2, 0.6, 0.2] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: module.delay
-                  }}
-                  className="absolute left-1/2 top-1/2 w-0.5 bg-gradient-to-r from-[#4A7DFF]/30 via-[#4A7DFF]/60 to-[#4A7DFF]/30"
-                  style={{
-                    height: `${heroModuleRadius}px`,
-                    transformOrigin: 'top',
-                    transform: `translate(-50%, -50%) rotate(${module.angle}deg)`
-                  }}
-                />
-              ))}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#4A7DFF] px-4 py-2 text-sm font-semibold text-white shadow-sm">
+                    <span className="h-2 w-2 rounded-full bg-white/90 animate-pulse" />
+                    {pageContent.hero.badge}
+                  </div>
 
-              {/* Central Hub: rotation + pulse are split for smooth timing */}
-              <motion.div
-                animate={{ rotate: 360, scale: [1, 1.05, 1] }}
-                transition={{
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                }}
-                style={{ backgroundColor: '#4A7DFF' }}
-                className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-3xl shadow-2xl"
-              >
-                <Database className="h-16 w-16 text-white" />
-              </motion.div>
+                  <h1 className={`text-4xl font-semibold leading-tight md:text-5xl ${heroHeadingClass}`}>
+                    {pageContent.hero.title}{' '}
+                    <span className="text-[#4A7DFF]">{pageContent.hero.highlight}</span>
+                  </h1>
 
-              <div
-                className={`absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[36px] shadow-[0_30px_60px_rgba(15,23,42,0.12)] ${heroBackplateClass}`}
-              />
+                  <p className={`mt-5 text-lg leading-relaxed ${heroBodyClass}`}>
+                    {pageContent.hero.description}
+                  </p>
 
-              {heroModulesActive.map(module => {
-                const x = Math.cos((module.angle * Math.PI) / 180) * heroModuleRadius;
-                const y = Math.sin((module.angle * Math.PI) / 180) * heroModuleRadius;
-                const isCommerceModule = isEcommerce && module.label === 'Commerce';
-                const isCrmModule = module.label === 'CRM';
-                const forceSolid = (isCustomWeb || isWebDesign || isMobileApp) || isCommerceModule || isCrmModule;
-                const moduleBgClass =
-                  forceSolid && module.solidClass
-                    ? module.solidClass
-                    : `bg-gradient-to-br ${module.colors}`;
-                const moduleGlowClass =
-                  forceSolid && module.glowClass
-                    ? module.glowClass
-                    : `bg-gradient-to-br ${module.colors}`;
-                const moduleBgStyle = forceSolid && module.solidColor ? { backgroundColor: module.solidColor } : undefined;
-                const moduleGlowStyle = forceSolid && module.solidColor ? { backgroundColor: module.solidColor } : undefined;
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    {pageContent.hero.features.map(feature => (
+                      <div
+                        key={feature.label}
+                        className={heroFeatureClass}
+                      >
+                        <feature.icon className="h-4 w-4 text-[#4A7DFF]" />
+                        {feature.label}
+                      </div>
+                    ))}
+                  </div>
 
-                return (
-                  <motion.div
-                    key={module.label}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      y: [0, -10, 0],
-                      x: [0, 3, -3, 0],
-                      rotate: [0, 2, -2, 0]
-                    }}
-                    transition={{
-                      opacity: { delay: module.delay },
-                      scale: { delay: module.delay },
-                      y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: module.delay },
-                      x: { duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: module.delay },
-                      rotate: { duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: module.delay }
-                    }}
-                    className="absolute left-1/2 top-1/2"
-                    style={{
-                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
-                    }}
-                  >
-                    <div
-                      className={`group relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-2xl ${moduleBgClass} shadow-xl`}
-                      style={moduleBgStyle}
+                  <div className="mt-8 flex flex-wrap gap-4">
+                    <motion.button
+                      type="button"
+                      onClick={() => navigate('/contact')}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      style={{ backgroundColor: '#4A7DFF', color: '#ffffff' }}
+                      className="group inline-flex items-center gap-2 rounded-lg px-8 py-4 text-sm font-bold shadow-lg transition-all duration-300 hover:bg-[#3b66d9] hover:shadow-xl hover:-translate-y-0.5"
                     >
-                      <module.icon className="h-10 w-10 text-white" />
+                      {pageContent.hero.primaryCta}
+                      <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </motion.button>
+                    <motion.a
+                      href="mailto:contact@bytechsol.com"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={heroSecondaryCtaClass}
+                    >
+                      {pageContent.hero.secondaryCta}
+                    </motion.a>
+                  </div>
+                </motion.div>
 
+                {/* Right Content - Animated ERP Visualization */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="relative h-[520px]"
+                >
+                  {/* Connection lines from the hub to modules */}
+                  {heroModulesActive.map(module => (
+                    <motion.div
+                      key={`line-${module.label}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0.2, 0.6, 0.2] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: module.delay
+                      }}
+                      className="absolute left-1/2 top-1/2 w-0.5 bg-gradient-to-r from-[#4A7DFF]/30 via-[#4A7DFF]/60 to-[#4A7DFF]/30"
+                      style={{
+                        height: `${heroModuleRadius}px`,
+                        transformOrigin: 'top',
+                        transform: `translate(-50%, -50%) rotate(${module.angle}deg)`
+                      }}
+                    />
+                  ))}
+
+                  {/* Central Hub: rotation + pulse are split for smooth timing */}
+                  <motion.div
+                    animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+                    transition={{
+                      rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    style={{ backgroundColor: '#4A7DFF' }}
+                    className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-3xl shadow-2xl"
+                  >
+                    <Database className="h-16 w-16 text-white" />
+                  </motion.div>
+
+                  <div
+                    className={`absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-[36px] shadow-[0_30px_60px_rgba(15,23,42,0.12)] ${heroBackplateClass}`}
+                  />
+
+                  {heroModulesActive.map(module => {
+                    const x = Math.cos((module.angle * Math.PI) / 180) * heroModuleRadius;
+                    const y = Math.sin((module.angle * Math.PI) / 180) * heroModuleRadius;
+                    const isCommerceModule = isEcommerce && module.label === 'Commerce';
+                    const isCrmModule = module.label === 'CRM';
+                    const forceSolid = (isCustomWeb || isWebDesign || isMobileApp) || isCommerceModule || isCrmModule;
+                    const moduleBgClass =
+                      forceSolid && module.solidClass
+                        ? module.solidClass
+                        : `bg-gradient-to-br ${module.colors}`;
+                    const moduleGlowClass =
+                      forceSolid && module.glowClass
+                        ? module.glowClass
+                        : `bg-gradient-to-br ${module.colors}`;
+                    const moduleBgStyle = forceSolid && module.solidColor ? { backgroundColor: module.solidColor } : undefined;
+                    const moduleGlowStyle = forceSolid && module.solidColor ? { backgroundColor: module.solidColor } : undefined;
+
+                    return (
                       <motion.div
-                        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: module.delay }}
-                        className={`absolute inset-0 rounded-2xl ${moduleGlowClass}`}
-                        style={moduleGlowStyle}
-                      />
+                        key={module.label}
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{
+                          opacity: 1,
+                          scale: 1,
+                          y: [0, -10, 0],
+                          x: [0, 3, -3, 0],
+                          rotate: [0, 2, -2, 0]
+                        }}
+                        transition={{
+                          opacity: { delay: module.delay },
+                          scale: { delay: module.delay },
+                          y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: module.delay },
+                          x: { duration: 3.4, repeat: Infinity, ease: "easeInOut", delay: module.delay },
+                          rotate: { duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: module.delay }
+                        }}
+                        className="absolute left-1/2 top-1/2"
+                        style={{
+                          transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
+                        }}
+                      >
+                        <div
+                          className={`group relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-2xl ${moduleBgClass} shadow-xl`}
+                          style={moduleBgStyle}
+                        >
+                          <module.icon className="h-10 w-10 text-white" />
 
-                      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-[#111827] px-3 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                        {module.label}
+                          <motion.div
+                            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+                            transition={{ duration: 2, repeat: Infinity, delay: module.delay }}
+                            className={`absolute inset-0 rounded-2xl ${moduleGlowClass}`}
+                            style={moduleGlowStyle}
+                          />
+
+                          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-[#111827] px-3 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
+                            {module.label}
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+
+                  {(isCustomWeb || isWebDesign) && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: [0, -4, 0] }}
+                      transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute left-4 top-4 z-30 rounded-full border border-[#4A7DFF]/40 bg-white/90 px-4 py-2 text-xs font-semibold text-[#4A7DFF] shadow-lg"
+                    >
+                      {isCustomWeb ? 'Custom Web' : 'Web Design'}
+                    </motion.div>
+                  )}
+
+                  {(isCustomWeb || isWebDesign || isMobileApp) && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: [0.4, 1, 0.4], y: [0, -6, 0], x: [0, 3, -3, 0], rotate: [0, 3, -3, 0] }}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute left-1/2 top-1/2"
+                      style={{ transform: 'translate(-50%, -50%) translate(-110px, -90px)' }}
+                    >
+                      <span className={`${heroCodeBadgeClass} inline-flex items-center gap-2`}>
+                        <Code2 className="h-3.5 w-3.5" />
+                        {isCustomWeb ? 'Custom Web' : isWebDesign ? 'Web Design' : '</>'}
+                      </span>
+                    </motion.div>
+                  )}
+
+                  {/* Particles animate between node distance and center along the same polar paths. */}
+                  {[...Array(12)].map((_, idx) => (
+                    <motion.div
+                      key={idx}
+                      animate={{
+                        x: [
+                          Math.cos((idx * 30 * Math.PI) / 180) * heroModuleRadius,
+                          0,
+                          Math.cos((idx * 30 * Math.PI) / 180) * heroModuleRadius
+                        ],
+                        y: [
+                          Math.sin((idx * 30 * Math.PI) / 180) * heroModuleRadius,
+                          0,
+                          Math.sin((idx * 30 * Math.PI) / 180) * heroModuleRadius
+                        ],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: idx * 0.25,
+                        ease: "easeInOut"
+                      }}
+                      className="absolute left-1/2 top-1/2 h-0.5 w-0.5 rounded-full bg-[#4A7DFF]"
+                    />
+                  ))}
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: [0, -6, 0], x: [0, 2, -2, 0], rotate: [0, 0.8, -0.8, 0] }}
+                    transition={{
+                      opacity: { delay: 0.9, duration: 0.4 },
+                      y: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.9 },
+                      x: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.9 },
+                      rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.9 }
+                    }}
+                    className={`absolute ${heroInfoCardClass}`}
+                    style={{ right: '0px', top: '120px' }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <motion.div
+                        animate={{ backgroundColor: successPulseBg, color: successPulseColor }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="flex h-10 w-10 items-center justify-center rounded-lg"
+                      >
+                        <CheckCircle className="h-5 w-5" />
+                      </motion.div>
+                      <div>
+                        <div className={`text-xs ${heroInfoLabelClass}`}>{pageContent.heroInfo.successLabel}</div>
+                        <div className={`text-sm font-semibold ${heroInfoValueClass}`}>{pageContent.heroInfo.successValue}</div>
                       </div>
                     </div>
                   </motion.div>
-                );
-              })}
 
-              {(isCustomWeb || isWebDesign) && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: [0, -4, 0] }}
-                  transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute left-4 top-4 z-30 rounded-full border border-[#4A7DFF]/40 bg-white/90 px-4 py-2 text-xs font-semibold text-[#4A7DFF] shadow-lg"
-                >
-                  {isCustomWeb ? 'Custom Web' : 'Web Design'}
-                </motion.div>
-              )}
-
-              {(isCustomWeb || isWebDesign || isMobileApp) && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: [0.4, 1, 0.4], y: [0, -6, 0], x: [0, 3, -3, 0], rotate: [0, 3, -3, 0] }}
-                  transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute left-1/2 top-1/2"
-                  style={{ transform: 'translate(-50%, -50%) translate(-110px, -90px)' }}
-                >
-                  <span className={`${heroCodeBadgeClass} inline-flex items-center gap-2`}>
-                    <Code2 className="h-3.5 w-3.5" />
-                    {isCustomWeb ? 'Custom Web' : isWebDesign ? 'Web Design' : '</>'}
-                  </span>
-                </motion.div>
-              )}
-
-              {/* Particles animate between node distance and center along the same polar paths. */}
-              {[...Array(12)].map((_, idx) => (
-                <motion.div
-                  key={idx}
-                  animate={{
-                    x: [
-                      Math.cos((idx * 30 * Math.PI) / 180) * heroModuleRadius,
-                      0,
-                      Math.cos((idx * 30 * Math.PI) / 180) * heroModuleRadius
-                    ],
-                    y: [
-                      Math.sin((idx * 30 * Math.PI) / 180) * heroModuleRadius,
-                      0,
-                      Math.sin((idx * 30 * Math.PI) / 180) * heroModuleRadius
-                    ],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: idx * 0.25,
-                    ease: "easeInOut"
-                  }}
-                  className="absolute left-1/2 top-1/2 h-0.5 w-0.5 rounded-full bg-[#4A7DFF]"
-                />
-              ))}
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: [0, -6, 0], x: [0, 2, -2, 0], rotate: [0, 0.8, -0.8, 0] }}
-                transition={{
-                  opacity: { delay: 0.9, duration: 0.4 },
-                  y: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.9 },
-                  x: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.9 },
-                  rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.9 }
-                }}
-                className={`absolute ${heroInfoCardClass}`}
-                style={{ right: '0px', top: '120px' }}
-              >
-                <div className="flex items-center gap-3">
                   <motion.div
-                    animate={{ backgroundColor: successPulseBg, color: successPulseColor }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: [0, -6, 0], x: [0, -2, 2, 0], rotate: [0, -0.8, 0.8, 0] }}
+                    transition={{
+                      opacity: { delay: 1.1, duration: 0.4 },
+                      y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+                      x: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
+                      rotate: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }
+                    }}
+                    className={`absolute ${heroInfoCardClass}`}
+                    style={{ left: '0px', bottom: '0px' }}
                   >
-                    <CheckCircle className="h-5 w-5" />
+                    <div className="flex items-center gap-3">
+                      <motion.div
+                        animate={{ backgroundColor: timelinePulseBg, color: timelinePulseColor }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        className="flex h-10 w-10 items-center justify-center rounded-lg"
+                      >
+                        <Clock className="h-5 w-5" />
+                      </motion.div>
+                      <div>
+                        <div className={`text-xs ${heroInfoLabelClass}`}>{pageContent.heroInfo.timelineLabel}</div>
+                        <div className={`text-sm font-semibold ${heroInfoValueClass}`}>{pageContent.heroInfo.timelineValue}</div>
+                      </div>
+                    </div>
                   </motion.div>
-                  <div>
-                    <div className={`text-xs ${heroInfoLabelClass}`}>{pageContent.heroInfo.successLabel}</div>
-                    <div className={`text-sm font-semibold ${heroInfoValueClass}`}>{pageContent.heroInfo.successValue}</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: [0, -6, 0], x: [0, -2, 2, 0], rotate: [0, -0.8, 0.8, 0] }}
-                transition={{
-                  opacity: { delay: 1.1, duration: 0.4 },
-                  y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
-                  x: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 },
-                  rotate: { duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.1 }
-                }}
-                className={`absolute ${heroInfoCardClass}`}
-                style={{ left: '0px', bottom: '0px' }}
-              >
-                <div className="flex items-center gap-3">
-                  <motion.div
-                    animate={{ backgroundColor: timelinePulseBg, color: timelinePulseColor }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg"
-                  >
-                    <Clock className="h-5 w-5" />
-                  </motion.div>
-                  <div>
-                    <div className={`text-xs ${heroInfoLabelClass}`}>{pageContent.heroInfo.timelineLabel}</div>
-                    <div className={`text-sm font-semibold ${heroInfoValueClass}`}>{pageContent.heroInfo.timelineValue}</div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+                  {/* @ts-ignore */}
+                  {pageContent.methodology.dark.image && (
+                    <>
+                      <div className="absolute inset-0 bg-[#162751]/80 z-0" />
+                      <img
+                        /* @ts-ignore */
+                        src={pageContent.methodology.dark.image}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover -z-10"
+                      />
+                      <style>{`.methodology-card-b > *:not(img):not(.bg-\\[\\#162751\\]\\/80) { position: relative; z-index: 10; }`}</style>
+                    </>
+                  )}
+                </motion.div>
               </div>
             </div>
           </div>
@@ -3299,153 +3419,153 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
                   >
                     {isEven ? (
                       <>
-                      <div className="space-y-6">
-                        <div className="space-y-4">
-                          <span className={serviceBadgeClass}>{block.eyebrow}</span>
-                          <h3
-                            className={`text-2xl font-semibold ${serviceHeadingClass}`}
-                            style={{ color: '#4A7DFF' }}
-                          >
-                            {block.title}
-                          </h3>
-                          <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{block.offer}</p>
-                        </div>
-                        <div className={serviceCardClass}>
-                          <div
-                            className={`text-sm font-semibold ${serviceLabelClass}`}
-                            style={{ color: '#4A7DFF' }}
-                          >
-                            Deliverables
+                        <div className="space-y-6">
+                          <div className="space-y-4">
+                            <span className={serviceBadgeClass}>{block.eyebrow}</span>
+                            <h3
+                              className={`text-2xl font-semibold ${serviceHeadingClass}`}
+                              style={{ color: '#4A7DFF' }}
+                            >
+                              {block.title}
+                            </h3>
+                            <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{block.offer}</p>
                           </div>
-                          <ul className={`mt-4 space-y-3 text-sm ${serviceMutedClass}`}>
-                            {block.deliverables.map(item => (
-                              <li key={item} className="flex items-start gap-3">
-                                <CheckCircle2
-                                  className="mt-0.5 h-4 w-4"
-                                  style={{ color: '#4A7DFF' }}
-                                />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+                          <div className={serviceCardClass}>
+                            <div
+                              className={`text-sm font-semibold ${serviceLabelClass}`}
+                              style={{ color: '#4A7DFF' }}
+                            >
+                              Deliverables
+                            </div>
+                            <ul className={`mt-4 space-y-3 text-sm ${serviceMutedClass}`}>
+                              {block.deliverables.map(item => (
+                                <li key={item} className="flex items-start gap-3">
+                                  <CheckCircle2
+                                    className="mt-0.5 h-4 w-4"
+                                    style={{ color: '#4A7DFF' }}
+                                  />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="space-y-6">
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.98 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true, amount: 0.3 }}
-                          transition={{ duration: 0.6 }}
-                        >
-                          <div
-                            className={`overflow-hidden rounded-3xl border ${serviceImageClass} shadow-sm`}
-                            style={{ height: '210px' }}
+                        <div className="space-y-6">
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6 }}
                           >
-                            <img
-                              src={block.image}
-                              alt={block.title}
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                        </motion.div>
-                        <div className={serviceCardClass}>
-                          <div
-                            className={`text-sm font-semibold ${serviceLabelClass}`}
-                            style={{ color: '#4A7DFF' }}
-                          >
-                            Our process
-                          </div>
-                          <div className="mt-4 space-y-4">
-                            {block.process.map((step, stepIndex) => (
-                              <div key={step} className="flex items-start gap-4">
-                                <span
-                                  className={`flex h-10 w-10 items-center justify-center rounded-xl text-sm font-semibold shadow ${serviceProcessNumberClass}`}
-                                  style={{ backgroundColor: '#4A7DFF', color: '#fff' }}
-                                >
-                                  {stepIndex + 1}
-                                </span>
-                                <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{step}</p>
-                              </div>
-                            ))}
+                            <div
+                              className={`overflow-hidden rounded-3xl border ${serviceImageClass} shadow-sm`}
+                              style={{ height: '210px' }}
+                            >
+                              <img
+                                src={block.image}
+                                alt={block.title}
+                                className="h-full w-full object-cover"
+                              />
+                            </div>
+                          </motion.div>
+                          <div className={serviceCardClass}>
+                            <div
+                              className={`text-sm font-semibold ${serviceLabelClass}`}
+                              style={{ color: '#4A7DFF' }}
+                            >
+                              Our process
+                            </div>
+                            <div className="mt-4 space-y-4">
+                              {block.process.map((step, stepIndex) => (
+                                <div key={step} className="flex items-start gap-4">
+                                  <span
+                                    className={`flex h-10 w-10 items-center justify-center rounded-xl text-sm font-semibold shadow ${serviceProcessNumberClass}`}
+                                    style={{ backgroundColor: '#4A7DFF', color: '#fff' }}
+                                  >
+                                    {stepIndex + 1}
+                                  </span>
+                                  <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{step}</p>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
                       </>
                     ) : (
                       <>
-                      <div className="space-y-6">
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.98 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true, amount: 0.3 }}
-                          transition={{ duration: 0.6 }}
-                        >
-                          <div
-                            className={`overflow-hidden rounded-3xl border ${serviceImageClass} shadow-sm`}
-                            style={{ height: '210px' }}
+                        <div className="space-y-6">
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.6 }}
                           >
-                            <img
-                              src={block.image}
-                              alt={block.title}
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                        </motion.div>
-                        <div className={serviceCardClass}>
-                          <div
-                            className={`text-sm font-semibold ${serviceLabelClass}`}
-                            style={{ color: '#4A7DFF' }}
-                          >
-                            Our process
-                          </div>
-                          <div className="mt-4 space-y-4">
-                            {block.process.map((step, stepIndex) => (
-                              <div key={step} className="flex items-start gap-4">
-                                <span
-                                  className={`flex h-10 w-10 items-center justify-center rounded-xl text-sm font-semibold shadow ${serviceProcessNumberClass}`}
-                                  style={{ backgroundColor: '#4A7DFF', color: '#fff' }}
-                                >
-                                  {stepIndex + 1}
-                                </span>
-                                <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{step}</p>
-                              </div>
-                            ))}
+                            <div
+                              className={`overflow-hidden rounded-3xl border ${serviceImageClass} shadow-sm`}
+                              style={{ height: '210px' }}
+                            >
+                              <img
+                                src={block.image}
+                                alt={block.title}
+                                className="h-full w-full object-cover"
+                              />
+                            </div>
+                          </motion.div>
+                          <div className={serviceCardClass}>
+                            <div
+                              className={`text-sm font-semibold ${serviceLabelClass}`}
+                              style={{ color: '#4A7DFF' }}
+                            >
+                              Our process
+                            </div>
+                            <div className="mt-4 space-y-4">
+                              {block.process.map((step, stepIndex) => (
+                                <div key={step} className="flex items-start gap-4">
+                                  <span
+                                    className={`flex h-10 w-10 items-center justify-center rounded-xl text-sm font-semibold shadow ${serviceProcessNumberClass}`}
+                                    style={{ backgroundColor: '#4A7DFF', color: '#fff' }}
+                                  >
+                                    {stepIndex + 1}
+                                  </span>
+                                  <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{step}</p>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="space-y-6">
-                        <div className="space-y-4">
-                          <span className={serviceBadgeClass}>{block.eyebrow}</span>
-                          <h3
-                            className={`text-2xl font-semibold ${serviceHeadingClass}`}
-                            style={{ color: '#4A7DFF' }}
-                          >
-                            {block.title}
-                          </h3>
-                          <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{block.offer}</p>
-                        </div>
-                        <div className={serviceCardClass}>
-                          <div
-                            className={`text-sm font-semibold ${serviceLabelClass}`}
-                            style={{ color: '#4A7DFF' }}
-                          >
-                            Deliverables
+                        <div className="space-y-6">
+                          <div className="space-y-4">
+                            <span className={serviceBadgeClass}>{block.eyebrow}</span>
+                            <h3
+                              className={`text-2xl font-semibold ${serviceHeadingClass}`}
+                              style={{ color: '#4A7DFF' }}
+                            >
+                              {block.title}
+                            </h3>
+                            <p className={`text-sm leading-relaxed ${serviceMutedClass}`}>{block.offer}</p>
                           </div>
-                          <ul className={`mt-4 space-y-3 text-sm ${serviceMutedClass}`}>
-                            {block.deliverables.map(item => (
-                              <li key={item} className="flex items-start gap-3">
-                                <CheckCircle2
-                                  className="mt-0.5 h-4 w-4"
-                                  style={{ color: '#4A7DFF' }}
-                                />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+                          <div className={serviceCardClass}>
+                            <div
+                              className={`text-sm font-semibold ${serviceLabelClass}`}
+                              style={{ color: '#4A7DFF' }}
+                            >
+                              Deliverables
+                            </div>
+                            <ul className={`mt-4 space-y-3 text-sm ${serviceMutedClass}`}>
+                              {block.deliverables.map(item => (
+                                <li key={item} className="flex items-start gap-3">
+                                  <CheckCircle2
+                                    className="mt-0.5 h-4 w-4"
+                                    style={{ color: '#4A7DFF' }}
+                                  />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                      </div>
                       </>
                     )}
                   </motion.article>
@@ -3486,7 +3606,7 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
-              className="methodology-card-a h-full rounded-[28px] bg-gradient-to-br from-[#4A7DFF] to-[#2f5ae8] p-6 shadow-[0_30px_60px_rgba(32,63,152,0.45)]"
+              className="methodology-card-a relative h-full rounded-[28px] bg-gradient-to-br from-[#4A7DFF] to-[#2f5ae8] p-6 shadow-[0_30px_60px_rgba(32,63,152,0.45)] overflow-hidden"
               style={{
                 background: 'linear-gradient(135deg, #4A7DFF 0%, #2f5ae8 100%)',
                 boxShadow: '0 30px 60px rgba(32,63,152,0.45)'
@@ -3510,6 +3630,20 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
                   </span>
                 ))}
               </div>
+              {/* @ts-ignore */}
+              {pageContent.methodology.blue.image && (
+                <>
+                  <div className="absolute inset-0 bg-blue-600/60 z-0" />
+                  <img
+                    /* @ts-ignore */
+                    src={pageContent.methodology.blue.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover -z-10"
+                  />
+                  {/* Re-add relative to content to keep it above overlay */}
+                  <style>{`.methodology-card-a > *:not(img):not(.bg-blue-600\\/60) { position: relative; z-index: 10; }`}</style>
+                </>
+              )}
             </motion.div>
 
             <motion.div
@@ -3517,37 +3651,50 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="methodology-card-b h-full rounded-[28px] border border-white/10 bg-[#162751] p-6 shadow-[0_25px_50px_rgba(12,18,48,0.6)]"
+              className="methodology-card-b relative h-full rounded-[28px] border border-white/10 bg-[#162751] p-6 shadow-[0_25px_50px_rgba(12,18,48,0.6)] overflow-hidden"
               style={{
                 backgroundColor: '#162751',
                 borderColor: 'rgba(255,255,255,0.08)',
                 boxShadow: '0 25px 50px rgba(12,18,48,0.6)'
               }}
             >
-                <div className="flex items-center gap-3 text-sm font-semibold text-white/85">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-rose-500/20 text-rose-200">
-                    <TrendingUp className="h-5 w-5" />
-                  </div>
-                  {pageContent.methodology.dark.title}
+              <div className="flex items-center gap-3 text-sm font-semibold text-white/85">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-rose-500/20 text-rose-200">
+                  <TrendingUp className="h-5 w-5" />
                 </div>
-                <div className="mt-4 text-2xl font-semibold">
-                  {pageContent.methodology.dark.statPrefix}{' '}
-                  <span className="text-white/60">{pageContent.methodology.dark.statSeparator}</span>{' '}
-                  <span style={{ color: pageContent.methodology.dark.statHighlightColor }}>
-                    {pageContent.methodology.dark.statHighlight}
-                  </span>
-                </div>
-                <p className="mt-2 text-sm text-white/70">
-                  {pageContent.methodology.dark.text}
-                </p>
-              </motion.div>
+                {pageContent.methodology.dark.title}
+              </div>
+              <div className="mt-4 text-2xl font-semibold">
+                {pageContent.methodology.dark.statPrefix}{' '}
+                <span className="text-white/60">{pageContent.methodology.dark.statSeparator}</span>{' '}
+                <span style={{ color: pageContent.methodology.dark.statHighlightColor }}>
+                  {pageContent.methodology.dark.statHighlight}
+                </span>
+              </div>
+              <p className="mt-2 text-sm text-white/70">
+                {pageContent.methodology.dark.text}
+              </p>
+              {/* @ts-ignore */}
+              {pageContent.methodology.dark.image && (
+                <>
+                  <div className="absolute inset-0 bg-[#162751]/80 z-0" />
+                  <img
+                    /* @ts-ignore */
+                    src={pageContent.methodology.dark.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover -z-10"
+                  />
+                  <style>{`.methodology-card-b > *:not(img):not(.bg-\\[\\#162751\\]\\/80) { position: relative; z-index: 10; }`}</style>
+                </>
+              )}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="methodology-card-c h-full rounded-[28px] bg-white p-6 text-[#111827] shadow-[0_30px_60px_rgba(15,23,42,0.2)]"
+              className="methodology-card-c relative h-full rounded-[28px] bg-white p-6 text-[#111827] shadow-[0_30px_60px_rgba(15,23,42,0.2)] overflow-hidden"
               style={{
                 background: 'linear-gradient(135deg, #ffffff 0%, #f6f4ff 100%)',
                 boxShadow: '0 30px 60px rgba(15,23,42,0.2)',
@@ -3576,6 +3723,19 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
                   </li>
                 ))}
               </ul>
+              {/* @ts-ignore */}
+              {pageContent.methodology.white.image && (
+                <>
+                  <div className="absolute inset-0 bg-white/70 z-0" />
+                  <img
+                    /* @ts-ignore */
+                    src={pageContent.methodology.white.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover -z-10"
+                  />
+                  <style>{`.methodology-card-c > *:not(img):not(.bg-white\\/70) { position: relative; z-index: 10; }`}</style>
+                </>
+              )}
             </motion.div>
 
             <motion.div
@@ -3583,7 +3743,7 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="methodology-card-d h-full rounded-[28px] bg-gradient-to-br from-[#ff7a18] to-[#ff3d54] p-6 shadow-[0_25px_50px_rgba(255,79,79,0.35)]"
+              className="methodology-card-d relative h-full rounded-[28px] bg-gradient-to-br from-[#ff7a18] to-[#ff3d54] p-6 shadow-[0_25px_50px_rgba(255,79,79,0.35)] overflow-hidden"
               style={{
                 background: 'linear-gradient(135deg, #ff7a18 0%, #ff3d54 100%)',
                 boxShadow: '0 25px 50px rgba(255,79,79,0.35)'
@@ -3594,6 +3754,19 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
               </div>
               <h3 className="mt-4 text-xl font-semibold">{pageContent.methodology.orange.title}</h3>
               <p className="mt-3 text-sm text-white/85">{pageContent.methodology.orange.text}</p>
+              {/* @ts-ignore */}
+              {pageContent.methodology.orange.image && (
+                <>
+                  <div className="absolute inset-0 bg-orange-600/60 z-0" />
+                  <img
+                    /* @ts-ignore */
+                    src={pageContent.methodology.orange.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover -z-10"
+                  />
+                  <style>{`.methodology-card-d > *:not(img):not(.bg-orange-600\\/60) { position: relative; z-index: 10; }`}</style>
+                </>
+              )}
             </motion.div>
 
             <motion.div
@@ -3601,7 +3774,7 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="methodology-card-e flex h-full min-h-[160px] flex-col items-center justify-center rounded-[28px] bg-gradient-to-br from-[#16a34a] to-[#22c55e] p-6 text-center shadow-[0_25px_50px_rgba(16,185,129,0.35)]"
+              className="methodology-card-e relative flex h-full min-h-[160px] flex-col items-center justify-center rounded-[28px] bg-gradient-to-br from-[#16a34a] to-[#22c55e] p-6 text-center shadow-[0_25px_50px_rgba(16,185,129,0.35)] overflow-hidden"
               style={{
                 background: 'linear-gradient(135deg, #16a34a 0%, #22c55e 100%)',
                 boxShadow: '0 25px 50px rgba(16,185,129,0.35)'
@@ -3609,6 +3782,19 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
             >
               <div className="text-4xl font-semibold">{pageContent.methodology.green.value}</div>
               <div className="mt-1 text-sm text-white/90">{pageContent.methodology.green.label}</div>
+              {/* @ts-ignore */}
+              {pageContent.methodology.green.image && (
+                <>
+                  <div className="absolute inset-0 bg-green-600/60 z-0" />
+                  <img
+                    /* @ts-ignore */
+                    src={pageContent.methodology.green.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover -z-10"
+                  />
+                  <style>{`.methodology-card-e > *:not(img):not(.bg-green-600\\/60) { position: relative; z-index: 10; }`}</style>
+                </>
+              )}
             </motion.div>
           </div>
         </div>
@@ -3816,14 +4002,14 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
               <p className="mt-4 text-sm leading-relaxed odoo-muted">
                 {pageContent.cta.description}
               </p>
-              <div className="mt-6 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-6">
                 <button
                   type="button"
                   onClick={() => navigate('/contact')}
-                  className="inline-flex items-center gap-2 rounded-full bg-[var(--odoo-sky)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 shadow-lg shadow-blue-500/20"
+                  className={ctaPrimaryButtonClass}
                 >
                   {pageContent.cta.primaryCta}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </button>
                 <a
                   href="mailto:contact@bytechsol.com"
@@ -3844,11 +4030,18 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
         </div>
       </section>
 
-      <section className="px-6 pb-20">
+      <section className="px-6 pb-20 pt-10 border-t border-white/5">
         <div className="mx-auto max-w-6xl">
-          <div className={`text-xs uppercase tracking-[0.3em] ${eyebrowClass}`}>FAQ</div>
-          <h2 className="odoo-title mt-3 text-3xl">Frequently asked questions</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mb-12">
+            <span className={`text-xs font-bold tracking-[0.3em] uppercase mb-4 block ${eyebrowClass}`}>
+              FAQ
+            </span>
+            <h2 className="odoo-title mt-3 text-3xl md:text-4xl">
+              Frequently asked questions
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 items-start">
             {pageContent.faqs.map((faq, index) => {
               const isOpen = openFaq === index;
 
@@ -3859,7 +4052,7 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.4 }}
-                  className={`odoo-card p-6 ${faqBorderClass}`}
+                  className={`odoo-card p-6 transition-all duration-300 ${isOpen ? 'ring-1 ring-blue-500/30' : ''}`}
                 >
                   <button
                     type="button"
@@ -3868,17 +4061,23 @@ export function ServiceDetailPage({ serviceId }: ServiceDetailPageProps) {
                   >
                     <span className="text-lg font-semibold">{faq.question}</span>
                     <ChevronDown
-                      className={`mt-1 h-5 w-5 transition ${isOpen ? 'rotate-180 text-blue-400' : 'text-slate-400'}`}
+                      className={`h-5 w-5 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-blue-500' : 'text-slate-400'}`}
                     />
                   </button>
-                  <motion.div
-                    initial={false}
-                    animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className="overflow-hidden"
-                  >
-                    <p className="mt-3 text-sm leading-relaxed odoo-muted">{faq.answer}</p>
-                  </motion.div>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-4 text-sm leading-relaxed odoo-muted">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               );
             })}

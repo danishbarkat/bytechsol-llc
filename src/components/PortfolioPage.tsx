@@ -1,228 +1,239 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowUpRight, Star } from 'lucide-react';
 import { useTheme } from './ThemeContext';
+import { ArrowUpRight, Star, ChevronDown, Sparkles, ArrowRight } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { CTASection } from './CTASection';
 
-// Enhanced project data with categories
 const projects = [
   {
-    id: 1,
-    title: 'The Pet\'s Report App',
-    description: 'AI-powered pet health monitoring and diagnostics system.',
-    primaryService: 'Mobile App Development',
-    services: ['Mobile App Development', 'AI/ML Services'],
-    image: 'https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXNpZ24lMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY1MDEzMTk5fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['AI', 'Mobile', 'Healthcare']
+    title: 'Bellroy Zen',
+    category: 'E-commerce',
+    image: '/projects/bellroy.webp',
+    description: 'A premium lifestyle brand experience built for high-scale conversion.',
+    tags: ['Next.js', 'Headless', 'Performance']
   },
   {
-    id: 2,
     title: 'Wallai Zen',
-    description: 'A comprehensive digital product for meditation and mindfulness.',
-    primaryService: 'Website Design & Development',
-    services: ['Website Design & Development', 'Brand Building'],
-    image: 'https://images.unsplash.com/photo-1545389336-cf090694435e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpdGF0aW9uJTIwYXBwfGVufDB8fHx8MTczNTE1MDA1MHww&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Wellness', 'React', 'UX/UI']
+    category: 'SaaS Platform',
+    image: '/projects/wallai.webp',
+    description: 'Enterprise-grade analytics dashboard with real-time data visualization.',
+    tags: ['React', 'D3.js', 'Cloud Native']
   },
   {
-    id: 3,
-    title: 'Dualizer',
-    description: 'Next-generation banking planner app with predictive AI insights.',
-    primaryService: 'AI/ML Services',
-    services: ['AI/ML Services', 'Custom Web Solution'],
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBiYW5raW5nJTIwYXBwfGVufDB8fHx8MTczNTE1MDA1MHww&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Finance', 'Mobile', 'Security']
+    title: 'Lumina Home',
+    category: 'Smart Tech',
+    image: '/projects/lumina.webp',
+    description: 'IoT control hub with AI-integrated energy optimization patterns.',
+    tags: ['Mobile', 'Edge AI', 'IoT']
   },
   {
-    id: 4,
-    title: 'Mugera',
-    description: 'The admirable nest for building independent spaces in the Metaverse.',
-    primaryService: 'Custom Web Solution',
-    services: ['Custom Web Solution', 'SEO Services'],
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzM1MTUwMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Metaverse', '3D', 'Community']
-  },
-  {
-    id: 5,
-    title: 'Neyabit',
-    description: 'Official website of Neyabit, leading the Grand Analysis Center.',
-    primaryService: 'ERP Services',
-    services: ['ERP Services', 'Odoo Services'],
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTczNTE1MDA1MHww&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Analytics', 'Corporate', 'Web']
-  },
-  {
-    id: 6,
-    title: 'Mnemonic',
-    description: 'High-conversion e-commerce platform with AI recommendations.',
-    primaryService: 'Ecommerce Solutions',
-    services: ['Ecommerce Solutions', 'SEO Services'],
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBhcHB8ZW58MHx8fHwxNzM1MTUwMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Retail', 'AI', 'Platform']
-  },
+    title: 'Nexus Hub',
+    category: 'Collaboration',
+    image: '/projects/nexus.webp',
+    description: 'Global workspace management system with automated scheduling.',
+    tags: ['Workflow', 'Odoo', 'Scale']
+  }
 ];
 
-const categories = [
-  'All',
-  'Odoo Services',
-  'Custom Web Solution',
-  'Mobile App Development',
-  'Ecommerce Solutions',
-  'Brand Building',
-  'SEO Services',
-  'AI/ML Services',
-  'ERP Services',
-  'Website Design & Development'
+const categories = ['All', 'E-commerce', 'SaaS Platform', 'Smart Tech', 'Collaboration'];
+
+const faqItems = [
+  {
+    question: "How long does a typical project development take?",
+    answer: "Project timelines vary based on complexity, but most enterprise builds range from 8 to 16 weeks from discovery to final deployment."
+  },
+  {
+    question: "Do you provide ongoing post-launch support?",
+    answer: "Yes, we offer flexible maintenance and growth packages to ensure your platform remains optimized, secure, and ready for new feature releases."
+  },
+  {
+    question: "Can you help with legacy project migrations?",
+    answer: "Absolutely. We specialize in modernizing outdated architectures while ensuring zero data loss and minimal business interruption during the transition."
+  },
+  {
+    question: "How do you handle project confidentiality?",
+    answer: "We sign strict NDAs before any project discussion. Your intellectual property and business strategies are treated with the highest level of security."
+  },
+  {
+    question: "Do you offer fixed-price or flexible budget models?",
+    answer: "We work with both models. Fixed-price is often best for well-defined builds, while our dedicated squad model works perfectly for long-term product development."
+  }
 ];
-const allCategory = categories[0];
 
 export function PortfolioPage() {
   const { theme } = useTheme();
-  const [activeCategory, setActiveCategory] = useState(allCategory);
+  const [filter, setFilter] = useState('All');
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const filteredProjects = activeCategory === allCategory
-    ? projects
-    : projects.filter(p => p.services.includes(activeCategory));
+  const filteredProjects = projects.filter(p => filter === 'All' || p.category === filter);
 
   return (
-    <main className={`min-h-screen ${theme === 'dark' ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
-
+    <main className={`min-h-screen pt-20 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}>
       {/* Hero Section */}
-      <section className="relative pt-48 md:pt-52 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center z-10 relative">
-
-          {/* Badge */}
+      <section className="relative py-32 px-6 overflow-hidden text-center">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,#3b82f6,transparent_70%)]" />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex justify-center mb-8"
-          >
-            <span className={`
-              inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase border
-              ${theme === 'dark'
-                ? 'bg-slate-900 border-slate-800 text-blue-400'
-                : 'bg-white border-slate-200 text-blue-600'}
-            `}>
-              <Star className="w-3 h-3 fill-current" />
-              Impactful Deliverables
-            </span>
-          </motion.div>
-
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className={`text-5xl md:text-7xl lg:text-8xl font-medium mb-6 tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
-            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full mb-8 bg-blue-500/10 border border-blue-500/20 text-blue-600 text-sm font-bold uppercase tracking-wider"
           >
-            Selected Works
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className={`max-w-2xl mx-auto text-lg md:text-xl leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}
-            style={{ fontFamily: '"Times New Roman", Times, serif' }}
-          >
-            A curated showcase of engineering excellence, where scalable data systems meet immersive digital experiences.
-          </motion.p>
-
-          {/* Category Filter */}
-          <motion.div
+            <Star className="w-4 h-4" />
+            Impactful Deliverables
+          </motion.div>
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-3 mt-12"
+            className={`text-6xl md:text-8xl font-black mb-12 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
           >
-            {categories.map((cat) => (
+            Digital <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 bg-clip-text text-transparent">Masterpieces</span>
+          </motion.h1>
+
+          {/* Categories */}
+          <div className="flex flex-wrap justify-center gap-4 mb-20">
+            {categories.map(cat => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`
-                  px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
-                  ${activeCategory === cat
-                    ? 'bg-blue-600 text-white'
-                    : theme === 'dark'
-                      ? 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
-                      : 'bg-white text-slate-500 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'}
-                `}
+                onClick={() => setFilter(cat)}
+                className={`px-8 py-3 rounded-2xl font-bold transition-all ${filter === cat
+                  ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/20 scale-105'
+                  : (theme === 'dark' ? 'bg-white/5 text-slate-400 hover:bg-white/10' : 'bg-white text-slate-600 hover:bg-slate-100 shadow-lg')
+                  }`}
               >
                 {cat}
               </button>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Portfolio Grid */}
-      <section className="px-6 pb-32">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <AnimatePresence>
-              {filteredProjects.map((project) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  key={project.id}
-                  className="group flex flex-col h-full cursor-pointer rounded-2xl overflow-hidden p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 brand-bg"
-                >
-                  {/* Card Image */}
-                  <div className="relative h-64 rounded-xl overflow-hidden mb-4 bg-slate-800">
+      {/* Grid */}
+      <section className="py-24 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, idx) => (
+              <motion.div
+                layout
+                key={project.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group relative"
+              >
+                <div className={`p-10 rounded-[3.5rem] border transition-all duration-500 ${theme === 'dark' ? 'bg-slate-900/50 border-white/10 hover:border-blue-500/30' : 'bg-white border-slate-200 hover:border-blue-500 shadow-2xl'
+                  }`}>
+                  <div className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-10 border border-white/10 shadow-3xl">
                     <ImageWithFallback
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      fallback="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                      className="w-full h-full object-contain p-8 group-hover:scale-110 transition-transform duration-700"
                     />
-
-                    {/* Category Overlay Badge */}
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-white/10">
-                        {activeCategory === allCategory ? project.primaryService : activeCategory}
+                    <div className="absolute top-6 left-6">
+                      <span className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest shadow-xl">
+                        {project.category}
                       </span>
                     </div>
                   </div>
-
-                  {/* Card Content */}
-                  <div className="flex flex-col flex-grow px-2 pb-2">
-                    <h3 className="text-2xl font-serif font-medium mb-2 text-white" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-                      {project.title}
-                    </h3>
-
-                    <p className="font-serif text-sm leading-relaxed mb-6 line-clamp-2 text-blue-100" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-                      {project.description}
-                    </p>
-
-                    <div className="mt-auto flex justify-between items-center border-t border-white/20 pt-4">
-                      <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-300"></span>
-                        <span className="text-[10px] uppercase tracking-widest text-blue-100">
-                          {project.tags[0]}
-                        </span>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className={`text-4xl font-black mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{project.title}</h3>
+                      <p className={`text-lg mb-8 leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>{project.description}</p>
+                      <div className="flex gap-4">
+                        {project.tags.map(tag => (
+                          <span key={tag} className={`text-xs font-bold uppercase tracking-widest ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>{tag}</span>
+                        ))}
                       </div>
-
-                      <button className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-blue-600 group-hover:border-white">
-                        <ArrowUpRight className="w-4 h-4 text-white group-hover:text-blue-600" />
-                      </button>
                     </div>
+                    <motion.div whileHover={{ scale: 1.2, rotate: 45 }} className={`w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-colors ${theme === 'dark' ? 'bg-white/10 hover:bg-blue-600' : 'bg-slate-900 hover:bg-blue-600'} text-white shadow-xl`}>
+                      <ArrowUpRight className="w-6 h-6" />
+                    </motion.div>
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </section>
 
-      <CTASection />
+      {/* Portfolio FAQ - Redesigned to match Odoo premium style */}
+      <section className="py-32 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-blue-500">
+              FAQ
+            </span>
+            <h2 className={`text-4xl md:text-5xl font-medium mb-12 text-[#4A7DFF]`} style={{ fontFamily: '"Fraunces", serif', letterSpacing: '-0.02em' }}>
+              Frequently asked questions
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 items-start">
+            {faqItems.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className={`rounded-3xl transition-all duration-300 p-6 ${theme === 'dark'
+                    ? 'bg-white/[0.03] border border-white/10 hover:border-white/20'
+                    : 'bg-white border border-slate-200 shadow-[0_30px_60px_rgba(15,23,42,0.12)] hover:shadow-xl'
+                    } ${isOpen ? 'ring-1 ring-blue-500/30' : ''}`}
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full flex items-start justify-between text-left gap-4"
+                  >
+                    <span className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{faq.question}</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 flex-shrink-0 mt-1 ${isOpen ? 'rotate-180 text-blue-500' : 'text-slate-400'}`} />
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className={`mt-4 text-sm leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio CTA */}
+      <section className="py-24 px-6 mb-20 text-center">
+        <div className="max-w-7xl mx-auto relative rounded-[5rem] overflow-hidden bg-blue-600 p-12 md:p-24 text-white shadow-3xl">
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_0%_0%,#2563eb,transparent_50%)]" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-400/20 blur-[100px] rounded-full" />
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight">Your project could be next.</h2>
+            <p className="text-2xl text-blue-100 mb-12 font-medium">From concept to deployment, we build digital products that move the needle. Ready to start?</p>
+            <div className="flex flex-wrap justify-center gap-8">
+              <button className="px-12 py-6 bg-white text-blue-600 rounded-3xl font-black text-xl hover:scale-110 transition-transform shadow-2xl flex items-center gap-3">
+                Hire the Squad <ArrowRight className="w-5 h-5" />
+              </button>
+              <button className="px-12 py-6 bg-blue-700 text-white rounded-3xl font-black text-xl hover:bg-blue-800 transition-colors border border-white/20">
+                View Odoo Successes
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

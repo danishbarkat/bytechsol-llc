@@ -35,9 +35,9 @@ const teamMembers: TeamMember[] = [
     skills: ['Machine learning', 'LLM integration', 'AI safety'],
   },
   {
-    name: 'Salik Ahmed',
+    name: 'Salik Husnaq',
     role: 'Full Stack Web Developer',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=480&h=640&q=80',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnQbSnfZ8GFrEGHt3DF9mIhfRW5UuhtZ1WaA&s',
     overlayColor: 'rgba(236, 72, 153, 0.82)',
     detail: 'Ships responsive frontend and scalable backend services that bridge immersive design with rock-solid infrastructure.',
     skills: ['Next.js / Vite', 'API architecture', 'Performance tuning'],

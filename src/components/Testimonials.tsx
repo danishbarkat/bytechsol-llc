@@ -30,27 +30,27 @@ const testimonials = [
 ];
 
 const stats = [
-  { 
-    icon: Star, 
-    value: "★★★★★", 
+  {
+    icon: Star,
+    value: "★★★★★",
     label: "Clutch rating (11 reviews)",
     gradient: "from-purple-600 to-blue-600",
   },
-  { 
-    icon: TrendingUp, 
-    value: "250+", 
+  {
+    icon: TrendingUp,
+    value: "250+",
     label: "Projects shipped",
     gradient: "from-blue-600 to-cyan-600",
   },
-  { 
-    icon: Users, 
-    value: "50+", 
+  {
+    icon: Users,
+    value: "50+",
     label: "Engineers & designers",
     gradient: "from-cyan-600 to-emerald-600",
   },
-  { 
-    icon: Award, 
-    value: "24/7", 
+  {
+    icon: Award,
+    value: "24/7",
     label: "Support coverage",
     gradient: "from-emerald-600 to-teal-600",
   },
@@ -98,7 +98,6 @@ export function Testimonials() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-6 bg-gradient-to-r from-purple-600/20 via-blue-600/20 to-cyan-600/20 border border-purple-500/30"
           >
-            <Sparkles className="w-4 h-4 text-purple-400" />
             <span className={`text-sm tracking-wider uppercase ${theme === 'dark' ? 'text-purple-300' : 'text-purple-700'}`}>
               Client Results
             </span>
@@ -126,12 +125,11 @@ export function Testimonials() {
             >
               {/* Gradient Border Effect */}
               <div className={`absolute -inset-0.5 bg-gradient-to-r ${testimonial.gradient} rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-500`} />
-              
-              <div className={`relative h-full p-8 rounded-2xl border transition-all duration-300 ${
-                theme === 'dark'
+
+              <div className={`relative h-full p-8 rounded-2xl border transition-all duration-300 ${theme === 'dark'
                   ? 'bg-slate-900/90 backdrop-blur-xl border-slate-800 group-hover:bg-slate-900'
                   : 'bg-white/90 backdrop-blur-xl border-slate-200 group-hover:bg-white'
-              }`}>
+                }`}>
                 {/* Quote Icon with Gradient */}
                 <div className="relative mb-6">
                   <div className={`absolute inset-0 bg-gradient-to-r ${testimonial.gradient} opacity-20 blur-xl rounded-full`} />
@@ -154,9 +152,8 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote Text */}
-                <p className={`leading-relaxed mb-8 ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
-                }`}>
+                <p className={`leading-relaxed mb-8 ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                   "{testimonial.quote}"
                 </p>
 
@@ -166,14 +163,14 @@ export function Testimonials() {
                   <div className="relative">
                     <div className={`absolute -inset-1 bg-gradient-to-r ${testimonial.gradient} rounded-full opacity-75 blur-sm`} />
                     <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10">
-                      <img 
-                        src={testimonial.image} 
+                      <img
+                        src={testimonial.image}
                         alt={testimonial.author}
                         className="w-full h-full object-cover"
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <div className={`mb-1 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
                       {testimonial.author}
@@ -197,11 +194,10 @@ export function Testimonials() {
           className="relative"
         >
           {/* Background Card */}
-          <div className={`rounded-3xl border overflow-hidden ${
-            theme === 'dark'
+          <div className={`rounded-3xl border overflow-hidden ${theme === 'dark'
               ? 'bg-slate-900/50 backdrop-blur-xl border-slate-800'
               : 'bg-white/50 backdrop-blur-xl border-slate-200'
-          }`}>
+            }`}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 p-12">
               {stats.map((stat, index) => (
                 <motion.div
@@ -233,9 +229,8 @@ export function Testimonials() {
                   </motion.div>
 
                   {/* Label */}
-                  <div className={`text-sm uppercase tracking-wider ${
-                    theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
-                  }`}>
+                  <div className={`text-sm uppercase tracking-wider ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'
+                    }`}>
                     {stat.label}
                   </div>
                 </motion.div>

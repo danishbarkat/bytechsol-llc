@@ -1,95 +1,72 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
+import { useTheme } from './ThemeContext';
 
 const faqs = [
   {
-    question: 'What services does Bytechsol offer?',
-    answer: 'Bytechsol is a full-service software agency offering custom web development, mobile app development, AI/ML solutions, ERP implementation, Odoo customization, CMS development, UI/UX design, and digital marketing services, including SEO and SMM.',
+    question: 'How does the discovery process work at BytechSol?',
+    answer: 'We start with a deep-dive strategy session to understand your business goals, target audience, and technical requirements. From there, we build a comprehensive roadmap and project architecture tailored to your needs.',
   },
   {
-    question: 'Do you build custom software solutions for startups and enterprises?',
-    answer: 'Yes! We help startups establish their business ideas or customize enterprise software in large organizations based on the needs of every business, from MVPs to complex enterprise systems.',
+    question: 'Do you offer fixed-price or hourly billing models?',
+    answer: 'We offer both. Fixed-price models are ideal for well-defined projects (like a website launch), while hourly or dedicated team models work best for ongoing product development and complex ERP implementations.',
   },
   {
-    question: 'What technologies do you use?',
-    answer: 'We work with a wide range of modern technologies, including JavaScript frameworks (React, Vue), Python, Django, Odoo, Shopify, and AI/ML solutions, so any project will be scalable and future-proof.',
+    question: 'How do you ensure the security of my data and code?',
+    answer: 'Security is at our core. We implement AES-256 encryption, follow OWASP best practices, conduct regular security audits, and sign strict NDAs to protect your intellectual property and user data.',
   },
   {
-    question: 'How does Bytechsol handle ERP implementation and Odoo services?',
-    answer: 'Our team of ERP specialists offers complete implementation, migration, and consultation of Odoo. We support companies to simplify their processes, automate their processes, and tailor Odoo to meet business requirements.',
+    question: 'Can you work with our existing in-house technical team?',
+    answer: 'Absolutely. We frequently act as a technical extension for internal teams, providing specialized expertise in AI, Odoo ERP, or high-performance frontend development to accelerate delivery.',
   },
   {
-    question: 'Can you integrate AI into my website or software product?',
-    answer: 'Yes, we develop AI-based chatbots, voice assistants, and other individually developed solutions with the integration of the latest AI/LLM technology to automate customer support services, enhance user experience, and boost productivity across all digital touchpoints.',
-  },
-  {
-    question: 'How long does a typical project take?',
-    answer: 'Timelines are dependent on scope, but we operate in iterative agile sprints to make delivery quick. Depending on the complexity, it would take 2-4 weeks to develop a simple site and roughly 2-3 months for a complex platform.',
-  },
-  {
-    question: 'Do you offer post-launch support and maintenance?',
-    answer: 'Yes. We also provide maintenance, enhancements, and technical support to ensure that your product keeps functioning smoothly and remains aligned with your requirements.',
-  },
-  {
-    question: 'How do I get started with Bytechsol?',
-    answer: 'Simple! Just schedule a free consultation or fill out our contact form. We will talk about your idea, goals, and timeline—then we will guide you on the exact next steps to bring your project to life.',
-  },
-  {
-    question: 'Why should I choose Bytechsol over other software agencies?',
-    answer: 'We don’t just deliver code — we deliver outcomes. Bytechsol blends business strategy, next-generation technology, and user-centered design to launch digital products that grow with you.',
-  },
-  {
-    question: 'Does Bytechsol offer 24/7 support?',
-    answer: 'Bytechsol provides round-the-clock support, so you never feel alone. Whether it’s reporting a critical bug or a last-minute change, our team is always within reach regardless of time zone.',
-  },
+    question: 'What happens after the project is launched?',
+    answer: 'We provide 24/7 technical support and maintenance packages. We stay with you for "Day 2" success, ensuring your product remains updated, optimized, and scalable as your business grows.',
+  }
 ];
 
 export function FAQ() {
+  const { theme } = useTheme();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="mb-4 text-white">
-            Frequently Asked Questions
+    <section className={`relative py-32 px-6 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}>
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-4 block text-blue-500">
+            FAQ
+          </span>
+          <h2 className={`text-4xl md:text-5xl font-medium mb-12 text-[#4A7DFF]`} style={{ fontFamily: '"Fraunces", serif', letterSpacing: '-0.02em' }}>
+            Frequently asked questions
           </h2>
-          <p className="text-slate-400 text-lg">
-            Everything you need to know about our services
-          </p>
-        </motion.div>
+        </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              viewport={{ once: true }}
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 rounded-2xl bg-slate-800/50 border border-slate-700 shadow-lg hover:shadow-xl hover:bg-slate-800 transition-all duration-300 text-left"
+        <div className="grid md:grid-cols-2 gap-6 items-start">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`rounded-3xl transition-all duration-300 p-6 ${theme === 'dark'
+                  ? 'bg-white/[0.03] border border-white/10 hover:border-white/20'
+                  : 'bg-white border border-slate-200 shadow-[0_30px_60px_rgba(15,23,42,0.12)] hover:shadow-xl'
+                  } ${isOpen ? 'ring-1 ring-blue-500/30' : ''}`}
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-white">{faq.question}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-purple-400 flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === index ? 'rotate-180' : ''
-                    }`}
-                  />
-                </div>
-                
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full flex items-start justify-between text-left gap-4"
+                >
+                  <span className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{faq.question}</span>
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 flex-shrink-0 mt-1 ${isOpen ? 'rotate-180 text-blue-500' : 'text-slate-400'}`} />
+                </button>
+
                 <AnimatePresence>
-                  {openIndex === index && (
+                  {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
@@ -97,13 +74,13 @@ export function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="mt-4 text-slate-400 leading-relaxed">{faq.answer}</p>
+                      <p className={`mt-4 text-base leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </button>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

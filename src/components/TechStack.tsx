@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from './ThemeContext';
-import { Check, Sparkles, Code2, Cpu, Database, Cloud, Zap, Terminal, ChevronRight, Activity, Boxes, Smartphone, GitBranch, Layers, Users } from 'lucide-react';
+import { Check, Sparkles, Code2, Cpu, Database, Cloud, Zap, Terminal, ChevronRight, Activity, Boxes, Smartphone, GitBranch, Layers, Users, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 
 const BRAND_COLOR = '#4e91ff';
@@ -510,185 +510,135 @@ export function TechStack() {
           </div>
         </div>
 
-        {/* Features List - Bottom Section */}
+        {/* AI-Native Development Core - Technical Module Layout */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="relative"
+          className="mt-32 relative"
         >
-          {/* Circuit / Blueprint Background Effect */}
-          <div className="absolute inset-0 -z-10 opacity-[0.03] pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                </pattern>
-                <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <circle cx="1" cy="1" r="1" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-              <rect width="100%" height="100%" fill="url(#dots)" />
-            </svg>
-          </div>
-
-          {/* Title Section */}
+          {/* Section Header */}
           <div className="text-center mb-16 relative">
             <motion.div
-              className="inline-flex items-center gap-3 mb-4 px-6 py-3 rounded-full relative overflow-hidden"
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
               style={{
-                background: theme === 'dark'
-                  ? 'linear-gradient(135deg, #1e293b, #0f172a)'
-                  : 'linear-gradient(135deg, #f1f5f9, #e2e8f0)',
-                border: `2px solid ${theme === 'dark' ? '#334155' : '#cbd5e1'}`,
+                background: 'rgba(78, 145, 255, 0.1)',
+                border: '1px solid rgba(78, 145, 255, 0.2)',
+                backdropFilter: 'blur(10px)'
               }}
-              whileHover={{ scale: 1.05 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10 animate-pulse" />
-              <Zap className="w-5 h-5 text-purple-400 relative z-10" />
-              <span className="text-purple-400 text-xs tracking-[0.4em] uppercase relative z-10" style={{ fontWeight: 800 }}>
-                Platform Blueprint
-              </span>
+              <Sparkles className="w-4 h-4 text-blue-400" />
+              <span className="text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em]">Next-Gen Infrastructure</span>
             </motion.div>
 
-            <h3
-              className={`mb-6 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.02em' }}
-            >
-              AI-Native Development <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Core</span>
-            </h3>
-            <p className={`text-lg md:text-xl max-w-3xl mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
-              Our agentic infrastructure provides production-ready workflows that unify
-              human creativity with autonomous AI execution.
+            <h2 className={`mb-6 tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`} style={{ fontSize: '3.5rem', fontWeight: 800 }}>
+              AI-Native <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">Development Core</span>
+            </h2>
+            <p className={`text-xl max-w-3xl mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+              A unified intelligence layer that scales your development velocity with agentic automation and production-ready architecture.
             </p>
           </div>
 
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 relative">
-            {features.map((feature, index) => {
-              const isLarge = feature.size === 'large';
-              const Icon = feature.icon;
+          {/* Technical Modular Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+            {/* Background Connection Lines (Subtle) */}
+            <div className={`absolute inset-0 -z-10 opacity-[0.05] ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`}>
+              <svg width="100%" height="100%" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 100L400 400M400 400L800 100M400 400L400 700M400 400L800 700M800 100L1100 400M800 700L1100 400" stroke="currentColor" strokeWidth="1" strokeDasharray="10 10" />
+                <circle cx="400" cy="400" r="4" fill="currentColor" />
+                <circle cx="800" cy="100" r="4" fill="currentColor" />
+                <circle cx="800" cy="700" r="4" fill="currentColor" />
+              </svg>
+            </div>
 
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
               return (
                 <motion.div
                   key={feature.title}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
-                  className={`${isLarge ? 'md:col-span-3' : 'md:col-span-2'} relative group`}
+                  className="group relative"
                 >
-                  <TiltCard color={feature.color} theme={theme}>
-                    <div className="relative h-full flex flex-col p-8 z-10">
-                      {/* Header with Icon & Counter */}
-                      <div className="flex justify-between items-start mb-8">
-                        <div
-                          className="w-16 h-16 rounded-2xl flex items-center justify-center relative overflow-hidden group-hover:shadow-[0_0_30px_rgba(var(--feature-rgb),0.3)] transition-shadow duration-500"
-                          style={{
-                            background: `${feature.color}15`,
-                            border: `2px solid ${feature.color}40`,
-                            '--feature-rgb': hexToRgb(feature.color)
-                          } as any}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                          <Icon className="w-8 h-8 relative z-10 transition-transform duration-500 group-hover:scale-110" style={{ color: feature.color }} />
-                        </div>
+                  <div
+                    className={`h-full rounded-[2rem] border p-8 transition-all duration-700 relative overflow-hidden backdrop-blur-sm ${theme === 'dark'
+                      ? 'bg-slate-900/60 border-white/5 hover:border-blue-500/40'
+                      : 'bg-white border-slate-200/60 hover:border-blue-400 hover:shadow-[0_30px_60px_-15px_rgba(78,145,255,0.15)]'
+                      }`}
+                  >
+                    {/* Glowing Mesh Gradient (Visible on Hover) */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"
+                      style={{
+                        background: `radial-gradient(circle at 0% 0%, ${feature.color}15 0%, transparent 70%)`
+                      }}
+                    />
 
-                        <div className="flex flex-col items-end opacity-40 group-hover:opacity-100 transition-opacity">
-                          <span className="text-xs font-mono font-bold tracking-tighter" style={{ color: feature.color }}>
-                            CORE_MODULE
-                          </span>
-                          <span className="text-2xl font-black font-mono" style={{ color: feature.color }}>
-                            {(index + 1).toString().padStart(2, '0')}
-                          </span>
-                        </div>
+                    {/* Module ID Decal */}
+                    <div className="flex justify-between items-center mb-10">
+                      <div
+                        className="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-[0.2em] border"
+                        style={{
+                          color: feature.color,
+                          borderColor: `${feature.color}30`,
+                          background: `${feature.color}05`
+                        }}
+                      >
+                        CORE_MODULE_0{index + 1}
                       </div>
-
-                      {/* Content */}
-                      <h4 className={`text-xl md:text-2xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
-                        {feature.title}
-                      </h4>
-                      <p className={`text-sm md:text-base leading-relaxed mb-8 flex-grow ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
-                        {feature.description}
-                      </p>
-
-                      {/* Footer Actions / Interactive bits */}
-                      <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                        <div className="flex gap-1.5">
-                          {[1, 2, 3].map(i => (
-                            <div key={i} className="w-1 h-1 rounded-full" style={{ backgroundColor: feature.color, opacity: 0.2 + (i * 0.2) }} />
-                          ))}
-                        </div>
-                        <motion.div
-                          className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase px-3 py-1 rounded bg-white/5"
-                          whileHover={{ backgroundColor: `${feature.color}20`, color: feature.color }}
-                        >
-                          System Link Ready
-                        </motion.div>
-                      </div>
+                      <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: feature.color }} />
                     </div>
 
-                    {/* Background Visual Enhancements */}
-                    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit]">
-                      {/* Scanning Line */}
-                      <motion.div
-                        className="absolute inset-x-0 h-[2px] opacity-0 group-hover:opacity-40"
-                        style={{ background: `linear-gradient(90deg, transparent, ${feature.color}, transparent)` }}
-                        animate={{ top: ['-10%', '110%'] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+                    {/* Icon & Content */}
+                    <div className="relative mb-8">
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+                        style={{
+                          background: `linear-gradient(135deg, ${feature.color}20, ${feature.color}05)`,
+                          border: `1px solid ${feature.color}30`,
+                          boxShadow: `0 10px 20px -10px ${feature.color}40`
+                        }}
+                      >
+                        <Icon className="w-8 h-8" style={{ color: feature.color }} />
+                      </div>
+                      {/* Aura effect behind icon on hover */}
+                      <div
+                        className="absolute inset-0 blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"
+                        style={{ background: feature.color }}
                       />
-
-                      {/* Corner Accents */}
-                      <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-transparent transition-colors group-hover:border-white/10" />
-                      <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-transparent transition-colors group-hover:border-white/10" />
                     </div>
-                  </TiltCard>
+
+                    <h4 className={`text-2xl font-bold mb-4 tracking-tight ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+                      {feature.title}
+                    </h4>
+                    <p className={`text-base leading-relaxed mb-6 flex-grow ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+                      {feature.description}
+                    </p>
+
+                    {/* Progress Indicator */}
+                    <div className="mt-auto flex items-center gap-3">
+                      <div className="flex-1 h-[2px] bg-slate-500/10 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full"
+                          initial={{ width: 0 }}
+                          whileInView={{ width: '100%' }}
+                          transition={{ duration: 1.5, delay: 0.5 }}
+                          style={{ background: feature.color }}
+                        />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold opacity-40 uppercase tracking-widest">Active</span>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* New Call to Action - Technical Style */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="mt-20 text-center"
-          >
-            <div className={`p-8 rounded-3xl border-2 max-w-4xl mx-auto overflow-hidden relative ${theme === 'dark' ? 'bg-slate-900/50 border-slate-800' : 'bg-white border-slate-200 shadow-xl'
-              }`}>
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                <div className="text-left">
-                  <h4 className={`text-2xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
-                    Ready to deploy your agentic stack?
-                  </h4>
-                  <p className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>
-                    Join 50+ enterprises building with our AI-enhanced framework.
-                  </p>
-                </div>
-
-                <motion.a
-                  href="#"
-                  className="px-10 py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold group relative overflow-hidden flex items-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="absolute inset-0 bg-white/20 translate-y-full hover:translate-y-0 transition-transform duration-300" />
-                  <span className="relative z-10">Initialize Production</span>
-                  <Sparkles className="w-5 h-5 relative z-10 animate-pulse" />
-                </motion.a>
-              </div>
-
-              {/* Decorative terminal-style text decoration */}
-              <div className="absolute -bottom-2 right-10 opacity-5 font-mono text-8xl font-black select-none pointer-events-none">
-                BUILD_2026
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -727,8 +677,8 @@ function TiltCard({ children, color, theme }: { children: React.ReactNode, color
   return (
     <motion.div
       className={`relative h-full rounded-[2.5rem] border-2 transition-all duration-200 overflow-hidden ${theme === 'dark'
-          ? 'bg-slate-900 border-slate-800'
-          : 'bg-white border-slate-200'
+        ? 'bg-slate-900 border-slate-800'
+        : 'bg-white border-slate-200'
         }`}
       style={{
         transformStyle: 'preserve-3d',
