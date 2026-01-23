@@ -5,37 +5,132 @@ import { ArrowUpRight, Star, ChevronDown, Sparkles, ArrowRight } from 'lucide-re
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 const projects = [
+  // Custom Web Solutions
   {
-    title: 'Bellroy Zen',
-    category: 'E-commerce',
-    image: '/projects/bellroy.webp',
-    description: 'A premium lifestyle brand experience built for high-scale conversion.',
+    title: 'Bellroy',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/bellroy.png',
+    description: 'Premium carry goods e-commerce experience.',
     tags: ['Next.js', 'Headless', 'Performance']
   },
   {
-    title: 'Wallai Zen',
-    category: 'SaaS Platform',
-    image: '/projects/wallai.webp',
-    description: 'Enterprise-grade analytics dashboard with real-time data visualization.',
-    tags: ['React', 'D3.js', 'Cloud Native']
+    title: 'Bouqs',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/bouqs.png',
+    description: 'Fresh flower delivery platform.',
+    tags: ['E-commerce', 'React', 'Shopify']
   },
   {
-    title: 'Lumina Home',
-    category: 'Smart Tech',
-    image: '/projects/lumina.webp',
-    description: 'IoT control hub with AI-integrated energy optimization patterns.',
-    tags: ['Mobile', 'Edge AI', 'IoT']
+    title: 'BrickLink',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/bricklink.png',
+    description: 'LEGO marketplace and community.',
+    tags: ['Marketplace', 'Community', 'Scale']
   },
   {
-    title: 'Nexus Hub',
-    category: 'Collaboration',
-    image: '/projects/nexus.webp',
-    description: 'Global workspace management system with automated scheduling.',
-    tags: ['Workflow', 'Odoo', 'Scale']
-  }
+    title: 'Crutchfield',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/crutchfield.png',
+    description: 'Electronics and audio equipment retailer.',
+    tags: ['E-commerce', 'Retail', 'Audio']
+  },
+  {
+    title: 'PetLab Co.',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/petlabco.png',
+    description: 'Leading pet health and wellness brand.',
+    tags: ['Health', 'E-commerce', 'Pets']
+  },
+  {
+    title: 'Real eREstate',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/realerestate.png',
+    description: 'Real estate investment platform.',
+    tags: ['Real Estate', 'Investment', 'Platform']
+  },
+  {
+    title: 'Trulia',
+    category: 'Custom Web',
+    image: '/assets/portfolio/custom-web-solution/trulia.png',
+    description: 'Real estate search and discovery.',
+    tags: ['Real Estate', 'Search', 'Discovery']
+  },
+  // Shopify
+  {
+    title: 'LuxeDH',
+    category: 'Shopify',
+    image: '/assets/portfolio/shopify/luxedh.png',
+    description: 'Luxury designer handbags and accessories.',
+    tags: ['Shopify', 'Luxury', 'Fashion']
+  },
+  // WordPress
+  {
+    title: 'Hair Cuttery',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/haircuttery.jpg',
+    description: 'Full-service hair salon chain website.',
+    tags: ['WordPress', 'Salon', 'Services']
+  },
+  {
+    title: 'Ledger',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/ledger.jpg',
+    description: 'Secure hardware wallet solutions for crypto.',
+    tags: ['Crypto', 'Security', 'Hardware']
+  },
+  {
+    title: 'Native Soul',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/nativesoul.jpg',
+    description: 'Indigenous-inspired lifestyle brand.',
+    tags: ['Lifestyle', 'Brand', 'Culture']
+  },
+  {
+    title: 'No Agent Property',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/noagentproperty.jpg',
+    description: 'Direct property sales platform.',
+    tags: ['Real Estate', 'Direct Sales', 'Australia']
+  },
+  {
+    title: 'Owner',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/owner.jpg',
+    description: 'Property owner direct sales.',
+    tags: ['Real Estate', 'FSBO', 'Australia']
+  },
+  {
+    title: 'Perfect Keto',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/perfectketo.jpg',
+    description: 'Ketogenic diet products and resources.',
+    tags: ['Health', 'Keto', 'E-commerce']
+  },
+  {
+    title: 'Sale By Home Owner',
+    category: 'WordPress',
+    image: '/assets/portfolio/wordpress/salesbyhomeowner.jpg',
+    description: 'For-sale-by-owner property platform.',
+    tags: ['Real Estate', 'FSBO', 'Platform']
+  },
+  // Squarespace
+  {
+    title: 'A New Project',
+    category: 'Squarespace',
+    image: '/assets/portfolio/squarespace/anewproject.jpg',
+    description: 'Creative project showcase.',
+    tags: ['Creative', 'Portfolio', 'Showcase']
+  },
+  {
+    title: 'CORE Survival',
+    category: 'Squarespace',
+    image: '/assets/portfolio/squarespace/coresurvival.jpg',
+    description: 'Tactical lighting systems.',
+    tags: ['Tactical', 'Lighting', 'Outdoor']
+  },
 ];
 
-const categories = ['All', 'E-commerce', 'SaaS Platform', 'Smart Tech', 'Collaboration'];
+const categories = ['All', 'Custom Web', 'Shopify', 'WordPress', 'Squarespace'];
 
 const faqItems = [
   {
